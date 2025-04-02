@@ -9,14 +9,20 @@ const landingNavItems = [
     { title: 'Log In', href: '/login' },
     { title: 'Register', href: '/register' },
 ];
-const landingNavTitle = 'Sangguniang Kabataan';
+const landingNavTitle = 'SANGUNIANG KABATAAN';
+const landingNavBarangay = 'Balagunan';
 
 export default function MainLayout({ children, classname }: MainLayoutProps) {
     return (
         <>
-            <CustomHeader title={landingNavTitle} rightNavItems={landingNavItems} />
             <div>
-                <main className={`w-full flex${classname}`}>{children}</main>
+                <div className='pt-2'>
+                    <CustomHeader title={landingNavTitle} barangay={landingNavBarangay} rightNavItems={landingNavItems} />
+                </div>
+
+                <div>
+                    <main className={`w-full flex${classname}`}>{children}</main>
+                </div>
             </div>
         </>
     );
