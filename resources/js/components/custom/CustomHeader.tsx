@@ -17,15 +17,15 @@ export default function CustomHeader({ title, barangay, rightNavItems = [] }: Cu
             <div className="md:hidden">
                 <Sheet>
                     <SheetTrigger asChild className="m-2 flex items-center justify-between shadow-md md:hidden">
-                        <Button>
+                        <Button variant="outline">
                             <Menu></Menu>
                         </Button>
                     </SheetTrigger>
                     <SheetContent side="left" className="w-[50vw] sm:w-[35vw] md:w-[25vw] lg:hidden">
                         <SheetHeader className="font-2xl flex flex-col items-center justify-center font-bold">
                             <CustonIcon imgSrc={SKLogo} className="h-15 w-15" />
-                            <h1>{title}</h1>
-                            <p className="text-md font-thin">{barangay}</p>
+                            <h1 className="text-center">{title}</h1>
+                            <p className="text-md font-semibold">{barangay}</p>
                         </SheetHeader>
                         <div className="flex flex-col items-center justify-center gap-2">
                             {rightNavItems.map((item, index) => (
