@@ -8,10 +8,12 @@ export interface Auth {
 export interface BreadcrumbItem {
     title: string;
     href: string;
+    
 }
 
 export interface NavGroup {
     title: string;
+    description: string;
     items: NavItem[];
 }
 

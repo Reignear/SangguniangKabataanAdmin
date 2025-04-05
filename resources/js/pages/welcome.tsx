@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import MainLayout from '@/layouts/shared/MainLayout';
+import MainLayout from '@/layouts/shared/WelcomeLayout';
 import { type SharedData } from '@/types';
 import { Head, usePage } from '@inertiajs/react';
 import Background from '../../assets/background.jpg';
