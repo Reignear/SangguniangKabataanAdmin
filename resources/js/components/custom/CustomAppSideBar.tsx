@@ -9,16 +9,19 @@ import {
     SidebarMenuItem,
     SidebarRail,
 } from '@/components/ui/sidebar';
-import { type BreadcrumbItem } from '@/types';
+import { SideBarData } from '@/data/SideBarData';
+ 
 
 interface CustomAppSideBarProps {
-    SideBarMain?: BreadcrumbItem[];
     breadCrumbTitle?: string;
     breadCrumbBarangay?: string;
     onClick?: (item: string) => void;
+    active: string | null;
+    setActive: (item: string) => void;
 }
 
-export default function AppSidebar({ SideBarMain = [], breadCrumbTitle, breadCrumbBarangay, onClick }: CustomAppSideBarProps) {
+
+export default function AppSidebar({ breadCrumbTitle, breadCrumbBarangay, onClick, active, setActive }: CustomAppSideBarProps) {
     return (
         <Sidebar>
             <SidebarHeader>
@@ -36,14 +39,15 @@ export default function AppSidebar({ SideBarMain = [], breadCrumbTitle, breadCru
             <SidebarContent className="flex h-full flex-col">
                 <SidebarGroup>
                     <SidebarMenu className="flex flex-col gap-4">
-                        {SideBarMain.map((item) => (
+                        {SideBarData.map((item) => (
                             <SidebarMenuItem key={item.title}>
                                 <SidebarMenuButton asChild>
                                     <a
                                         key={item.title}
                                         href={item.href}
-                                        className="font-medium"
+                                        className={`font-medium ${active === item.title ? 'text-blue-500' : 'text-gray-700 hover:text-blue-500'}`}
                                         onClick={() => {
+                                            setActive(item.title);
                                             onClick?.(item.title);
                                             console.log('Selected Item in custom appbar:', item.title);
                                         }}
