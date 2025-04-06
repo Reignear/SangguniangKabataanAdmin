@@ -13,7 +13,7 @@ export default function Welcome() {
             <div className="h-screen overflow-hidden bg-gray-100">
                 <MainLayout>
                     <section className="flex h-screen w-full items-center justify-center p-2">
-                        <div className="mb-15 flex h-1/2 w-3xl flex-row items-center justify-center rounded-lg border-2  shadow-lg">
+                        <div className="mb-15 flex h-1/2 w-3xl flex-row items-center justify-center rounded-lg border-2 shadow-lg">
                             <div className="flex w-1/2 flex-col items-center justify-center gap-2">
                                 <h1 className="text-center text-2xl font-bold">
                                     SANGGUNIANG KABATAAN <br /> OF <br /> BALAGUNAN

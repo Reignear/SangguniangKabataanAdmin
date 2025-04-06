@@ -2,12 +2,20 @@ import Sidebar from '@/components/custom/CustomAppSideBar';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList } from '@/components/ui/breadcrumb';
 import { Separator } from '@/components/ui/separator';
 import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
+import Attachments from '@/pages/dashboard/Attachments';
+import Calendar from '@/pages/dashboard/Calendar';
+import Events from '@/pages/dashboard/Events';
+import KKOfficers from '@/pages/dashboard/KKOfficers';
+import MainDashboard from '@/pages/dashboard/DashboardDashboard';
+import Program from '@/pages/dashboard/Programs';
+import Projects from '@/pages/dashboard/Projects';
+import Reports from '@/pages/dashboard/Reports';
+import Settings from '@/pages/dashboard/Settings';
+import SKOfficials from '@/pages/dashboard/SKOfficials';
 import React from 'react';
-
 interface DashboardLayoutProps {
     className?: string;
 }
-
 const breadcrumbTitle = 'Sangguniang Kabaatan';
 const breadcrumbBarangay = 'BALAGUNAN';
 
@@ -16,28 +24,27 @@ export default function DashboardLayout({ className }: DashboardLayoutProps) {
     const renderChild = () => {
         switch (active) {
             case 'Dashboard':
-                return <div>Dashboard Content</div>;
-
+                return <MainDashboard />;
             case 'SK Officials':
-                return <div>SK Officials Content</div>;
+                return <SKOfficials />;
             case 'KK Officers':
-                return <div>KK Officers Content</div>;
+                return <KKOfficers />;
             case 'Calendar':
-                return <div>Calendar Content</div>;
+                return <Calendar />;
             case 'Events':
-                return <div>Events Content</div>;
+                return <Events />;
             case 'Projects':
-                return <div>Projects Content</div>;
+                return <Projects />;
             case 'Programs':
-                return <div>Programs Content</div>;
+                return <Program />;
             case 'Attachments':
-                return <div>Attachments Content</div>;
+                return <Attachments />;
             case 'Reports':
-                return <div>Reports Content</div>;
+                return <Reports />;
             case 'Settings':
-                return <div>Settings Content</div>;
+                return <Settings />;
             default:
-                return <div>Default Content</div>;
+                return <MainDashboard />;
         }
     };
     console.log('Active state in DashboardLayout:', active);
