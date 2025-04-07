@@ -1,5 +1,4 @@
 export const SideBarData = [
-    
     {
         title: 'Dashboard',
         href: '#',
@@ -10,6 +9,10 @@ export const SideBarData = [
     },
     {
         title: 'KK Officers',
+        href: '#',
+    },
+    {
+        title: 'ABYIP',
         href: '#',
     },
     {

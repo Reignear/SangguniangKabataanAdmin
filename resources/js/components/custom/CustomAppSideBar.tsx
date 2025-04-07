@@ -9,8 +9,8 @@ import {
     SidebarMenuItem,
     SidebarRail,
 } from '@/components/ui/sidebar';
-import { SideBarData } from '@/data/SideBarData';
- 
+import { SideBarData } from '@/layouts/data/SideBarData';
+import { Separator } from '../ui/separator';
 
 interface CustomAppSideBarProps {
     breadCrumbTitle?: string;
@@ -19,7 +19,6 @@ interface CustomAppSideBarProps {
     active: string | null;
     setActive: (item: string) => void;
 }
-
 
 export default function AppSidebar({ breadCrumbTitle, breadCrumbBarangay, onClick, active, setActive }: CustomAppSideBarProps) {
     return (
@@ -60,6 +59,7 @@ export default function AppSidebar({ breadCrumbTitle, breadCrumbBarangay, onClic
                     </SidebarMenu>
                 </SidebarGroup>
                 <div className="mt-auto">
+                    <Separator/>
                     <Button variant="link">Logout</Button>
                 </div>
             </SidebarContent>

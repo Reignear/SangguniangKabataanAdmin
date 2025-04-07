@@ -12,6 +12,7 @@ import Projects from '@/pages/dashboard/Projects';
 import Reports from '@/pages/dashboard/Reports';
 import Settings from '@/pages/dashboard/Settings';
 import SKOfficials from '@/pages/dashboard/SKOfficials';
+import ABYIP from '@/pages/dashboard/Abyip';
 import React from 'react';
 interface DashboardLayoutProps {
     className?: string;
@@ -43,6 +44,8 @@ export default function DashboardLayout({ className }: DashboardLayoutProps) {
                 return <Reports />;
             case 'Settings':
                 return <Settings />;
+            case 'ABYIP':
+                return <ABYIP/>;
             default:
                 return <MainDashboard />;
         }
@@ -70,8 +73,8 @@ export default function DashboardLayout({ className }: DashboardLayoutProps) {
                     </div>
                 </header>
                 <div>
-                    <main className={`h-full w-full ${className}`}>
-                        <div className="flex h-full w-full flex-col items-center justify-center gap-4 px-4 py-8">{renderChild()}</div>
+                    <main className={`h-full w-full overflow-hidden ${className}`}>
+                        <div className="flex h-full w-full flex-col items-center justify-center gap-4 px-4 py-4">{renderChild()}</div>
                     </main>
                 </div>
             </SidebarInset>

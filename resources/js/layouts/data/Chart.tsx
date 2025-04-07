@@ -142,8 +142,8 @@ export function ChartAreaInteractive() {
             <CardHeader className="relative">
                 <CardTitle>Public Expenditure</CardTitle>
                 <CardDescription>
-                    <span className="hidden @[540px]/card:block">Total for the last 3 months</span>
-                    <span className="@[540px]/card:hidden">Last 3 months</span>
+               
+                    <span className="@[540px]/card:hidden">Year 2024 - 2025</span>
                 </CardDescription>
                 <div className="absolute top-4 right-4">
                     <ToggleGroup type="single" value={timeRange} onValueChange={setTimeRange} variant="outline" className="hidden @[767px]/card:flex">
