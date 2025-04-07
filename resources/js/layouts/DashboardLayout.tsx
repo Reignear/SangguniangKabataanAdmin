@@ -2,17 +2,18 @@ import Sidebar from '@/components/custom/CustomAppSideBar';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList } from '@/components/ui/breadcrumb';
 import { Separator } from '@/components/ui/separator';
 import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
+import ABYIP from '@/pages/dashboard/Abyip';
 import Attachments from '@/pages/dashboard/Attachments';
 import Calendar from '@/pages/dashboard/Calendar';
+import MainDashboard from '@/pages/dashboard/MainDashboard';
 import Events from '@/pages/dashboard/Events';
 import KKOfficers from '@/pages/dashboard/KKOfficers';
-import MainDashboard from '@/pages/dashboard/DashboardDashboard';
 import Program from '@/pages/dashboard/Programs';
 import Projects from '@/pages/dashboard/Projects';
 import Reports from '@/pages/dashboard/Reports';
 import Settings from '@/pages/dashboard/Settings';
 import SKOfficials from '@/pages/dashboard/SKOfficials';
-import ABYIP from '@/pages/dashboard/Abyip';
+import TermsOfService from '@/pages/dashboard/TermsOfService';
 import React from 'react';
 interface DashboardLayoutProps {
     className?: string;
@@ -45,7 +46,9 @@ export default function DashboardLayout({ className }: DashboardLayoutProps) {
             case 'Settings':
                 return <Settings />;
             case 'ABYIP':
-                return <ABYIP/>;
+                return <ABYIP />;
+            case 'Terms of Service':
+                return <TermsOfService />;
             default:
                 return <MainDashboard />;
         }

@@ -43,4 +43,8 @@ export const SideBarData = [
         title: 'Settings',
         href: '#',
     },
+    {
+        title: 'Terms of Service',
+        href: '#',
+    },
 ];

@@ -1,18 +1,34 @@
+import CustomDialog from '@/components/custom/CustomDialog';
+import CustomForm from '@/components/custom/CustomForm';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Separator } from '@/components/ui/separator';
-import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { LocationInformation, PersonalInformation } from '@/layouts/data/FieldData';
 import { useState } from 'react';
 import Grid from '../../../assets/grid.png';
 import Plus from '../../../assets/plus.png';
 import TableImage from '../../../assets/table.png';
-
 export default function KKOfficers() {
-    const [viewMode, setViewMode] = useState<'grid' | 'table'>('table'); // State to manage view mode (grid or table)
+    const [viewMode, setViewMode] = useState<'grid' | 'table'>('table');
+
+    const renderFormFields = () => {
+        return (
+            <>
+                <div className="mt-5 font-bold">
+                    <CustomForm fields={PersonalInformation} title="Personal Details" className="grid grid-cols-3 gap-5 pt-3 font-normal" />
+                </div>
+
+                <div className="mt-5 font-bold">
+                    <CustomForm fields={LocationInformation} title="Location Details" className="grid grid-cols-3 gap-5 pt-3 font-normal" />
+                </div>
+            </>
+        );
+    };
 
     return (
-        <div className="flex h-full w-full flex-col rounded-lg bg-gray-100 p-4">
+        <div className="flex max-h-lvh w-full flex-col rounded-lg bg-gray-100 p-4">
             <div className="flex items-center justify-end">
                 <Input placeholder="Search" className="w-full max-w-xs" />
                 <div className="mr-2 ml-2 rounded-lg border-2">
@@ -24,11 +40,20 @@ export default function KKOfficers() {
                     </Button>
                 </div>
 
-                <Button className="flex flex-row items-center gap-2 bg-blue-400" variant="add">
-                    Add member
-                    <img src={Plus} alt="Plus icon" className="h-4 w-4" />
-                </Button>
+                <CustomDialog
+                    title="Add new KK member"
+                    description="Fill out the form below to add a new member."
+                    trigger={
+                        <Button className="flex flex-row items-center gap-2 bg-blue-400" variant="add">
+                            <img src={Plus} alt="Plus icon" className="h-4 w-4" />
+                        </Button>
+                    }
+                    subTitle=""
+                    children={renderFormFields()}
+                    buttonName="Add Member"
+                />
             </div>
+
             <Separator className="mt-5 mb-5" />
             <div>
                 <h1>Filters</h1>
@@ -82,7 +107,6 @@ export default function KKOfficers() {
                 {viewMode === 'table' ? (
                     <div>
                         <Table>
-                            <TableCaption>List of members </TableCaption>
                             <TableHeader>
                                 <TableRow>
                                     <TableHead>Member</TableHead>
@@ -151,7 +175,88 @@ export default function KKOfficers() {
                         </Table>
                     </div>
                 ) : (
-                    <div>Grid here </div>
+                    <div className="grid grid-cols-2 justify-center gap-4 p-2 sm:grid-cols-3 lg:grid-cols-4">
+                        <div className="flex aspect-video max-w-[350px] min-w-[250px] flex-col gap-y-5 rounded-xl bg-green-200">
+                            <div className="flex flex-col items-start justify-start gap-3 pt-4 pr-4 pl-4">
+                                <h1 className="text-lg font-semibold"> Reignear Berador Magallanes</h1>
+                                <p>Gender</p>
+                                <Separator className="bg-black" />
+                            </div>
+                            <div className="pl-4 text-lg">
+                                <h1 className="font-bold">Committee</h1>
+                            </div>
+                        </div>
+                        <div className="flex aspect-video max-w-[350px] min-w-[250px] flex-col gap-y-5 rounded-xl bg-green-200">
+                            <div className="flex flex-col items-start justify-start gap-3 pt-4 pr-4 pl-4">
+                                <h1 className="text-lg font-semibold"> Reignear Berador Magallanes</h1>
+                                <p>Gender</p>
+                                <Separator className="bg-black" />
+                            </div>
+                            <div className="pl-4 text-lg">
+                                <h1 className="font-bold">Committee</h1>
+                            </div>
+                        </div>
+                        <div className="flex aspect-video max-w-[350px] min-w-[250px] flex-col gap-y-5 rounded-xl bg-green-200">
+                            <div className="flex flex-col items-start justify-start gap-3 pt-4 pr-4 pl-4">
+                                <h1 className="text-lg font-semibold"> Reignear Berador Magallanes</h1>
+                                <p>Gender</p>
+                                <Separator className="bg-black" />
+                            </div>
+                            <div className="pl-4 text-lg">
+                                <h1 className="font-bold">Committee</h1>
+                            </div>
+                        </div>
+                        <div className="flex aspect-video max-w-[350px] min-w-[250px] flex-col gap-y-5 rounded-xl bg-green-200">
+                            <div className="flex flex-col items-start justify-start gap-3 pt-4 pr-4 pl-4">
+                                <h1 className="text-lg font-semibold"> Reignear Berador Magallanes</h1>
+                                <p>Gender</p>
+                                <Separator className="bg-black" />
+                            </div>
+                            <div className="pl-4 text-lg">
+                                <h1 className="font-bold">Committee</h1>
+                            </div>
+                        </div>
+                        <div className="flex aspect-video max-w-[350px] min-w-[250px] flex-col gap-y-5 rounded-xl bg-green-200">
+                            <div className="flex flex-col items-start justify-start gap-3 pt-4 pr-4 pl-4">
+                                <h1 className="text-lg font-semibold"> Reignear Berador Magallanes</h1>
+                                <p>Gender</p>
+                                <Separator className="bg-black" />
+                            </div>
+                            <div className="pl-4 text-lg">
+                                <h1 className="font-bold">Committee</h1>
+                            </div>
+                        </div>
+                        <div className="flex aspect-video max-w-[350px] min-w-[250px] flex-col gap-y-5 rounded-xl bg-green-200">
+                            <div className="flex flex-col items-start justify-start gap-3 pt-4 pr-4 pl-4">
+                                <h1 className="text-lg font-semibold"> Reignear Berador Magallanes</h1>
+                                <p>Gender</p>
+                                <Separator className="bg-black" />
+                            </div>
+                            <div className="pl-4 text-lg">
+                                <h1 className="font-bold">Committee</h1>
+                            </div>
+                        </div>
+                        <div className="flex aspect-video max-w-[350px] min-w-[250px] flex-col gap-y-5 rounded-xl bg-green-200">
+                            <div className="flex flex-col items-start justify-start gap-3 pt-4 pr-4 pl-4">
+                                <h1 className="text-lg font-semibold"> Reignear Berador Magallanes</h1>
+                                <p>Gender</p>
+                                <Separator className="bg-black" />
+                            </div>
+                            <div className="pl-4 text-lg">
+                                <h1 className="font-bold">Committee</h1>
+                            </div>
+                        </div>
+                        <div className="flex aspect-video max-w-[350px] min-w-[250px] flex-col gap-y-5 rounded-xl bg-green-200">
+                            <div className="flex flex-col items-start justify-start gap-3 pt-4 pr-4 pl-4">
+                                <h1 className="text-lg font-semibold"> Reignear Berador Magallanes</h1>
+                                <p>Gender</p>
+                                <Separator className="bg-black" />
+                            </div>
+                            <div className="pl-4 text-lg">
+                                <h1 className="font-bold">Committee</h1>
+                            </div>
+                        </div>
+                    </div>
                 )}
             </div>
         </div>

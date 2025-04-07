@@ -1,0 +1,79 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+export const PersonalInformation = [
+    {
+        id: 'first_name',
+        label: 'First Name',
+        type: 'text',
+        value: '',
+        tabIndex: 1,
+        autoComplete: 'given-name',
+        onChange: (value: string) => console.log('first_name', value),
+    },
+    {
+        id: 'last_name',
+        label: 'Last Name',
+        type: 'text',
+        value: '',
+        tabIndex: 2,
+        autoComplete: 'last-name',
+        onChange: (value: string) => console.log('last_name', value),
+    },
+    {
+        id: 'middle_name',
+        label: 'Middle Name',
+        type: 'text',
+        value: '',
+        tabIndex: 3,
+        autoComplete: 'middle-name',
+        onChange: (value: string) => console.log('middle_name', value),
+    },
+    {
+        id: 'gender',
+        label: 'Gender',
+        type: 'text',
+        value: '',
+        tabIndex: 4,
+        autoComplete: 'gender',
+        onChange: (value: string) => console.log('gender', value),
+    },
+    {
+        id: 'role',
+        label: 'role',
+        type: 'text',
+        value: '',
+        tabIndex: 5,
+        autoComplete: 'Role',
+        onChange: (value: string) => console.log('role', value),
+    },
+];
+
+export const LocationInformation = [
+    {
+        id: 'Municipality',
+        label: 'Municipality',
+        type: 'text',
+        value: '',
+        tabIndex: 6,
+        autoComplete: 'municipality',
+        onChange: (value: string) => console.log('Municipality', value),
+    },
+    {
+        id: 'barangay',
+        label: 'Barangay',
+        type: 'text',
+        value: '',
+        tabIndex: 7,
+        autoComplete: 'barangay',
+        onChange: (value: string) => console.log('barangay', value),
+    },
+    {
+        id: 'purok',
+        label: 'Purok',
+        type: 'text',
+        value: '',
+        tabIndex: 8,
+        autoComplete: 'purok',
+        onChange: (value: string) => console.log('purok', value),
+    },
+];
