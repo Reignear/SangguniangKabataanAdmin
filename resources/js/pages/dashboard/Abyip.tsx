@@ -1,9 +1,9 @@
-import React from 'react'
+import DashboardLayout from '@/layouts/shared/DashboardLayout';
 
-const Abyip = () => {
-  return (
-    <div>Abyip</div>
-  )
+export default function Abyip() {
+    return (
+        <DashboardLayout>
+            <div>hello</div>
+        </DashboardLayout>
+    );
 }
-
-export default Abyip

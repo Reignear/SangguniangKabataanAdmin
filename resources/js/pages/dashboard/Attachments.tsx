@@ -1,8 +1,11 @@
+import DashboardLayout from '@/layouts/shared/DashboardLayout';
 import React from 'react'
 
 const Attachments = () => {
   return (
-    <div>Attachments</div>
+      <DashboardLayout>
+            <div>hello</div>
+        </DashboardLayout>
   )
 }
 

@@ -1,9 +1,9 @@
-import React from 'react'
+import DashboardLayout from '@/layouts/shared/DashboardLayout';
 
-const Calendar = () => {
-  return (
-    <div>Calendar</div>
-  )
+export default function Calendar() {
+    return (
+        <DashboardLayout>
+            <div>hello</div>
+        </DashboardLayout>
+    );
 }
-
-export default Calendar

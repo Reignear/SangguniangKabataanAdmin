@@ -140,9 +140,8 @@ export function ChartAreaInteractive() {
     return (
         <Card className="@container/card">
             <CardHeader className="relative">
-                <CardTitle>Public Expenditure</CardTitle>
+                <CardTitle>Budget Expenditure</CardTitle>
                 <CardDescription>
-               
                     <span className="@[540px]/card:hidden">Year 2024 - 2025</span>
                 </CardDescription>
                 <div className="absolute top-4 right-4">

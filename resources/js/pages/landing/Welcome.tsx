@@ -2,7 +2,9 @@
 import MainLayout from '@/layouts/shared/WelcomeLayout';
 import { type SharedData } from '@/types';
 import { Head, usePage } from '@inertiajs/react';
-import Background from '../../assets/background.jpg';
+import { Contact } from 'lucide-react';
+ 
+import AboutUs from './AboutUs';
 
 export default function Welcome() {
     const { auth } = usePage<SharedData>().props;
@@ -23,7 +25,7 @@ export default function Welcome() {
                             <div
                                 className="flex w-1/2 flex-col items-center justify-center"
                                 style={{
-                                    backgroundImage: `url(${Background})`,
+                                    // backgroundImage: `url(${Background})`,
                                     backgroundSize: 'cover',
                                     backgroundPosition: 'center',
                                     height: '100%',
@@ -31,6 +33,12 @@ export default function Welcome() {
                                 }}
                             ></div>
                         </div>
+                    </section>
+                    <section>
+                        <AboutUs />
+                    </section>
+                    <section>
+                        <Contact />
                     </section>
                 </MainLayout>
             </div>

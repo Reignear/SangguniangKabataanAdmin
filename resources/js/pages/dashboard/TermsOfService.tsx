@@ -1,9 +1,9 @@
-import React from 'react'
+import DashboardLayout from '@/layouts/shared/DashboardLayout';
 
-const TermsOfService = () => {
-  return (
-    <div>TermsOfService</div>
-  )
+export default function TermsOfService() {
+    return (
+        <DashboardLayout>
+            <div>hello</div>
+        </DashboardLayout>
+    );
 }
-
-export default TermsOfService

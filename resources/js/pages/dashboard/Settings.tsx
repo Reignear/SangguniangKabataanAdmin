@@ -1,5 +1,11 @@
+import DashboardLayout from '@/layouts/shared/DashboardLayout';
+
 const Settings = () => {
-    return <div>Settings</div>;
+    return (
+        <DashboardLayout>
+            <div>hello</div>
+        </DashboardLayout>
+    );
 };
 
 export default Settings;

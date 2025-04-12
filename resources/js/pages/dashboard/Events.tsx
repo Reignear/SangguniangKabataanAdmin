@@ -1,8 +1,11 @@
+import DashboardLayout from '@/layouts/shared/DashboardLayout';
 import React from 'react'
 
 const Events = () => {
   return (
-    <div>Events</div>
+      <DashboardLayout>
+            <div>hello</div>
+        </DashboardLayout>
   )
 }
 

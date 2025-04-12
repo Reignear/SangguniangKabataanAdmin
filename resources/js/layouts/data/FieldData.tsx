@@ -39,7 +39,7 @@ export const PersonalInformation = [
     },
     {
         id: 'role',
-        label: 'role',
+        label: 'Role',
         type: 'text',
         value: '',
         tabIndex: 5,
