@@ -11,7 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+     Schema::create('address_table', function(Blueprint $table){
+        $table -> id('address_id');
+        $table -> string('province');
+        $table -> string('city');
+        $table -> string('barangay');
+        $table -> string('zipcode');
+     });
     }
 
     /**
@@ -19,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('address_table');
     }
 };

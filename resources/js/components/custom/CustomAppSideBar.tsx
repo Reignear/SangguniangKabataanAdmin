@@ -1,4 +1,3 @@
-import { Button } from '@/components/ui/button';
 import {
     Sidebar,
     SidebarContent,
@@ -11,7 +10,6 @@ import {
 } from '@/components/ui/sidebar';
 import { NavItem } from '@/types';
 import { Link } from '@inertiajs/react';
-import { Separator } from '../ui/separator';
 
 interface CustomAppSideBarProps {
     breadCrumbTitle?: string;
@@ -40,8 +38,8 @@ export default function AppSidebar({ breadCrumbTitle, breadCrumbBarangay, sideBa
                         {sideBarItems.map((item) => (
                             <SidebarMenuItem key={item.title}>
                                 <SidebarMenuButton asChild>
-                                    <Link href={item.href} className="flex w-full items-center justify-start gap-4 rounded-md  ">
-                                        <div className='flex gap-4'>
+                                    <Link href={item.href} className="flex w-full items-center justify-start gap-4 rounded-md">
+                                        <div className="flex gap-4">
                                             {item.icon && <item.icon className="h-5 w-5" />}
                                             <span className="text-[14px]"> {item.title}</span>
                                         </div>
@@ -51,10 +49,6 @@ export default function AppSidebar({ breadCrumbTitle, breadCrumbBarangay, sideBa
                         ))}
                     </SidebarMenu>
                 </SidebarGroup>
-                <div className="mt-auto">
-                    <Separator />
-                    <Button variant="link">Logout</Button>
-                </div>
             </SidebarContent>
             <SidebarRail />
         </Sidebar>

@@ -2,9 +2,6 @@
 import MainLayout from '@/layouts/shared/WelcomeLayout';
 import { type SharedData } from '@/types';
 import { Head, usePage } from '@inertiajs/react';
-import { Contact } from 'lucide-react';
- 
-import AboutUs from './AboutUs';
 
 export default function Welcome() {
     const { auth } = usePage<SharedData>().props;
@@ -14,31 +11,24 @@ export default function Welcome() {
             <Head title="SK" />
             <div className="h-screen overflow-hidden bg-gray-100">
                 <MainLayout>
-                    <section className="flex h-screen w-full items-center justify-center p-2">
-                        <div className="mb-15 flex h-1/2 w-3xl flex-row items-center justify-center rounded-lg border-2 shadow-lg">
-                            <div className="flex w-1/2 flex-col items-center justify-center gap-2">
-                                <h1 className="text-center text-2xl font-bold">
-                                    SANGGUNIANG KABATAAN <br /> OF <br /> BALAGUNAN
-                                </h1>
-                                <p className="italic">Guiding Growth Together</p>
+                    <section className="flex h-screen w-full items-center justify-evenly">
+                        <div className="flex w-full flex-col items-center justify-center gap-2 p-2">
+                            <div className="flex w-full flex-col items-center">
+                                <div className="flex w-full flex-col items-center justify-center">
+                                    <h1 className="text-6xl font-bold">OFFICIAL WEBSITE OF THE </h1>
+                                    <h1 className="text-8xl font-extrabold text-red-500">
+                                        SANGUNIANG <span className="text-blue-500"> BALAGUNAN</span>
+                                    </h1>
+                                    <h1 className="text-5xl font-bold">OF BARANGAY BALAGUNAN</h1>
+                                </div>
                             </div>
-                            <div
-                                className="flex w-1/2 flex-col items-center justify-center"
-                                style={{
-                                    // backgroundImage: `url(${Background})`,
-                                    backgroundSize: 'cover',
-                                    backgroundPosition: 'center',
-                                    height: '100%',
-                                    borderRadius: '0 10px 10px 0',
-                                }}
-                            ></div>
+                            <div className="flex w-full items-center justify-center pt-2">
+                                <p className="pr-11 pl-13 italic text-xl">
+                                    "Transparency is not the same as looking into a clear glass. It’s the ability to be open about what’s behind the
+                                    glass." <span className="not-italic"> —Simon Sinek</span>
+                                </p>
+                            </div>
                         </div>
-                    </section>
-                    <section>
-                        <AboutUs />
-                    </section>
-                    <section>
-                        <Contact />
                     </section>
                 </MainLayout>
             </div>

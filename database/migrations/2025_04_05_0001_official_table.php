@@ -6,9 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
+  
     public function up(): void
     {
        Schema::create('official_table', function(Blueprint $table){
@@ -22,7 +20,6 @@ return new class extends Migration
         $table -> timestamps();
        });
     }
-
 
     public function down(): void
     {

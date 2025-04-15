@@ -1,118 +1,122 @@
-import { Head, useForm } from '@inertiajs/react';
-import { LoaderCircle } from 'lucide-react';
-import { FormEventHandler } from 'react';
-import InputError from '@/components/ui/input-error';
-import TextLink from '@/components/ui/text-link';
+/* eslint-disable react-hooks/rules-of-hooks */
+import { CustomCalendar } from '@/components/custom/CustomCalendar';
 import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import AuthLayout from '@/layouts/auth-layout';
+import { SubmitHandler, useForm } from 'react-hook-form';
 
-type RegisterForm = {
-    name: string;
+interface RegistrationForm {
+    firstname: string;
+    middlename: string;
+    lastname: string;
+    suffix: string;
+    gender: string;
+    birthdate: string;
+    sk_position: string;
     email: string;
+    contach_number: string;
+    username: string;
     password: string;
-    password_confirmation: string;
-};
+    confirm_password: string;
+}
 
-export default function Register() {
-    const { data, setData, post, processing, errors, reset } = useForm<Required<RegisterForm>>({
-        name: '',
-        email: '',
-        password: '',
-        password_confirmation: '',
-    });
-
-    const submit: FormEventHandler = (e) => {
-        e.preventDefault();
-        post(route('register'), {
-            onFinish: () => reset('password', 'password_confirmation'),
-        });
-    };
-
+export default function register() {
+    const { register, handleSubmit, watch, setValue } = useForm<RegistrationForm>();
+    const onSubmit: SubmitHandler<RegistrationForm> = (data) => console.log(data);
+    const birthdate = watch('birthdate');
     return (
-        <AuthLayout title="Create an account" description="Enter your details below to create your account">
-            <Head title="Register" />
-            <form className="flex flex-col gap-6" onSubmit={submit}>
-                <div className="grid gap-6">
-                    <div className="grid gap-2">
-                        <Label htmlFor="name">Name</Label>
-                        <Input
-                            id="name"
-                            type="text"
-                            required
-                            autoFocus
-                            tabIndex={1}
-                            autoComplete="name"
-                            value={data.name}
-                            onChange={(e) => setData('name', e.target.value)}
-                            disabled={processing}
-                            placeholder="Full name"
-                        />
-                        <InputError message={errors.name} className="mt-2" />
-                    </div>
+        <div className="h-screen w-full p-2">
+            <div className="flex h-full w-full items-center justify-center">
+                <Card className="w-xl">
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                        <CardContent className="flex w-full flex-col gap-y-4">
+                            <div className="flex w-full justify-center">
+                                <Label className="text-2xl font-semibold">Register</Label>
+                            </div>
 
-                    <div className="grid gap-2">
-                        <Label htmlFor="email">Email address</Label>
-                        <Input
-                            id="email"
-                            type="email"
-                            required
-                            tabIndex={2}
-                            autoComplete="email"
-                            value={data.email}
-                            onChange={(e) => setData('email', e.target.value)}
-                            disabled={processing}
-                            placeholder="email@example.com"
-                        />
-                        <InputError message={errors.email} />
-                    </div>
-
-                    <div className="grid gap-2">
-                        <Label htmlFor="password">Password</Label>
-                        <Input
-                            id="password"
-                            type="password"
-                            required
-                            tabIndex={3}
-                            autoComplete="new-password"
-                            value={data.password}
-                            onChange={(e) => setData('password', e.target.value)}
-                            disabled={processing}
-                            placeholder="Password"
-                        />
-                        <InputError message={errors.password} />
-                    </div>
-
-                    <div className="grid gap-2">
-                        <Label htmlFor="password_confirmation">Confirm password</Label>
-                        <Input
-                            id="password_confirmation"
-                            type="password"
-                            required
-                            tabIndex={4}
-                            autoComplete="new-password"
-                            value={data.password_confirmation}
-                            onChange={(e) => setData('password_confirmation', e.target.value)}
-                            disabled={processing}
-                            placeholder="Confirm password"
-                        />
-                        <InputError message={errors.password_confirmation} />
-                    </div>
-
-                    <Button type="submit" className="mt-2 w-full" tabIndex={5} disabled={processing}>
-                        {processing && <LoaderCircle className="h-4 w-4 animate-spin" />}
-                        Create account
-                    </Button>
-                </div>
-
-                <div className="text-muted-foreground text-center text-sm">
-                    Already have an account?{' '}
-                    <TextLink href={route('login')} tabIndex={6}>
-                        Log in
-                    </TextLink>
-                </div>
-            </form>
-        </AuthLayout>
+                            <div className="flex w-full flex-col items-center justify-center gap-4 md:flex-row">
+                                <div className="flex w-64 flex-col gap-2">
+                                    <Label>Firstname</Label>
+                                    <Input type="text" {...register('firstname', { required: true })} />
+                                </div>
+                                <div className="flex w-64 flex-col gap-2">
+                                    <Label>Middlename</Label>
+                                    <Input type="text" {...register('middlename', { required: true })} />
+                                </div>
+                            </div>
+                            <div className="flex w-full flex-col items-center justify-center gap-4 md:flex-row">
+                                <div className="flex w-64 flex-col gap-2">
+                                    <Label>Lastname</Label>
+                                    <Input type="text" {...register('lastname', { required: true })} />
+                                </div>
+                                <div className="flex w-64 flex-col gap-2">
+                                    <Label>Suffix</Label>
+                                    <Input type="text" {...register('suffix', { required: true })} />
+                                </div>
+                            </div>
+                            <div className="flex w-full flex-col items-center justify-center gap-4 md:flex-row">
+                                <div className="flex w-64 flex-col gap-2">
+                                    <Label>Gender</Label>
+                                    <Input className="w-full" type="text" {...register('gender', { required: true })} />
+                                </div>
+                                <div>
+                                    <CustomCalendar
+                                        Label="Birthdate"
+                                        value={birthdate ? new Date(birthdate) : undefined}
+                                        onChange={(date) => {
+                                            setValue('birthdate', date ? date.toISOString() : '');
+                                        }}
+                                    />
+                                </div>
+                            </div>
+                            <div className="flex w-full flex-col items-center justify-center gap-4 md:flex-row">
+                                <div className="flex w-64 flex-col gap-2">
+                                    <Label>SK Position</Label>
+                                    <Input type="text" {...register('sk_position', { required: true })} />
+                                </div>
+                                <div className="flex w-64 flex-col gap-2">
+                                    <Label>Email</Label>
+                                    <Input type="email" {...register('email', { required: true })} />
+                                </div>
+                            </div>
+                            <div className="flex w-full flex-col items-center justify-center gap-4 md:flex-row">
+                                <div className="flex w-64 flex-col gap-2">
+                                    <Label>Contact Number</Label>
+                                    <Input type="text" {...register('contach_number', { required: true })} />
+                                </div>
+                                <div className="flex w-64 flex-col gap-2">
+                                    <Label>Username</Label>
+                                    <Input type="text" {...register('username', { required: true })} />
+                                </div>
+                            </div>
+                            <div className="flex w-full flex-col items-center justify-center gap-4 md:flex-row">
+                                <div className="flex w-64 flex-col gap-2">
+                                    <Label>Password</Label>
+                                    <Input type="password" {...register('password', { required: true })} />
+                                </div>
+                                <div className="flex w-64 flex-col gap-2">
+                                    <Label>Confirm Password</Label>
+                                    <Input type="password" {...register('confirm_password', { required: true })} />
+                                </div>
+                            </div>
+                            <div className="flex w-full flex-row items-center justify-center gap-4">
+                                <Button variant="customLogoBased" className="w-3xs md:w-xl" type="submit">
+                                    Submit
+                                </Button>
+                            </div>
+                            <div className="flex w-full justify-center">
+                                <p className="text-sm">
+                                    Already have an account?{' '}
+                                    <span className="underline">
+                                        <a href={route('login')}>Click here</a>
+                                    </span>
+                                </p>
+                            </div>
+                        </CardContent>
+                    </form>
+                </Card>
+            </div>
+        </div>
     );
 }

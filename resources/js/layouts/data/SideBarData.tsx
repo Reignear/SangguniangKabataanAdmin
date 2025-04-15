@@ -13,40 +13,40 @@ import skOfficers from '../../../assets/skofficers.png';
 import TermsOfService from '../../../assets/terms-of-service.png';
 
 const dashboardIcon = React.forwardRef<HTMLImageElement, React.ImgHTMLAttributes<HTMLImageElement>>((props, ref) => (
-    <img ref={ref} src={dashboard} alt="Dashboard Icon" {...props} />
+    <img ref={ref} src={dashboard} alt="Custom Icon" {...props} />
 ));
 const skOfficialIcon = React.forwardRef<HTMLImageElement, React.ImgHTMLAttributes<HTMLImageElement>>((props, ref) => (
-    <img ref={ref} src={skOfficers} alt="Dashboard Icon" {...props} />
+    <img ref={ref} src={skOfficers} alt="Custom Icon" {...props} />
 ));
 const kkOfficialIcon = React.forwardRef<HTMLImageElement, React.ImgHTMLAttributes<HTMLImageElement>>((props, ref) => (
-    <img ref={ref} src={kkOfficers} alt="Dashboard Icon" {...props} />
+    <img ref={ref} src={kkOfficers} alt="Custom Icon" {...props} />
 ));
 const abyipIcon = React.forwardRef<HTMLImageElement, React.ImgHTMLAttributes<HTMLImageElement>>((props, ref) => (
-    <img ref={ref} src={abyip} alt="Dashboard Icon" {...props} />
+    <img ref={ref} src={abyip} alt="Custom Icon" {...props} />
 ));
 const calendarIcon = React.forwardRef<HTMLImageElement, React.ImgHTMLAttributes<HTMLImageElement>>((props, ref) => (
-    <img ref={ref} src={calendar} alt="Dashboard Icon" {...props} />
+    <img ref={ref} src={calendar} alt="Custom Icon" {...props} />
 ));
 const eventsIcon = React.forwardRef<HTMLImageElement, React.ImgHTMLAttributes<HTMLImageElement>>((props, ref) => (
-    <img ref={ref} src={events} alt="Dashboard Icon" {...props} />
+    <img ref={ref} src={events} alt="Custom Icon" {...props} />
 ));
 const projectsIcon = React.forwardRef<HTMLImageElement, React.ImgHTMLAttributes<HTMLImageElement>>((props, ref) => (
-    <img ref={ref} src={projects} alt="Dashboard Icon" {...props} />
+    <img ref={ref} src={projects} alt="Custom Icon" {...props} />
 ));
 const programsIcon = React.forwardRef<HTMLImageElement, React.ImgHTMLAttributes<HTMLImageElement>>((props, ref) => (
-    <img ref={ref} src={program} alt="Dashboard Icon" {...props} />
+    <img ref={ref} src={program} alt="Custom Icon" {...props} />
 ));
 const attachmentsIcon = React.forwardRef<HTMLImageElement, React.ImgHTMLAttributes<HTMLImageElement>>((props, ref) => (
-    <img ref={ref} src={attachment} alt="Dashboard Icon" {...props} />
+    <img ref={ref} src={attachment} alt="Custom Icon" {...props} />
 ));
 const reportsIcon = React.forwardRef<HTMLImageElement, React.ImgHTMLAttributes<HTMLImageElement>>((props, ref) => (
-    <img ref={ref} src={reports} alt="Dashboard Icon" {...props} />
+    <img ref={ref} src={reports} alt="Custom Icon" {...props} />
 ));
 const settingsIcon = React.forwardRef<HTMLImageElement, React.ImgHTMLAttributes<HTMLImageElement>>((props, ref) => (
-    <img ref={ref} src={settings} alt="Dashboard Icon" {...props} />
+    <img ref={ref} src={settings} alt="Custom Icon" {...props} />
 ));
 const termsofserviceIcon = React.forwardRef<HTMLImageElement, React.ImgHTMLAttributes<HTMLImageElement>>((props, ref) => (
-    <img ref={ref} src={TermsOfService} alt="Dashboard Icon" {...props} />
+    <img ref={ref} src={TermsOfService} alt="Custom Icon" {...props} />
 ));
 
 export const SideBarItem = [
@@ -64,15 +64,3 @@ export const SideBarItem = [
     { title: 'Terms of Service', href: route('dashboard.termsofservice'), icon: termsofserviceIcon },
 ];
 
-// icon: CustomDashboardIcon,
-// icon: CustomDashboardIcon,
-// icon: CustomDashboardIcon,
-// icon: CustomDashboardIcon,
-// icon: CustomDashboardIcon,
-// icon: CustomDashboardIcon,
-// icon: CustomDashboardIcon,
-// icon: CustomDashboardIcon,
-// icon: CustomDashboardIcon,
-// icon: CustomDashboardIcon,
-// icon: CustomDashboardIcon,
-// icon: CustomDashboardIcon,

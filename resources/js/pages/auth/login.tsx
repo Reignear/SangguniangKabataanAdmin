@@ -1,12 +1,15 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { cn } from '@/lib/utils';
 import SKLogo from '../../../assets/logo.png';
+import '../../../css/Custom.css';
+
 export default function LoginForm({ className, ...props }: React.ComponentProps<'div'>) {
     return (
-        <div className="bg-muted flex min-h-svh flex-col items-center justify-center p-6 md:p-10">
+        <div className="animated-gradient flex min-h-svh flex-col items-center justify-center p-6 md:p-10">
             <div className="w-full max-w-sm md:max-w-3xl">
                 <div className={cn('flex flex-col gap-6', className)} {...props}>
                     <Card className="overflow-hidden">
@@ -15,7 +18,7 @@ export default function LoginForm({ className, ...props }: React.ComponentProps<
                                 <div className="flex flex-col gap-6">
                                     <div className="flex flex-col items-center text-center">
                                         <h1 className="text-2xl font-bold">Welcome back</h1>
-                                        <p className="text-muted-foreground text-balance">Login to your SK account</p>
+                                        <p className="text-muted-foreground text-balance">Login your SK account</p>
                                     </div>
                                     <div className="grid gap-2">
                                         <Label htmlFor="email">Email</Label>
@@ -28,9 +31,14 @@ export default function LoginForm({ className, ...props }: React.ComponentProps<
                                                 Forgot your password?
                                             </a>
                                         </div>
+
                                         <Input id="password" type="password" required />
+                                        <div className="flex items-center gap-2">
+                                            <Checkbox />
+                                            <Label>Remember me</Label>
+                                        </div>
                                     </div>
-                                    <Button type="submit" className="w-full">
+                                    <Button variant="customLogoBased" type="submit" className="w-full">
                                         Login
                                     </Button>
                                 </div>
