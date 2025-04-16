@@ -23,7 +23,7 @@ const buttonVariants = cva(
         link: 
           "text-primary underline-offset-4 hover:underline",
         add: 
-          "border border-input bg-background shadow-xs  hover:text-white-foreground hover:bg-blue-500",
+          "border border-input bg-blue-400 shadow-xs  hover:text-white-foreground hover:bg-blue-500",
         customLogoBased:
          "bg-red-600 text-primary-foreground shadow-xs hover:bg-red-700",
       },

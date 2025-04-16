@@ -31,7 +31,7 @@ export default function DashboardLayout({ children, className }: DashboardLayout
         <SidebarProvider>
             <Sidebar sideBarItems={SideBarItem} breadCrumbTitle={breadcrumbTitle} breadCrumbBarangay={breadcrumbBarangay} />
             <SidebarInset>
-                <header className="flex h-16 shrink-0 items-center gap-2 border-b">
+                <header className="sticky top-0 z-10 flex h-16 shrink-0 items-center gap-2 border-b bg-white">
                     <div className="flex w-full items-center gap-2 px-3">
                         <SidebarTrigger />
                         <Separator orientation="vertical" className="mr-2 h-4" />
@@ -55,7 +55,7 @@ export default function DashboardLayout({ children, className }: DashboardLayout
                                     <DropdownMenuTrigger>
                                         <img src={dropdown} className="h-5 w-5" />
                                     </DropdownMenuTrigger>
-                                    <DropdownMenuContent className="w-full">
+                                    <DropdownMenuContent className="w-full p-4">
                                         <DropdownMenuLabel className="flex justify-center">My Account</DropdownMenuLabel>
                                         <DropdownMenuSeparator />
                                         <DropdownMenuItem>

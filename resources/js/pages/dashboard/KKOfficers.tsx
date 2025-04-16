@@ -9,6 +9,7 @@ import { LocationInformation, PersonalInformation } from '@/layouts/data/FieldDa
 import DashboardLayout from '@/layouts/shared/DashboardLayout';
 import { useState } from 'react';
 import Grid from '../../../assets/grid.png';
+import Hisoka from '../../../assets/hisoka.jpg';
 import Plus from '../../../assets/plus.png';
 import TableImage from '../../../assets/table.png';
 export default function KKOfficers() {
@@ -16,6 +17,7 @@ export default function KKOfficers() {
     const renderFormFields = () => {
         return (
             <>
+              
                 <div className="mt-5 font-bold">
                     <CustomForm fields={PersonalInformation} title="Personal Details" className="grid grid-cols-3 gap-5 pt-3 font-normal" />
                 </div>
@@ -27,16 +29,46 @@ export default function KKOfficers() {
         );
     };
 
+    const OfficerData = [
+        {
+            id: 1,
+            memberImage: Hisoka,
+            memberName: 'Reignear Magallanes',
+            memberGender: 'Biot',
+            memberRole: 'Committee',
+        },
+        {
+            id: 2,
+            memberImage: Hisoka,
+            memberName: 'Reignear Magallanes',
+            memberGender: 'Biot',
+            memberRole: 'Committee',
+        },
+        {
+            id: 3,
+            memberImage: Hisoka,
+            memberName: 'Reignear Magallanes',
+            memberGender: 'Biot',
+            memberRole: 'Committee',
+        },
+        {
+            id: 4,
+            memberImage: Hisoka,
+            memberName: 'Reignear Magallanes',
+            memberGender: 'Biot',
+            memberRole: 'Committee',
+        },
+    ];
     return (
         <DashboardLayout>
             <div className="flex max-h-lvh w-full flex-col rounded-lg bg-gray-100 p-4">
                 <div className="flex items-center justify-end">
                     <Input placeholder="Search" className="w-full max-w-xs" />
                     <div className="mr-2 ml-2 rounded-lg border-2">
-                        <Button variant="format" onClick={() => setViewMode('grid')} className={viewMode === 'grid' ? 'bg-gray-200' : ''}>
+                        <Button variant="empty" onClick={() => setViewMode('grid')} className={viewMode === 'grid' ? 'bg-red-400' : ''}>
                             <img src={Grid} alt="Grid Icon" className="h-5 w-5" />
                         </Button>
-                        <Button variant="format" onClick={() => setViewMode('table')} className={viewMode === 'table' ? 'bg-gray-200' : ''}>
+                        <Button variant="empty" onClick={() => setViewMode('table')} className={viewMode === 'table' ? 'bg-red-400' : ''}>
                             <img src={TableImage} alt="Grid Icon" className="h-5 w-5" />
                         </Button>
                     </div>
@@ -45,13 +77,14 @@ export default function KKOfficers() {
                         title="Add new KK member"
                         description="Fill out the form below to add a new member."
                         trigger={
-                            <Button className="flex flex-row items-center gap-2 bg-blue-400" variant="add">
+                            <Button className="flex flex-row items-center gap-2" variant="add">
                                 <img src={Plus} alt="Plus icon" className="h-4 w-4" />
                             </Button>
                         }
                         subTitle=""
                         children={renderFormFields()}
                         buttonName="Add Member"
+                        buttonVariant={'add'}
                     />
                 </div>
 
@@ -118,145 +151,41 @@ export default function KKOfficers() {
                                     </TableRow>
                                 </TableHeader>
                                 <TableBody>
-                                    <TableRow>
-                                        <TableCell>image here</TableCell>
-                                        <TableCell>Reignear Magallanes</TableCell>
-                                        <TableCell>Biot</TableCell>
-                                        <TableCell>Committee</TableCell>
-                                        <TableCell>
-                                            <Button variant="destructive">View</Button>
-                                        </TableCell>
-                                    </TableRow>
-                                    <TableRow>
-                                        <TableCell>image here</TableCell>
-                                        <TableCell>Reignear Magallanes</TableCell>
-                                        <TableCell>Biot</TableCell>
-                                        <TableCell>Committee</TableCell>
-                                        <TableCell>
-                                            <Button variant="destructive">View</Button>
-                                        </TableCell>
-                                    </TableRow>
-                                    <TableRow>
-                                        <TableCell>image here</TableCell>
-                                        <TableCell>Reignear Magallanes</TableCell>
-                                        <TableCell>Biot</TableCell>
-                                        <TableCell>Committee</TableCell>
-                                        <TableCell>
-                                            <Button variant="destructive">View</Button>
-                                        </TableCell>
-                                    </TableRow>
-                                    <TableRow>
-                                        <TableCell>image here</TableCell>
-                                        <TableCell>Reignear Magallanes</TableCell>
-                                        <TableCell>Biot</TableCell>
-                                        <TableCell>Committee</TableCell>
-                                        <TableCell>
-                                            <Button variant="destructive">View</Button>
-                                        </TableCell>
-                                    </TableRow>
-                                    <TableRow>
-                                        <TableCell>image here</TableCell>
-                                        <TableCell>Reignear Magallanes</TableCell>
-                                        <TableCell>Biot</TableCell>
-                                        <TableCell>Committee</TableCell>
-                                        <TableCell>
-                                            <Button variant="destructive">View</Button>
-                                        </TableCell>
-                                    </TableRow>
-                                    <TableRow>
-                                        <TableCell>image here</TableCell>
-                                        <TableCell>Reignear Magallanes</TableCell>
-                                        <TableCell>Biot</TableCell>
-                                        <TableCell>Committee</TableCell>
-                                        <TableCell>
-                                            <Button variant="destructive">View</Button>
-                                        </TableCell>
-                                    </TableRow>
+                                    {OfficerData.map((officer) => (
+                                        <TableRow>
+                                            <TableCell>
+                                                <img className="h-10 w-10 rounded-md" src={officer.memberImage} alt="image" />
+                                            </TableCell>
+                                            <TableCell>{officer.memberName}</TableCell>
+                                            <TableCell>{officer.memberGender}</TableCell>
+                                            <TableCell>{officer.memberRole}</TableCell>
+                                            <TableCell>
+                                                <Button variant="add" className="hover:cursor-pointer" key={officer.id}>
+                                                    View
+                                                </Button>
+                                            </TableCell>
+                                        </TableRow>
+                                    ))}
                                 </TableBody>
                             </Table>
                         </div>
                     ) : (
                         <div className="grid grid-cols-2 justify-center gap-4 p-2 sm:grid-cols-3 lg:grid-cols-4">
-                            <div className="flex aspect-video max-w-[350px] min-w-[250px] flex-col gap-y-5 rounded-xl bg-green-200">
-                                <div className="flex flex-col items-start justify-start gap-3 pt-4 pr-4 pl-4">
-                                    <h1 className="text-lg font-semibold"> Reignear Berador Magallanes</h1>
-                                    <p>Gender</p>
-                                    <Separator className="bg-black" />
+                            {OfficerData.map((officer) => (
+                                <div
+                                    key={officer.id}
+                                    className="flex aspect-video max-w-[350px] min-w-[250px] flex-col gap-y-5 rounded-xl bg-green-200"
+                                >
+                                    <div className="flex flex-col items-start justify-start gap-3 pt-4 pr-4 pl-4">
+                                        <h1 className="text-lg font-semibold">{officer.memberName}</h1>
+                                        <p>{officer.memberGender}</p>
+                                        <Separator className="bg-black" />
+                                    </div>
+                                    <div className="pl-4 text-lg">
+                                        <h1 className="font-bold">{officer.memberRole}</h1>
+                                    </div>
                                 </div>
-                                <div className="pl-4 text-lg">
-                                    <h1 className="font-bold">Committee</h1>
-                                </div>
-                            </div>
-                            <div className="flex aspect-video max-w-[350px] min-w-[250px] flex-col gap-y-5 rounded-xl bg-green-200">
-                                <div className="flex flex-col items-start justify-start gap-3 pt-4 pr-4 pl-4">
-                                    <h1 className="text-lg font-semibold"> Reignear Berador Magallanes</h1>
-                                    <p>Gender</p>
-                                    <Separator className="bg-black" />
-                                </div>
-                                <div className="pl-4 text-lg">
-                                    <h1 className="font-bold">Committee</h1>
-                                </div>
-                            </div>
-                            <div className="flex aspect-video max-w-[350px] min-w-[250px] flex-col gap-y-5 rounded-xl bg-green-200">
-                                <div className="flex flex-col items-start justify-start gap-3 pt-4 pr-4 pl-4">
-                                    <h1 className="text-lg font-semibold"> Reignear Berador Magallanes</h1>
-                                    <p>Gender</p>
-                                    <Separator className="bg-black" />
-                                </div>
-                                <div className="pl-4 text-lg">
-                                    <h1 className="font-bold">Committee</h1>
-                                </div>
-                            </div>
-                            <div className="flex aspect-video max-w-[350px] min-w-[250px] flex-col gap-y-5 rounded-xl bg-green-200">
-                                <div className="flex flex-col items-start justify-start gap-3 pt-4 pr-4 pl-4">
-                                    <h1 className="text-lg font-semibold"> Reignear Berador Magallanes</h1>
-                                    <p>Gender</p>
-                                    <Separator className="bg-black" />
-                                </div>
-                                <div className="pl-4 text-lg">
-                                    <h1 className="font-bold">Committee</h1>
-                                </div>
-                            </div>
-                            <div className="flex aspect-video max-w-[350px] min-w-[250px] flex-col gap-y-5 rounded-xl bg-green-200">
-                                <div className="flex flex-col items-start justify-start gap-3 pt-4 pr-4 pl-4">
-                                    <h1 className="text-lg font-semibold"> Reignear Berador Magallanes</h1>
-                                    <p>Gender</p>
-                                    <Separator className="bg-black" />
-                                </div>
-                                <div className="pl-4 text-lg">
-                                    <h1 className="font-bold">Committee</h1>
-                                </div>
-                            </div>
-                            <div className="flex aspect-video max-w-[350px] min-w-[250px] flex-col gap-y-5 rounded-xl bg-green-200">
-                                <div className="flex flex-col items-start justify-start gap-3 pt-4 pr-4 pl-4">
-                                    <h1 className="text-lg font-semibold"> Reignear Berador Magallanes</h1>
-                                    <p>Gender</p>
-                                    <Separator className="bg-black" />
-                                </div>
-                                <div className="pl-4 text-lg">
-                                    <h1 className="font-bold">Committee</h1>
-                                </div>
-                            </div>
-                            <div className="flex aspect-video max-w-[350px] min-w-[250px] flex-col gap-y-5 rounded-xl bg-green-200">
-                                <div className="flex flex-col items-start justify-start gap-3 pt-4 pr-4 pl-4">
-                                    <h1 className="text-lg font-semibold"> Reignear Berador Magallanes</h1>
-                                    <p>Gender</p>
-                                    <Separator className="bg-black" />
-                                </div>
-                                <div className="pl-4 text-lg">
-                                    <h1 className="font-bold">Committee</h1>
-                                </div>
-                            </div>
-                            <div className="flex aspect-video max-w-[350px] min-w-[250px] flex-col gap-y-5 rounded-xl bg-green-200">
-                                <div className="flex flex-col items-start justify-start gap-3 pt-4 pr-4 pl-4">
-                                    <h1 className="text-lg font-semibold"> Reignear Berador Magallanes</h1>
-                                    <p>Gender</p>
-                                    <Separator className="bg-black" />
-                                </div>
-                                <div className="pl-4 text-lg">
-                                    <h1 className="font-bold">Committee</h1>
-                                </div>
-                            </div>
+                            ))}
                         </div>
                     )}
                 </div>

@@ -33,6 +33,20 @@ export default function CustomForm({ fields, title, className }: CustomFormProps
                         className="min-w-[60px]"
                     />
                 );
+            case 'file':
+                return (
+                    <Input
+                        type="file"
+                        id={field.id}
+                        onChange={(e) => {
+                            const file = e.target.files?.[0];
+                            if (file) {
+                                field.onChange(file.name);
+                            }
+                        }}
+                        tabIndex={field.tabIndex}
+                    />
+                );
             case 'date':
                 return <Calendar id={field.id} className="w-full" />;
             default:

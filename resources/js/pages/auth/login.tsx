@@ -21,8 +21,8 @@ export default function LoginForm({ className, ...props }: React.ComponentProps<
                                         <p className="text-muted-foreground text-balance">Login your SK account</p>
                                     </div>
                                     <div className="grid gap-2">
-                                        <Label htmlFor="email">Email</Label>
-                                        <Input id="email" type="email" placeholder="m@example.com" required />
+                                        <Label htmlFor="email">Username</Label>
+                                        <Input id="text" type="text" required />
                                     </div>
                                     <div className="grid gap-2">
                                         <div className="flex items-center">

@@ -46,6 +46,15 @@ export const PersonalInformation = [
         autoComplete: 'Role',
         onChange: (value: string) => console.log('role', value),
     },
+    {
+        id: 'image',
+        label: 'Image',
+        type: 'file',
+        value: '',
+        tabIndex: 5,
+        autoComplete: 'Role',
+        onChange: (value: string) => console.log('role', value),
+    },
 ];
 
 export const LocationInformation = [
