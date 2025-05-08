@@ -49,6 +49,12 @@ export default function CustomForm({ fields, title, className }: CustomFormProps
                 );
             case 'date':
                 return <Calendar id={field.id} className="w-full" />;
+            case 'label':
+                return (
+                    <Label htmlFor={field.id} className="text-sm font-medium text-gray-700">
+                        {field.label}
+                    </Label>
+                );
             default:
                 return (
                     <Input

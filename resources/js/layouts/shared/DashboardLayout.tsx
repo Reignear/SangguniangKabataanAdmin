@@ -12,11 +12,9 @@ import {
 
 import { Separator } from '@/components/ui/separator';
 import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
-import { Avatar, AvatarImage } from '@radix-ui/react-avatar';
-
-import dropdown from '../../../assets/dropdown.png';
-import user from '../../../assets/user.png';
-import { SideBarItem } from '../data/SideBarData';
+import { Avatar } from '@radix-ui/react-avatar';
+import { Bell, ChevronDown } from 'lucide-react';
+import { SideBarItem } from '../../../data/SideBarData';
 
 interface DashboardLayoutProps {
     className?: string;
@@ -26,6 +24,7 @@ const breadcrumbTitle = 'Sangguniang Kabaatan';
 const breadcrumbBarangay = 'BALAGUNAN';
 const Username = 'Reignear Magallanes';
 const position = 'SK Councilor';
+
 export default function DashboardLayout({ children, className }: DashboardLayoutProps) {
     return (
         <SidebarProvider>
@@ -39,13 +38,13 @@ export default function DashboardLayout({ children, className }: DashboardLayout
                             <Breadcrumb>
                                 <BreadcrumbList>
                                     <BreadcrumbItem className="hidden md:block">
-                                        <BreadcrumbLink>{'asd'}</BreadcrumbLink>
+                                        <BreadcrumbLink>{}</BreadcrumbLink>
                                     </BreadcrumbItem>
                                 </BreadcrumbList>
                             </Breadcrumb>
                             <div className="flex items-center gap-5 pr-5">
                                 <Avatar>
-                                    <AvatarImage src={user} className="h-5 w-5" />
+                                    <Bell className="h-5 w-5" />
                                 </Avatar>
                                 <div>
                                     <h1 className="">{Username}</h1>
@@ -53,7 +52,7 @@ export default function DashboardLayout({ children, className }: DashboardLayout
                                 </div>
                                 <DropdownMenu>
                                     <DropdownMenuTrigger>
-                                        <img src={dropdown} className="h-5 w-5" />
+                                        <ChevronDown className="h-5 w-5" />
                                     </DropdownMenuTrigger>
                                     <DropdownMenuContent className="w-full p-4">
                                         <DropdownMenuLabel className="flex justify-center">My Account</DropdownMenuLabel>

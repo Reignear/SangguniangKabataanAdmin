@@ -1,0 +1,31 @@
+import {
+    CalendarRange,
+    ClipboardPlus,
+    FileText,
+    Hammer,
+    Handshake,
+    LayoutDashboard,
+    ScrollText,
+    Settings,
+    TicketCheck,
+    UserCog,
+    UserRoundPlus,
+    Users,
+    Paperclip,
+} from 'lucide-react';
+
+export const SideBarItem = [
+    { title: 'Dashboard', href: route('dashboard.dashboard'), icon: LayoutDashboard },
+    { title: 'SK Officials', href: route('dashboard.skofficials'), icon: UserCog },
+    { title: 'KK Officers', href: route('dashboard.kkofficers'), icon: Users },
+    { title: 'KK Profiling', href: route('dashboard.kkprofiling'), icon: UserRoundPlus },
+    { title: 'ABYIP', href: route('dashboard.abyip'), icon: FileText },
+    { title: 'Calendar', href: route('dashboard.calendar'), icon: CalendarRange },
+    { title: 'Events', href: route('dashboard.events'), icon: TicketCheck },
+    { title: 'Projects', href: route('dashboard.projects'), icon: Hammer },
+    { title: 'Programs', href: route('dashboard.programs'), icon: ScrollText },
+    { title: 'Attachments', href: route('dashboard.attachments'), icon: Paperclip },
+    { title: 'Reports', href: route('dashboard.reports'), icon: ClipboardPlus },
+    { title: 'Settings', href: route('dashboard.settings'), icon: Settings },
+    { title: 'Terms of Service', href: route('dashboard.termsofservice'), icon: Handshake },
+];

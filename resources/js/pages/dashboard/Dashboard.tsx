@@ -1,10 +1,24 @@
-import { ChartAreaInteractive } from '@/layouts/data/Chart';
+import CustomChart from '@/components/custom/CustomChart';
 import DashboardLayout from '@/layouts/shared/DashboardLayout';
+import { ListChecks, User, Users } from 'lucide-react';
 import Budget from '../../../assets/profit.png';
-import Task from '../../../assets/task.png';
-import KKOfficer from '../../../assets/user.png';
-import Youth from '../../../assets/youth.png';
 
+const sampleData = [
+    { date: '2025-05-01', value: 120 },
+    { date: '2025-05-02', value: 150 },
+    { date: '2025-05-03', value: 180 },
+    { date: '2025-05-04', value: 200 },
+    { date: '2025-05-05', value: 220 },
+    { date: '2025-05-06', value: 190 },
+    { date: '2025-05-07', value: 170 },
+    { date: '2025-05-08', value: 160 },
+    { date: '2025-05-09', value: 210 },
+    { date: '2025-05-10', value: 230 },
+    { date: '2025-05-15', value: 250 },
+    { date: '2025-05-20', value: 270 },
+    { date: '2025-05-25', value: 290 },
+    { date: '2025-05-30', value: 310 },
+];
 export default function Dashboard() {
     return (
         <DashboardLayout className="overflow-hidden">
@@ -22,7 +36,7 @@ export default function Dashboard() {
                         </div>
                         <div className="flex aspect-video flex-col gap-y-5 rounded-xl bg-amber-200">
                             <div className="flex flex-row items-center justify-start gap-3 p-4">
-                                <img src={Task} alt="Document Icon" className="h-7 w-7" />
+                                <ListChecks className="h-7 w-7" />
                                 <h1> Completed Annual Programs</h1>
                             </div>
                             <div className="pl-7 text-3xl">
@@ -31,7 +45,7 @@ export default function Dashboard() {
                         </div>
                         <div className="flex aspect-video flex-col gap-y-5 rounded-xl bg-red-200">
                             <div className="flex flex-row items-center justify-start gap-3 p-4">
-                                <img src={KKOfficer} alt="Document Icon" className="h-7 w-7" />
+                                <Users className="h-7 w-7" />
                                 <h1> KK Officers</h1>
                             </div>
                             <div className="pl-7 text-3xl">
@@ -40,7 +54,7 @@ export default function Dashboard() {
                         </div>
                         <div className="flex aspect-video flex-col gap-y-5 rounded-xl bg-green-200">
                             <div className="flex flex-row items-center justify-start gap-3 p-4">
-                                <img src={Youth} alt="Document Icon" className="h-7 w-7" />
+                                <User className="h-7 w-7" />
                                 <h1> Youth</h1>
                             </div>
                             <div className="pl-7 text-3xl">
@@ -48,9 +62,9 @@ export default function Dashboard() {
                             </div>
                         </div>
                     </div>
-                    <div className="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min">
-                        <ChartAreaInteractive />
-                    </div>
+                    <div className="min-h-[100vh] flex-1 rounded-xl bg-white shadow-sm md:min-h-min">
+                        <CustomChart Data={sampleData} />
+                    </div>{' '}
                 </div>
             </div>
         </DashboardLayout>

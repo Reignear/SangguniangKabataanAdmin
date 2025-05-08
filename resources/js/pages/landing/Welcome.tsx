@@ -1,36 +1,93 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import MainLayout from '@/layouts/shared/WelcomeLayout';
-import { type SharedData } from '@/types';
-import { Head, usePage } from '@inertiajs/react';
+import CustomFooter from '@/components/custom/CustomFooter';
+import WelcomeLayout from '@/layouts/shared/WelcomeLayout';
+import { Head } from '@inertiajs/react';
+import { AboutUsData, AboutUsDescription, AboutUsTitle } from '../../../data/AboutUsData';
+import { CallToActionAnchorLabel, CallToActionDescription, CallToActionHref, CallToActionTitle } from '../../../data/CallToActionData';
+import { ContactUsAddress, ContactUsEmail, ContactUsOfficeHours, ContactUsPhone, SocialMediaLinks } from '../../../data/ContactUsData';
+import { FooterCopyrightText, FooterData } from '../../../data/FooterData';
+import { NewsAndUpdatesData, NewsAndUpdatesDescription, NewsAndUpdatesTitle } from '../../../data/NewsAndUpdatesData';
+import { OfficialsData, OfficialsDescription, OfficialsTitle } from '../../../data/OfficialsData';
+import { ProgramData, ProgramDescription, ProgramTitle } from '../../../data/ProgramData';
+import {
+    WelcomeDataBarangay,
+    WelcomeDataLogo,
+    WelcomeDataMissionStatement,
+    WelcomeDataMissionStatementAuthor,
+    WelcomeDataTitle1,
+    WelcomeDataTitle2,
+    WelcomeDataTitle3,
+} from '../../../data/WelcomeData';
+import CallToActionSection from '../../../js/pages/landing/section/CallToActionSection';
+import ContactUsSection from '../../../js/pages/landing/section/ContactUsSection';
+import NewsAndUpdateSection from '../../../js/pages/landing/section/NewsAndUpdateSection';
+import OfficialsSection from '../../../js/pages/landing/section/OfficialsSection';
+import ProgramSection from '../../../js/pages/landing/section/ProgramSection';
+import AboutUsSection from './section/AboutUsSection';
+import WelcomeSection from './section/WelcomeSection';
 
 export default function Welcome() {
-    const { auth } = usePage<SharedData>().props;
-
     return (
         <>
-            <Head title="SK" />
-            <div className="h-screen overflow-hidden bg-gray-100">
-                <MainLayout>
-                    <section className="flex h-screen w-full items-center justify-evenly">
-                        <div className="flex w-full flex-col items-center justify-center gap-2 p-2">
-                            <div className="flex w-full flex-col items-center">
-                                <div className="flex w-full flex-col items-center justify-center">
-                                    <h1 className="text-6xl font-bold">OFFICIAL WEBSITE OF THE </h1>
-                                    <h1 className="text-8xl font-extrabold text-red-500">
-                                        SANGUNIANG <span className="text-blue-500"> BALAGUNAN</span>
-                                    </h1>
-                                    <h1 className="text-5xl font-bold">OF BARANGAY BALAGUNAN</h1>
-                                </div>
-                            </div>
-                            <div className="flex w-full items-center justify-center pt-2">
-                                <p className="pr-11 pl-13 italic text-xl">
-                                    "Transparency is not the same as looking into a clear glass. It’s the ability to be open about what’s behind the
-                                    glass." <span className="not-italic"> —Simon Sinek</span>
-                                </p>
-                            </div>
-                        </div>
+            <Head title="Sangguniang Kabataan | Barangay Balagunan" />
+            <div className="min-h-screen overflow-x-hidden bg-gray-100">
+                <WelcomeLayout>
+                    {/* Hero Section - Enhanced version of your original section */}
+                    <section className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden px-4 py-16 sm:px-6 lg:px-8">
+                        <WelcomeSection
+                            barangay={WelcomeDataBarangay}
+                            missionStatement={WelcomeDataMissionStatement}
+                            missionStatementAuthor={WelcomeDataMissionStatementAuthor}
+                            title1={WelcomeDataTitle1}
+                            title2={WelcomeDataTitle2}
+                            title3={WelcomeDataTitle3}
+                            logo={WelcomeDataLogo}
+                        />
                     </section>
-                </MainLayout>
+
+                    {/* About Section */}
+                    <section id="about" className="max-h-full min-h-screen bg-white py-8">
+                        <AboutUsSection cards={AboutUsData} title={AboutUsTitle} description={AboutUsDescription} />
+                    </section>
+
+                    {/* Programs Section */}
+                    <section id="programs" className="max-h-full min-h-screen bg-gray-50 py-16">
+                        <ProgramSection programs={ProgramData} title={ProgramTitle} description={ProgramDescription} />
+                    </section>
+
+                    {/* Call to Action */}
+                    <section className="min-h-screen bg-gradient-to-r from-red-500 to-blue-500 py-16 text-white">
+                        <CallToActionSection
+                            title={CallToActionTitle}
+                            description={CallToActionDescription}
+                            anchorLabel={CallToActionAnchorLabel}
+                            href={CallToActionHref}
+                        />
+                    </section>
+
+                    {/* Officials Section */}
+                    <section id="officials" className="min-h-screen bg-white py-8 pb-16">
+                        <OfficialsSection officials={OfficialsData} title={OfficialsTitle} description={OfficialsDescription} />
+                    </section>
+
+                    {/* News & Updates Section */}
+                    <section id="news" className="max-h-full min-h-screen bg-gray-50 py-8">
+                        <NewsAndUpdateSection newsItem={NewsAndUpdatesData} title={NewsAndUpdatesTitle} description={NewsAndUpdatesDescription} />
+                    </section>
+
+                    {/* Contact Section */}
+                    <section id="contact" className="max-h-full min-h-screen bg-white py-16">
+                        <ContactUsSection
+                            links={SocialMediaLinks}
+                            address={ContactUsAddress}
+                            email={ContactUsEmail}
+                            phone={ContactUsPhone}
+                            officeHours={ContactUsOfficeHours}
+                        />
+                    </section>
+
+                    {/* Footer */}
+                    <CustomFooter links={FooterData} copyrightText={FooterCopyrightText} backgroundColor="bg-gray-800" />
+                </WelcomeLayout>
             </div>
         </>
     );

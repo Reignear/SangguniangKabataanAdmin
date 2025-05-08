@@ -1,6 +1,6 @@
 import CustomHeader from '@/components/custom/CustomHeader';
 import SKLogo from '../../../assets/logo.png';
-interface MainLayoutProps {
+interface WelcomeLayoutProps {
     children: React.ReactNode;
     classname?: string;
 }
@@ -12,7 +12,7 @@ const landingNavItems = [
 const landingNavTitle = 'SANGUNIANG KABATAAN';
 const landingNavBarangay = 'BALAGUNAN';
 
-export default function MainLayout({ children, classname }: MainLayoutProps) {
+export default function WelcomeLayout({ children, classname }: WelcomeLayoutProps) {
     return (
         <>
             <div className="gradient-bg">
