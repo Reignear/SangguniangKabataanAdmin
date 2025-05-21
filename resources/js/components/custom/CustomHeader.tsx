@@ -7,6 +7,7 @@ import type { NavItem } from '@/types';
 import { Menu } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { default as CustomIcon } from './CustomIcon';
+import CustomPopover from './CustomPopover';
 
 interface CustomHeaderProps {
     rightNavItems?: NavItem[];
@@ -18,7 +19,6 @@ interface CustomHeaderProps {
 export default function CustomHeader({ title, barangay, logo, rightNavItems = [] }: CustomHeaderProps) {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
-
     useEffect(() => {
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 10);
@@ -96,7 +96,7 @@ export default function CustomHeader({ title, barangay, logo, rightNavItems = []
             {/* Desktop Navigation */}
             <div
                 className={cn(
-                    'relative hidden transition-all duration-300 md:block shadow-sm' ,
+                    'relative hidden shadow-sm transition-all duration-300 md:block',
                     isScrolled ? 'bg-white/95 shadow-sm backdrop-blur-sm' : 'bg-white/80',
                 )}
             >
@@ -111,18 +111,25 @@ export default function CustomHeader({ title, barangay, logo, rightNavItems = []
                         </div>
 
                         <nav>
-                            <ul className="flex items-center gap-2">
-                                {rightNavItems.map((item, index) => (
-                                    <li key={index}>
-                                        <a
-                                            href={item.href}
-                                            className="relative rounded-md px-4 py-2 text-sm font-medium tracking-wide uppercase transition-colors hover:text-red-500 focus:ring-2 focus:ring-red-500/20 focus:outline-none"
-                                        >
-                                            {item.title}
-                                        </a>
-                                    </li>
-                                ))}
-                            </ul>
+                            <CustomPopover
+                                trigger={
+                                    <Button variant="ghost" size="icon" className={`rounded-md hover:text-red-500`}>
+                                        <Menu className="h-5 w-5" />
+                                    </Button>
+                                }
+                                children={
+                                    <ul className="flex flex-col gap-y-3 p-4">
+                                        {rightNavItems.map((items, index) => (
+                                            <li key={index} className="transform transition-transform duration-200 hover:translate-x-1">
+                                                <a href={items.href} className="hover:text-red-500">
+                                                    {' '}
+                                                    {items.title}
+                                                </a>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                }
+                            />
                         </nav>
                     </div>
                 </div>

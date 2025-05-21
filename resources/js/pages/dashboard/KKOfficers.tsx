@@ -85,7 +85,7 @@ export default function KKOfficers() {
     };
 
     return (
-        <DashboardLayout>
+        <DashboardLayout breadCrumbTitle="Katipunan ng Kabataan Officers" className="overflow-hidden">
             <div className="max-full flex h-[600px] w-full flex-col rounded-lg bg-gray-100 p-4">
                 <div className="flex w-full flex-row items-center justify-between">
                     <h1>Filters</h1>

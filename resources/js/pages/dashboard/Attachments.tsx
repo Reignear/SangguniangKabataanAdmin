@@ -3,7 +3,7 @@ import React from 'react'
 
 const Attachments = () => {
   return (
-      <DashboardLayout>
+      <DashboardLayout className='overflow-hidden' breadCrumbTitle='Attachments'>
             <div>hello</div>
         </DashboardLayout>
   )

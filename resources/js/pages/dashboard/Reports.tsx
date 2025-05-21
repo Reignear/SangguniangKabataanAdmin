@@ -3,7 +3,7 @@ import React from 'react'
 
 const Reports = () => {
   return (
-        <DashboardLayout>
+        <DashboardLayout className='overflow-hidden' breadCrumbTitle='Reports'>
               <div>hello</div>
           </DashboardLayout>
   )

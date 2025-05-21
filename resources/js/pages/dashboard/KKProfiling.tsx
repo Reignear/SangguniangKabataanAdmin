@@ -88,11 +88,11 @@ const filters: FilterConfig[] = [
 export default function KKProfiling() {
     return (
         <div>
-            <DashboardLayout>
+            <DashboardLayout className="overflow-hidden" breadCrumbTitle="Katipunan ng Kabataan Profiling">
                 <div className="flex h-[600px] w-full flex-col gap-y-2 rounded-lg bg-gray-100 p-4">
                     <div className="flex flex-row items-center justify-between">
                         <div className="flex w-full flex-row items-center justify-between gap-2">
-                            <h1>Filter</h1>
+                            <h1>Filters</h1>
 
                             <CustomDialog
                                 title="Add new youth"

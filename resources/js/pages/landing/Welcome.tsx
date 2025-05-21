@@ -32,7 +32,7 @@ export default function Welcome() {
             <div className="min-h-screen overflow-x-hidden bg-gray-100">
                 <WelcomeLayout>
                     {/* Hero Section - Enhanced version of your original section */}
-                    <section className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden px-4 py-16 sm:px-6 lg:px-8">
+                    <section id='home' className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden px-4 py-16 sm:px-6 lg:px-8">
                         <WelcomeSection
                             barangay={WelcomeDataBarangay}
                             missionStatement={WelcomeDataMissionStatement}
@@ -55,7 +55,7 @@ export default function Welcome() {
                     </section>
 
                     {/* Call to Action */}
-                    <section className="min-h-screen bg-gradient-to-r from-red-500 to-blue-500 py-16 text-white">
+                    <section id='callToAction' className="min-h-screen bg-gradient-to-r from-red-500 to-blue-500 py-16 text-white">
                         <CallToActionSection
                             title={CallToActionTitle}
                             description={CallToActionDescription}

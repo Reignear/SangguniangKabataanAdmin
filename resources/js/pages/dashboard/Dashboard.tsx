@@ -1,7 +1,6 @@
 import CustomChart from '@/components/custom/CustomChart';
 import DashboardLayout from '@/layouts/shared/DashboardLayout';
-import { ListChecks, User, Users } from 'lucide-react';
-import Budget from '../../../assets/profit.png';
+import { HandCoins, ListChecks, User, Users } from 'lucide-react';
 
 const sampleData = [
     { date: '2025-05-01', value: 120 },
@@ -21,13 +20,13 @@ const sampleData = [
 ];
 export default function Dashboard() {
     return (
-        <DashboardLayout className="overflow-hidden">
+        <DashboardLayout className="overflow-hidden" breadCrumbTitle='Dashboard'>
             <div className="h-full w-full">
                 <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
                     <div className="grid auto-rows-min gap-4 md:grid-cols-4">
                         <div className="flex aspect-video flex-col gap-y-5 rounded-xl bg-cyan-200">
                             <div className="flex flex-row items-center justify-start gap-3 p-4">
-                                <img src={Budget} alt="Document Icon" className="h-7 w-7" />
+                                <HandCoins className="h-7 w-7" />
                                 <h1>Annual Budget</h1>
                             </div>
                             <div className="pl-7 text-3xl">
@@ -64,7 +63,7 @@ export default function Dashboard() {
                     </div>
                     <div className="min-h-[100vh] flex-1 rounded-xl bg-white shadow-sm md:min-h-min">
                         <CustomChart Data={sampleData} />
-                    </div>{' '}
+                    </div>
                 </div>
             </div>
         </DashboardLayout>

@@ -3,7 +3,7 @@ import React from 'react'
 
 const Events = () => {
   return (
-      <DashboardLayout>
+      <DashboardLayout className='overflow-hidden' breadCrumbTitle='Events'>
             <div>hello</div>
         </DashboardLayout>
   )

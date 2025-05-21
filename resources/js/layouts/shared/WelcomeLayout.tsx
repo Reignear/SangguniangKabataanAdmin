@@ -5,9 +5,14 @@ interface WelcomeLayoutProps {
     classname?: string;
 }
 
-const landingNavItems = [
-    { title: 'Log In', href: route('login') },
-    { title: 'Register', href: route('register') },
+const sectionItems = [
+    { title: 'Home', href: '#home' },
+    { title: 'About Us', href: '#about' },
+    { title: 'Programs & Services', href: '#programs' },
+    { title: 'Join Us', href: '#callToAction' },
+    { title: 'Officials', href: '#officials' },
+    { title: 'News & Updates', href: '#news' },
+    { title: 'Contact Us', href: ('#contact') },
 ];
 const landingNavTitle = 'SANGUNIANG KABATAAN';
 const landingNavBarangay = 'BALAGUNAN';
@@ -17,7 +22,7 @@ export default function WelcomeLayout({ children, classname }: WelcomeLayoutProp
         <>
             <div className="gradient-bg">
                 <div>
-                    <CustomHeader logo={SKLogo} title={landingNavTitle} barangay={landingNavBarangay} rightNavItems={landingNavItems} />
+                    <CustomHeader logo={SKLogo} title={landingNavTitle} barangay={landingNavBarangay} rightNavItems={sectionItems} />
                 </div>
                 <div>
                     <main className={`w-full flex${classname}`}>{children}</main>

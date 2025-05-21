@@ -9,7 +9,7 @@ import {
     SidebarRail,
 } from '@/components/ui/sidebar';
 import { NavItem } from '@/types';
-import { Link, usePage } from '@inertiajs/react';
+import { Link } from '@inertiajs/react';
 
 interface CustomAppSideBarProps {
     breadCrumbTitle?: string;
@@ -18,7 +18,6 @@ interface CustomAppSideBarProps {
 }
 
 export default function AppSidebar({ breadCrumbTitle, breadCrumbBarangay, sideBarItems, ...props }: CustomAppSideBarProps) {
-    const { url } = usePage();
     return (
         <Sidebar {...props}>
             <SidebarHeader>
@@ -37,8 +36,14 @@ export default function AppSidebar({ breadCrumbTitle, breadCrumbBarangay, sideBa
                 <SidebarGroup>
                     <SidebarMenu className="flex flex-col gap-4">
                         {sideBarItems.map((item) => {
-                            const relativePath = item.href.indexOf('/', 8);
-                            const isActive = item.href.startsWith(url, relativePath);
+                            // Convert named route to full URL
+                            const itemPath = new URL(route(item.href), window.location.origin).pathname;
+
+                            // Get the current browser path
+                            const currentPath = window.location.pathname;
+
+                            // Determine if the current path starts with the route path
+                            const isActive = currentPath.startsWith(itemPath);
 
                             return (
                                 <SidebarMenuItem key={item.title}>
@@ -47,10 +52,10 @@ export default function AppSidebar({ breadCrumbTitle, breadCrumbBarangay, sideBa
                                         className={`p-5 ${isActive ? 'text-white hover:text-white' : ''}`}
                                         style={{ backgroundColor: isActive ? '#1591EA' : '' }}
                                     >
-                                        <Link prefetch href={item.href} className="flex w-full items-center justify-start gap-4 rounded-md">
+                                        <Link prefetch href={route(item.href)} className="flex w-full items-center justify-start gap-4 rounded-md">
                                             <div className="flex gap-4">
                                                 {item.icon && <item.icon className="h-5 w-5" />}
-                                                <span className="text-[14px]"> {item.title}</span>
+                                                <span className="text-[14px]">{item.title}</span>
                                             </div>
                                         </Link>
                                     </SidebarMenuButton>

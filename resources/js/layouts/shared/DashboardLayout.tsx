@@ -19,13 +19,14 @@ import { SideBarItem } from '../../../data/SideBarData';
 interface DashboardLayoutProps {
     className?: string;
     children: React.ReactNode;
+    breadCrumbTitle?: string;
 }
 const breadcrumbTitle = 'Sangguniang Kabaatan';
 const breadcrumbBarangay = 'BALAGUNAN';
 const Username = 'Reignear Magallanes';
 const position = 'SK Councilor';
 
-export default function DashboardLayout({ children, className }: DashboardLayoutProps) {
+export default function DashboardLayout({ children, className, breadCrumbTitle }: DashboardLayoutProps) {
     return (
         <SidebarProvider>
             <Sidebar sideBarItems={SideBarItem} breadCrumbTitle={breadcrumbTitle} breadCrumbBarangay={breadcrumbBarangay} />
@@ -38,7 +39,7 @@ export default function DashboardLayout({ children, className }: DashboardLayout
                             <Breadcrumb>
                                 <BreadcrumbList>
                                     <BreadcrumbItem className="hidden md:block">
-                                        <BreadcrumbLink>{}</BreadcrumbLink>
+                                        <BreadcrumbLink className="hover:cursor-pointer">{breadCrumbTitle}</BreadcrumbLink>
                                     </BreadcrumbItem>
                                 </BreadcrumbList>
                             </Breadcrumb>

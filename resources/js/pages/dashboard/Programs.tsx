@@ -88,7 +88,7 @@ const Programs = () => {
     });
 
     return (
-        <DashboardLayout>
+        <DashboardLayout breadCrumbTitle="Programs" className="overflow-hidden">
             <div className="container mx-auto px-4 py-8">
                 <div className="mb-8 flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
                     <div>

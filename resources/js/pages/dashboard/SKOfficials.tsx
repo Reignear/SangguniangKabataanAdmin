@@ -90,7 +90,7 @@ const renderFormFields = () => {
 
 export default function SKOfficials() {
     return (
-        <DashboardLayout>
+        <DashboardLayout breadCrumbTitle="Sangguniang Kabaatan Officials" className="overflow-hidden">
             <div className="h-screen">
                 <div className="grid w-full grid-cols-1 gap-4 p-2 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
                     {OfficialData.map((official) => (

@@ -22,12 +22,12 @@ const FormSchema = z.object({
 
 interface CustomCalendarProps {
     Label?: string;
-    onChange?: (date: Date | undefined ) => void;
+    onChange?: (date: Date | undefined) => void;
     value?: Date | null;
     id?: string;
 }
 
-export function CustomCalendar({ Label, onChange, value, id}: CustomCalendarProps) {
+export function CustomCalendar({ Label, onChange, value, id }: CustomCalendarProps) {
     const form = useForm<z.infer<typeof FormSchema>>({
         resolver: zodResolver(FormSchema),
         defaultValues: {
@@ -51,7 +51,7 @@ export function CustomCalendar({ Label, onChange, value, id}: CustomCalendarProp
     };
 
     return (
-        <Form {...form} >
+        <Form {...form}>
             <FormField
                 control={form.control}
                 name="dob"
@@ -123,7 +123,6 @@ export function CustomCalendar({ Label, onChange, value, id}: CustomCalendarProp
                                         onChange?.(date);
                                     }}
                                     initialFocus
-                                  
                                 />
                             </PopoverContent>
                         </Popover>
