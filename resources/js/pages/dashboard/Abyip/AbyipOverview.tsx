@@ -1,21 +1,20 @@
 import { Card, CardContent } from '@/components/ui/card';
-import Abyip from '../Abyip';
-import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip, Legend } from 'recharts';
+
 import { Progress } from '@/components/ui/progress';
+import { Cell, Legend, Pie, PieChart, ResponsiveContainer, Tooltip } from 'recharts';
 export default function Overview() {
     return (
-        <Abyip>
+        <>
             <Card>
                 <CardContent>
                     <div className="m-5 flex flex-col">
-                        <h1 className="text-2xl font-bold">Budget Overview</h1>
+                        <h1 className="text-2xl font-bold">Budget Distribution</h1>
                         <p className="text-muted-foreground">
                             Comprehensive overview of the Youth Investment Program budget allocation for the fiscal year
                             <span> 2025-2026</span>
                         </p>
                     </div>
                     <div className="h-[650px] p-4">
-                        <h1 className="m-1 mt-0 text-lg font-bold">Budget Distribution</h1>
                         <div className="flex h-full w-full items-center justify-center p-4">
                             <ResponsiveContainer width="100%" height="100%">
                                 <PieChart>
@@ -76,6 +75,6 @@ export default function Overview() {
                     </CardContent>
                 </Card>
             </div>
-        </Abyip>
+        </>
     );
 }

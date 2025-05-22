@@ -18,6 +18,7 @@ export interface FilterConfig {
     type: FilterType;
     placeholder?: string;
     options?: FilterOption[];
+    filterClassName?: string;
 }
 
 interface CustomFilterProps {
@@ -27,8 +28,8 @@ interface CustomFilterProps {
     onChange: (id: string, value: string) => void;
 }
 
-export function CustomFilter({ className, config, value, onChange }: CustomFilterProps) {
-    const { id, type, placeholder, label, options = [] } = config;
+export function CustomFilter({ config, value, onChange }: CustomFilterProps) {
+    const { id, type, placeholder, filterClassName, label, options = [] } = config;
 
     const handleChange = (newValue: string) => {
         onChange(id, newValue);
@@ -39,7 +40,7 @@ export function CustomFilter({ className, config, value, onChange }: CustomFilte
             case 'select':
                 return (
                     <Select value={value} onValueChange={(val) => handleChange(val)}>
-                        <SelectTrigger className={cn('w-full', className)}>
+                        <SelectTrigger className={cn('w-full', filterClassName)}>
                             <SelectValue placeholder={placeholder} />
                         </SelectTrigger>
                         <SelectContent>
@@ -55,7 +56,13 @@ export function CustomFilter({ className, config, value, onChange }: CustomFilte
 
             case 'input':
                 return (
-                    <Input type="text" className={className} placeholder={placeholder} value={value} onChange={(e) => handleChange(e.target.value)} />
+                    <Input
+                        type="text"
+                        className={filterClassName}
+                        placeholder={placeholder}
+                        value={value}
+                        onChange={(e) => handleChange(e.target.value)}
+                    />
                 );
 
             default:
@@ -67,7 +74,7 @@ export function CustomFilter({ className, config, value, onChange }: CustomFilte
         <div className="flex w-full flex-col space-y-2">
             {label && <Label className="text-sm font-medium">{label}</Label>}
             <div className="flex w-full flex-row items-center justify-between gap-2">
-                <div className="flex-1">{renderFilterInput()}</div>
+                <div className="w-full flex-1">{renderFilterInput()}</div>
             </div>
         </div>
     );

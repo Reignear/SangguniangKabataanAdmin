@@ -43,6 +43,7 @@ export default function AppSidebar({ breadCrumbTitle, breadCrumbBarangay, sideBa
                             const currentPath = window.location.pathname;
 
                             // Determine if the current path starts with the route path
+                            
                             const isActive = currentPath.startsWith(itemPath);
 
                             return (

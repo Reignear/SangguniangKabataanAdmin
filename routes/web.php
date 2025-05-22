@@ -7,13 +7,14 @@ Route::inertia('/', 'landing/Welcome')-> name('landing.welcome');
 
 // Route::middleware(['auth', 'verified'])->group(function () {
     Route::inertia('/dashboard', 'dashboard/Dashboard')->name('dashboard.dashboard');
-    Route::prefix('/abyip')->group(function(){
-        Route::inertia('/overview', 'dashboard/Abyip/Overview')->name('dashboard.abyip.overview');
-        Route::inertia('/participation', 'dashboard/Abyip/Participation')->name('dashboard.abyip.participation');
-        Route::inertia('/comparison', 'dashboard/Abyip/YearComparison') ->name('dashboard.abyip.comparison');
-        Route::inertia('/details-breakdown', 'dashboard/Abyip/DetailsBreakdown') ->name('dashboard.abyip.breakdown');
-    });
-   Route::inertia('/budget', 'dashboard/BudgetMonitoring')->name('dashboard.budget');
+    // Route::prefix('abyip')->group(function(){
+    //     Route::inertia('/overview', 'dashboard/Abyip/Overview')->name('dashboard.abyip.overview');
+    //     Route::inertia('/participation', 'dashboard/Abyip/Participation')->name('dashboard.abyip.participation');
+    //     Route::inertia('/comparison', 'dashboard/Abyip/YearComparison') ->name('dashboard.abyip.comparison');
+    //     Route::inertia('/details-breakdown', 'dashboard/Abyip/DetailsBreakdown') ->name('dashboard.abyip.breakdown');
+    // });
+    Route::inertia('/abyip', 'dashboard/Abyip')->name('dashboard.abyip');
+    Route::inertia('/budget', 'dashboard/BudgetMonitoring')->name('dashboard.budget');
     Route::inertia('/attachments','dashboard/Attachments')-> name('dashboard.attachments');
     Route::inertia('/calendar', 'dashboard/Calendar')->name('dashboard.calendar');
     Route::inertia('/events', 'dashboard/Events')->name('dashboard.events');

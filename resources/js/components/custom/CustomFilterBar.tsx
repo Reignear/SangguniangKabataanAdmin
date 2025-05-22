@@ -51,7 +51,7 @@ export function FilterBar({ filters, onFilterChange, className }: FilterBarProps
     return (
         <div className={className}>
             <div className="flex flex-row space-y-4">
-                <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+                <div className="gap-4 flex flex-row">
                     {filters.map((filter) => (
                         <CustomFilter key={filter.id} config={filter} value={filterValues[filter.id] || ''} onChange={handleFilterChange} />
                     ))}

@@ -1,4 +1,5 @@
 import { CalendarComponent } from '@/components/custom/CustomScreenCalendar';
+import { Card, CardContent } from '@/components/ui/card';
 import DashboardLayout from '@/layouts/shared/DashboardLayout';
 
 const sampleEvents = [
@@ -40,9 +41,16 @@ const sampleEvents = [
 ];
 export default function Calendar() {
     return (
-        <DashboardLayout className="overflow-hidden" breadCrumbTitle='Calendar'>
-            <div className="h-[600px] w-full p-4">
-                <CalendarComponent events={sampleEvents} onDateSelect={(date) => console.log('Selected date:', date)} />
+        <DashboardLayout className="w-full overflow-hidden" breadCrumbTitle="Calendar">
+            <div className="h-[550px] w-full">
+                <Card className="h-full">
+                    <CardContent className="h-full">
+                        <CalendarComponent events={sampleEvents} onDateSelect={(date) => console.log('Selected date:', date)} />
+                    </CardContent>
+                </Card>
+            </div>
+            <div className="flex w-full justify-center">
+                <h1 className='text-muted-foreground '>A Calendar of events that shows upcoming events in a monthly and yearly view</h1>
             </div>
         </DashboardLayout>
     );

@@ -1,10 +1,9 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { TableHeader, TableRow, TableHead, TableBody, TableCell, Table } from "@/components/ui/table";
-import { Input } from "@/components/ui/input";
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectGroup, SelectLabel, SelectItem } from "@/components/ui/select";
+import { Card, CardContent } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 
-import Abyip from "../Abyip";
-import { Search } from "lucide-react";
+import { Search } from 'lucide-react';
 const budgetBreakdown = [
     {
         id: 1,
@@ -159,61 +158,59 @@ const budgetBreakdown = [
 ];
 export default function DetailsBreakdown() {
     return (
-        <Abyip>
-            <Card>
-                <CardContent>
-                    <div className="p-4">
-                        <h1 className="text-2xl font-bold">Detailed Budget Breakdown</h1>
-                        <p className="text-muted-foreground">Line-by-line breakdown of all budget allocations and expenditures.</p>
+        <Card>
+            <CardContent>
+                <div className="p-4">
+                    <h1 className="text-2xl font-bold">Detailed Budget Breakdown</h1>
+                    <p className="text-muted-foreground">Line-by-line breakdown of all budget allocations and expenditures.</p>
+                </div>
+                <div className="flex w-full flex-row items-center gap-2 p-4">
+                    <div className="relative flex-1">
+                        <Search className="text-muted-foreground absolute top-2.5 left-2.5 h-4 w-4" />
+                        <Input type="search" placeholder="Search name or participation" className="pl-8" />
                     </div>
-                    <div className="flex w-full flex-row items-center gap-2 p-4">
-                        <div className="relative flex-1">
-                            <Search className="text-muted-foreground absolute top-2.5 left-2.5 h-4 w-4" />
-                            <Input type="search" placeholder="Search name or participation" className="pl-8" />
-                        </div>
-                        <Select>
-                            <SelectTrigger className="max-w-[300px]">
-                                <SelectValue placeholder="All" />
-                            </SelectTrigger>
-                            <SelectContent>
-                                <SelectGroup>
-                                    <SelectLabel>Year</SelectLabel>
-                                    <SelectItem value="2025-2026">2025-2026</SelectItem>
-                                    <SelectItem value="2024-2025">2024-2025</SelectItem>
-                                    <SelectItem value="2023-2024">2023-2024</SelectItem>
-                                </SelectGroup>
-                            </SelectContent>
-                        </Select>
-                    </div>
+                    <Select>
+                        <SelectTrigger className="max-w-[300px]">
+                            <SelectValue placeholder="All" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectGroup>
+                                <SelectLabel>Year</SelectLabel>
+                                <SelectItem value="2025-2026">2025-2026</SelectItem>
+                                <SelectItem value="2024-2025">2024-2025</SelectItem>
+                                <SelectItem value="2023-2024">2023-2024</SelectItem>
+                            </SelectGroup>
+                        </SelectContent>
+                    </Select>
+                </div>
 
-                    <div className="m-4 rounded-md border">
-                        <Table>
-                            <TableHeader>
-                                <TableRow>
-                                    <TableHead className="text-muted-foreground">Program Item</TableHead>
-                                    <TableHead className="text-muted-foreground">Category</TableHead>
-                                    <TableHead className="text-muted-foreground">Sub Category</TableHead>
-                                    <TableHead className="text-muted-foreground">Allocation</TableHead>
-                                    <TableHead className="text-muted-foreground">Spent</TableHead>
-                                    <TableHead className="text-muted-foreground">Remaining</TableHead>
+                <div className="m-4 rounded-md border">
+                    <Table>
+                        <TableHeader>
+                            <TableRow>
+                                <TableHead className="text-muted-foreground">Program Item</TableHead>
+                                <TableHead className="text-muted-foreground">Category</TableHead>
+                                <TableHead className="text-muted-foreground">Sub Category</TableHead>
+                                <TableHead className="text-muted-foreground">Allocation</TableHead>
+                                <TableHead className="text-muted-foreground">Spent</TableHead>
+                                <TableHead className="text-muted-foreground">Remaining</TableHead>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                            {budgetBreakdown.map((item) => (
+                                <TableRow className="hover:bg-slate-100" key={item.id}>
+                                    <TableCell className="pt-4 pb-4">{item.name}</TableCell>
+                                    <TableCell>{item.category}</TableCell>
+                                    <TableCell>{item.subcategory}</TableCell>
+                                    <TableCell>{item.allocation}</TableCell>
+                                    <TableCell>{item.spent}</TableCell>
+                                    <TableCell>{item.remaining}</TableCell>
                                 </TableRow>
-                            </TableHeader>
-                            <TableBody>
-                                {budgetBreakdown.map((item) => (
-                                    <TableRow className="hover:bg-slate-100" key={item.id}>
-                                        <TableCell className="pt-4 pb-4">{item.name}</TableCell>
-                                        <TableCell>{item.category}</TableCell>
-                                        <TableCell>{item.subcategory}</TableCell>
-                                        <TableCell>{item.allocation}</TableCell>
-                                        <TableCell>{item.spent}</TableCell>
-                                        <TableCell>{item.remaining}</TableCell>
-                                    </TableRow>
-                                ))}
-                            </TableBody>
-                        </Table>
-                    </div>
-                </CardContent>
-            </Card>
-        </Abyip>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </div>
+            </CardContent>
+        </Card>
     );
 }

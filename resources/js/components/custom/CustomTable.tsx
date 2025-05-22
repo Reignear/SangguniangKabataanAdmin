@@ -17,6 +17,7 @@ export interface Column {
     header: string;
     accessorKey: string;
     enableSorting?: boolean;
+    columnClassName?: string;
 }
 
 interface FilterableTableProps<T> {
@@ -26,15 +27,17 @@ interface FilterableTableProps<T> {
     initialPageSize?: number;
     onDataChange?: (newData: T[]) => void;
     defaultSortColumn?: string;
+
 }
 
 export function FilterableTable<T extends Record<string, any>>({
     data,
     columns,
     filters,
-    initialPageSize = 10,
+    initialPageSize = 5,
     onDataChange,
     defaultSortColumn,
+
 }: FilterableTableProps<T>) {
     const [activeFilters, setActiveFilters] = useState<FilterValues>({});
     const [currentPage, setCurrentPage] = useState(1);
@@ -272,7 +275,7 @@ export function FilterableTable<T extends Record<string, any>>({
                             {columns.map((column) => (
                                 <TableHead
                                     key={column.id}
-                                    className={column.enableSorting ? 'cursor-pointer select-none' : ''}
+                                    className={`${column.enableSorting ? 'cursor-pointer select-none' : ''} ${column.columnClassName || ''}`}
                                     onClick={() => column.enableSorting && handleSort(column.accessorKey)}
                                 >
                                     <div className="flex items-center space-x-1">

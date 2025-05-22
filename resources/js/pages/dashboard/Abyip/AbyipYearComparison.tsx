@@ -1,8 +1,7 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { formatCurrency, tickFormatter } from '@/lib/utils';
- 
-import { Legend, LineChart, Line, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
-import Abyip from '../Abyip';
+
+import { Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 
 const lineGraphData = [
     {
@@ -92,46 +91,44 @@ const budgetCategories = [
 
 export default function YearComparison() {
     return (
-        <Abyip>
-            <Card>
-                <CardContent>
-                    <div className="m-4">
-                        <h1 className="text-2xl font-bold">Year-Over-Year Comparison</h1>
-                        <p className="text-muted-foreground">Budget comparison with previous fiscal years to track growth and changes</p>
-                    </div>
-                    <div className="h-[600px]">
-                        <ResponsiveContainer width="100%" height="100%">
-                            <LineChart data={lineGraphData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
-                                <XAxis dataKey="year" />
-                                <YAxis tickFormatter={tickFormatter} />
-                                <Tooltip
-                                    contentStyle={{
-                                        backgroundColor: '#fff',
-                                        border: '1px solid #ccc',
-                                        borderRadius: '4px',
-                                        padding: '10px',
-                                        fontSize: '14px',
-                                        color: '#333',
-                                    }}
-                                    formatter={(value: number, name: string) => [formatCurrency(value), name]}
+        <Card>
+            <CardContent>
+                <div className="m-4">
+                    <h1 className="text-2xl font-bold">Year-Over-Year Comparison</h1>
+                    <p className="text-muted-foreground">Budget comparison with previous fiscal years to track growth and changes</p>
+                </div>
+                <div className="h-[600px]">
+                    <ResponsiveContainer width="100%" height="100%">
+                        <LineChart data={lineGraphData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+                            <XAxis dataKey="year" />
+                            <YAxis tickFormatter={tickFormatter} />
+                            <Tooltip
+                                contentStyle={{
+                                    backgroundColor: '#fff',
+                                    border: '1px solid #ccc',
+                                    borderRadius: '4px',
+                                    padding: '10px',
+                                    fontSize: '14px',
+                                    color: '#333',
+                                }}
+                                formatter={(value: number, name: string) => [formatCurrency(value), name]}
+                            />
+                            <Legend />
+                            {budgetCategories.map(({ key, color, name, strokeWidth, activeDot }) => (
+                                <Line
+                                    key={key}
+                                    type="monotone"
+                                    dataKey={key}
+                                    stroke={color}
+                                    name={name}
+                                    strokeWidth={strokeWidth}
+                                    activeDot={activeDot}
                                 />
-                                <Legend />
-                                {budgetCategories.map(({ key, color, name, strokeWidth, activeDot }) => (
-                                    <Line
-                                        key={key}
-                                        type="monotone"
-                                        dataKey={key}
-                                        stroke={color}
-                                        name={name}
-                                        strokeWidth={strokeWidth}
-                                        activeDot={activeDot}
-                                    />
-                                ))}
-                            </LineChart>
-                        </ResponsiveContainer>
-                    </div>
-                </CardContent>
-            </Card>
-        </Abyip>
+                            ))}
+                        </LineChart>
+                    </ResponsiveContainer>
+                </div>
+            </CardContent>
+        </Card>
     );
 }
