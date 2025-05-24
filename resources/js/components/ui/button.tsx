@@ -13,7 +13,7 @@ const buttonVariants = cva(
         default:
           "bg-primary text-primary-foreground shadow-xs hover:bg-primary/90",
         destructive:
-          "bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40",
+          "bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 hover:cursor-pointer",
         outline:
           "border border-input bg-background shadow-xs hover:bg-accent hover:text-accent-foreground",
         secondary:
@@ -23,7 +23,7 @@ const buttonVariants = cva(
         link: 
           "text-primary underline-offset-4 hover:underline",
         add: 
-          "border border-input bg-blue-400 shadow-xs  hover:text-white-foreground hover:bg-blue-500",
+          "border border-input bg-blue-500 shadow-xs  hover:text-white-foreground hover:bg-blue-500 hover:cursor-pointer",
         customLogoBased:
          "bg-red-600 text-primary-foreground shadow-xs hover:bg-red-700",
       },

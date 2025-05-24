@@ -17,7 +17,7 @@ Route::inertia('/', 'landing/Welcome')-> name('landing.welcome');
     Route::inertia('/budget', 'dashboard/BudgetMonitoring')->name('dashboard.budget');
     Route::inertia('/attachments','dashboard/Attachments')-> name('dashboard.attachments');
     Route::inertia('/calendar', 'dashboard/Calendar')->name('dashboard.calendar');
-    Route::inertia('/events', 'dashboard/Events')->name('dashboard.events');
+    Route::inertia('/activity', 'dashboard/Activity')->name('dashboard.activity');
     Route::inertia('/kkofficers','dashboard/KKOfficers')->name('dashboard.kkofficers');
     Route::inertia('/programs', 'dashboard/Programs')->name('dashboard.programs');
     Route::inertia('/projects', 'dashboard/Projects')->name('dashboard.projects');

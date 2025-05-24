@@ -50,7 +50,7 @@ export default function Calendar() {
                 </Card>
             </div>
             <div className="flex w-full justify-center">
-                <h1 className='text-muted-foreground '>A Calendar of events that shows upcoming events in a monthly and yearly view</h1>
+                <h1 className='text-muted-foreground '>A Calendar of event that shows upcoming events in a monthly and yearly view</h1>
             </div>
         </DashboardLayout>
     );

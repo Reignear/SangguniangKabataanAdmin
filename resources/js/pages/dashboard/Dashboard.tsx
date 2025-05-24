@@ -22,9 +22,10 @@ export default function Dashboard() {
     return (
         <DashboardLayout className="overflow-hidden" breadCrumbTitle="Dashboard">
             <div className="h-full w-full">
-                <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
+                <div className="flex flex-1 flex-col gap-4 p-2 pt-0">
                     <div className="grid auto-rows-min gap-4 md:grid-cols-4">
-                        <div className="flex aspect-video flex-col gap-y-5 rounded-xl bg-cyan-200">
+                       
+                        <div className="flex aspect-video flex-col gap-y-5 rounded-xl bg-gradient-to-br from-cyan-500/50 to-cyan-500/5 shadow-sm hover:shadow-md transition-all">
                             <div className="flex flex-row items-center justify-start gap-3 p-4">
                                 <HandCoins className="h-7 w-7" />
                                 <h1>Annual Budget</h1>
@@ -33,7 +34,7 @@ export default function Dashboard() {
                                 <h1 className="font-bold">₱ 922,214</h1>
                             </div>
                         </div>
-                        <div className="flex aspect-video flex-col gap-y-5 rounded-xl bg-amber-200">
+                        <div className="flex aspect-video flex-col gap-y-5 rounded-xl bg-gradient-to-br from-amber-500/50 to-amber-500/5 shadow-sm hover:shadow-md transition-all">
                             <div className="flex flex-row items-center justify-start gap-3 p-4">
                                 <ListChecks className="h-7 w-7" />
                                 <h1> Completed Annual Programs</h1>
@@ -42,7 +43,7 @@ export default function Dashboard() {
                                 <h1 className="font-bold">85%</h1>
                             </div>
                         </div>
-                        <div className="flex aspect-video flex-col gap-y-5 rounded-xl bg-red-200">
+                        <div className="flex aspect-video flex-col gap-y-5 rounded-xl bg-gradient-to-br from-red-500/50 to-red-500/5 shadow-sm hover:shadow-md transition-all">
                             <div className="flex flex-row items-center justify-start gap-3 p-4">
                                 <Users className="h-7 w-7" />
                                 <h1> KK Officers</h1>
@@ -51,7 +52,7 @@ export default function Dashboard() {
                                 <h1 className="font-bold">15</h1>
                             </div>
                         </div>
-                        <div className="flex aspect-video flex-col gap-y-5 rounded-xl bg-green-200">
+                        <div className="flex aspect-video flex-col gap-y-5 rounded-xl bg-gradient-to-br from-green-500/50 to-green-500/5 shadow-sm hover:shadow-md transition-all">
                             <div className="flex flex-row items-center justify-start gap-3 p-4">
                                 <User className="h-7 w-7" />
                                 <h1> Youth</h1>
@@ -61,7 +62,7 @@ export default function Dashboard() {
                             </div>
                         </div>
                     </div>
-                    <div className="min-h-[100vh] flex-1 rounded-xl bg-white shadow-sm md:min-h-min">
+                    <div className="min-h-[100vh] flex-1 rounded-md bg-white shadow-sm md:min-h-min">
                         <CustomChart Data={sampleData} />
                     </div>
                 </div>

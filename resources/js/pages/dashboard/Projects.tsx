@@ -252,7 +252,7 @@ const Projects = () => {
     // };
 
     return (
-        <DashboardLayout className="overflow-hidden w-full" breadCrumbTitle="Sangguniang Kabataan Projects">
+        <DashboardLayout className="w-full overflow-hidden" breadCrumbTitle="Sangguniang Kabataan Projects">
             <div className="w-full space-y-6 p-6">
                 <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
                     <div>
@@ -317,11 +317,11 @@ const Projects = () => {
                     </div>
                 </div>
 
-                <Card className='w-full'>
+                <Card className="w-full">
                     <CardHeader className="pb-2">
                         <CardTitle className="text-2xl font-bold">Projects</CardTitle>
                     </CardHeader>
-                    <CardContent className='w-full'>
+                    <CardContent className="w-full">
                         <FilterableTable columns={projectColumns} filters={projectFilter} data={projectsDataWithProgress} />
                     </CardContent>
                 </Card>

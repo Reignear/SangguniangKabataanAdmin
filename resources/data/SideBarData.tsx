@@ -1,4 +1,5 @@
 import {
+    Activity,
     CalendarRange,
     ClipboardPlus,
     FileText,
@@ -9,7 +10,6 @@ import {
     Paperclip,
     ScrollText,
     Settings,
-    TicketCheck,
     UserCog,
     UserRoundPlus,
     Users,
@@ -24,7 +24,7 @@ export const SideBarItem = [
     // { title: 'ABYIP', href: 'dashboard.abyip.overview', icon: FileText },
     { title: 'Budget Monitoring', href: 'dashboard.budget', icon: HandCoins },
     { title: 'Calendar', href: 'dashboard.calendar', icon: CalendarRange },
-    { title: 'Events', href: 'dashboard.events', icon: TicketCheck },
+    { title: 'Activity', href: 'dashboard.activity', icon: Activity },
     { title: 'Projects', href: 'dashboard.projects', icon: Hammer },
     { title: 'Programs', href: 'dashboard.programs', icon: ScrollText },
     { title: 'Attachments', href: 'dashboard.attachments', icon: Paperclip },

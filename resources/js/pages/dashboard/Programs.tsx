@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import DashboardLayout from '@/layouts/shared/DashboardLayout';
-import { ArrowRight, Calendar, Clock, Search, Users } from 'lucide-react';
+import { ArrowRight, Calendar, CircleDashed, Clock, Clock4, Plus, Search, Users } from 'lucide-react';
 import { useState } from 'react';
 
 // Sample program data - replace with your actual data
@@ -20,6 +20,7 @@ const programsData = [
         startDate: 'June 15, 2025',
         students: 24,
         image: '/placeholder.svg?height=200&width=400',
+        status: 'Upcoming',
     },
     {
         id: 2,
@@ -30,6 +31,7 @@ const programsData = [
         startDate: 'July 1, 2025',
         students: 18,
         image: '/placeholder.svg?height=200&width=400',
+        status: 'Upcoming',
     },
     {
         id: 3,
@@ -40,6 +42,7 @@ const programsData = [
         startDate: 'May 20, 2025',
         students: 15,
         image: '/placeholder.svg?height=200&width=400',
+        status: 'Upcoming',
     },
     {
         id: 4,
@@ -50,6 +53,7 @@ const programsData = [
         startDate: 'August 5, 2025',
         students: 20,
         image: '/placeholder.svg?height=200&width=400',
+        status: 'Upcoming',
     },
     {
         id: 5,
@@ -60,6 +64,7 @@ const programsData = [
         startDate: 'June 10, 2025',
         students: 30,
         image: '/placeholder.svg?height=200&width=400',
+        status: 'Upcoming',
     },
     {
         id: 6,
@@ -70,6 +75,7 @@ const programsData = [
         startDate: 'July 15, 2025',
         students: 16,
         image: '/placeholder.svg?height=200&width=400',
+        status: 'Completed',
     },
 ];
 
@@ -95,15 +101,23 @@ const Programs = () => {
                         <h1 className="text-3xl font-bold tracking-tight">Programs</h1>
                         <p className="text-muted-foreground mt-1">Discover our range of educational programs and courses</p>
                     </div>
-                    <div className="relative w-full md:w-64">
-                        <Search className="text-muted-foreground absolute top-2.5 left-2.5 h-4 w-4" />
-                        <Input
-                            type="search"
-                            placeholder="Search programs..."
-                            className="w-full pl-8"
-                            value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
-                        />
+                    <div className="relative flex w-full gap-2 md:w-96">
+                        <div className="w-full">
+                            <Search className="text-muted-foreground absolute top-2.5 left-2.5 h-4 w-4" />
+                            <Input
+                                type="search"
+                                placeholder="Search programs..."
+                                className="w-full pl-8"
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                            />
+                        </div>
+                        <div>
+                            <Button variant="outline">
+                                <Plus />
+                                <span>Add Program</span>
+                            </Button>
+                        </div>
                     </div>
                 </div>
 
@@ -150,6 +164,19 @@ const Programs = () => {
                                                 <div className="text-muted-foreground flex items-center gap-1">
                                                     <Users className="h-4 w-4" />
                                                     <span>{program.students} students</span>
+                                                </div>
+                                                <div className="text-muted-foreground flex items-center gap-1">
+                                                    {program.status === 'Completed' ? (
+                                                        <>
+                                                            <Clock4 className="h-4 w-4" />
+                                                            <span>{program.status}</span>
+                                                        </>
+                                                    ) : (
+                                                        <>
+                                                            <CircleDashed className="h-4 w-4" />
+                                                            <span>{program.status}</span>
+                                                        </>
+                                                    )}
                                                 </div>
                                             </div>
                                         </CardContent>
