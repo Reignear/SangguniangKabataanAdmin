@@ -44,6 +44,7 @@ const filters: FilterConfig[] = [
         label: 'Search by Name',
         type: 'input',
         placeholder: 'Search name...',
+        filterClassName: 'w-[200px]',
     },
     {
         id: 'role',
@@ -55,6 +56,7 @@ const filters: FilterConfig[] = [
             { value: 'User', label: 'User' },
             { value: 'Editor', label: 'Editor' },
         ],
+        filterClassName: 'w-[200px]',
     },
     {
         id: 'status',
@@ -65,6 +67,7 @@ const filters: FilterConfig[] = [
             { value: 'Active', label: 'Active' },
             { value: 'Inactive', label: 'Inactive' },
         ],
+        filterClassName: 'w-[200px]',
     },
 ];
 

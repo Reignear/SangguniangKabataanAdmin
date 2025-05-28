@@ -67,12 +67,14 @@ const filters: FilterConfig[] = [
         label: 'Search by Purok',
         type: 'input',
         placeholder: 'Search purok...',
+        filterClassName: 'w-[200px]',
     },
     {
         id: 'youthName',
         label: 'Search by Name',
         type: 'input',
         placeholder: 'Search name...',
+        filterClassName: 'w-[200px]',
     },
     {
         id: 'youthGender',
@@ -83,6 +85,7 @@ const filters: FilterConfig[] = [
             { value: 'Male', label: 'Male' },
             { value: 'Female', label: 'Female' },
         ],
+        filterClassName: 'w-[200px]',
     },
 ];
 export default function KKProfiling() {

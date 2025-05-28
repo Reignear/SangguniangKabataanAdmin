@@ -21,7 +21,6 @@ export const SideBarItem = [
     { title: 'KK Officers', href: 'dashboard.kkofficers', icon: Users },
     { title: 'KK Profiling', href: 'dashboard.kkprofiling', icon: UserRoundPlus },
     { title: 'ABYIP', href: 'dashboard.abyip', icon: FileText },
-    // { title: 'ABYIP', href: 'dashboard.abyip.overview', icon: FileText },
     { title: 'Budget Monitoring', href: 'dashboard.budget', icon: HandCoins },
     { title: 'Calendar', href: 'dashboard.calendar', icon: CalendarRange },
     { title: 'Activity', href: 'dashboard.activity', icon: Activity },

@@ -24,7 +24,7 @@ export default function BudgetExpenditureBreakdown() {
     const BudgetExpenditureBreakdownNavButtons = ['Salary', 'Projects', 'Programs', 'Events'];
     return (
         <div className="flex h-full w-full flex-col gap-4 p-4 pt-0">
-            <div className="text-card-foreground grid grid-cols-4 gap-2 rounded-sm border p-2 shadow-sm">
+            <div className="text-card-foreground grid grid-cols-4 gap-2 rounded-sm border p-1 shadow-sm">
                 {BudgetExpenditureBreakdownNavButtons.map((item) => (
                     <Button
                         variant="outline"

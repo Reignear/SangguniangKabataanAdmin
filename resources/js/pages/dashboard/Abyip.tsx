@@ -18,7 +18,7 @@ export default function Abyip() {
     return (
         <DashboardLayout className="overflow-hidden" breadCrumbTitle="Annual Budget">
             <div className="w-full">
-                <div className="flex w-full flex-row items-center justify-between p-4">
+                <div className="flex w-full flex-row items-center justify-between p-4 pt-0">
                     <div>
                         <h1 className="text-3xl font-bold">Annual Budget</h1>
                         <p className="text-base">Fiscal Year 2025 - 2026</p>
@@ -35,12 +35,12 @@ export default function Abyip() {
                 <div className="grid grid-cols-3 gap-4 p-4 pb-0">
                     <StatCards />
                 </div>
-                <div className="m-4 flex max-w-xl flex-row items-center justify-between gap-1 rounded-md border-2 p-2">
+                <div className="text-muted-foreground m-4 grid grid-cols-4 gap-1 rounded-md border-2 p-1">
                     {AbyipNavButtons.map((item) => (
                         <Button
                             key={item}
                             variant="empty"
-                            className={activeTab === item ? 'bg-blue-500 text-white' : ''}
+                            className={` ${activeTab === item ? 'bg-blue-500 text-white' : ''}`}
                             onClick={() => setActiveTab(item)}
                         >
                             {item}

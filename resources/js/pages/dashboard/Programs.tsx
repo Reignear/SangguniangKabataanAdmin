@@ -4,7 +4,6 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import DashboardLayout from '@/layouts/shared/DashboardLayout';
 import { ArrowRight, Calendar, CircleDashed, Clock, Clock4, Plus, Search, Users } from 'lucide-react';
 import { useState } from 'react';
@@ -13,90 +12,144 @@ import { useState } from 'react';
 const programsData = [
     {
         id: 1,
-        title: 'Web Development Bootcamp',
-        description: 'Learn modern web development with HTML, CSS, JavaScript, React, and Node.js.',
-        category: 'Development',
-        duration: '12 weeks',
-        startDate: 'June 15, 2025',
-        students: 24,
+        title: 'Public Health Awareness',
+        description: 'Improve community health through education and access to resources.',
+        category: 'Health',
+        duration: '6 weeks',
+        startDate: 'July 10, 2025',
+        students: 22,
         image: '/placeholder.svg?height=200&width=400',
         status: 'Upcoming',
     },
     {
         id: 2,
-        title: 'Data Science Fundamentals',
-        description: 'Master the basics of data analysis, visualization, and machine learning.',
-        category: 'Data Science',
-        duration: '8 weeks',
-        startDate: 'July 1, 2025',
-        students: 18,
+        title: 'Educational Leadership Training',
+        description: 'Empower educators with leadership and curriculum design skills.',
+        category: 'Education',
+        duration: '10 weeks',
+        startDate: 'August 1, 2025',
+        students: 28,
         image: '/placeholder.svg?height=200&width=400',
         status: 'Upcoming',
     },
     {
         id: 3,
-        title: 'UX/UI Design Workshop',
-        description: 'Learn to create beautiful, functional interfaces that users love.',
-        category: 'Design',
-        duration: '6 weeks',
-        startDate: 'May 20, 2025',
-        students: 15,
+        title: 'Women in Business Initiative',
+        description: 'Support women entrepreneurs with training and microfinancing.',
+        category: 'Economic Empowerment',
+        duration: '8 weeks',
+        startDate: 'June 20, 2025',
+        students: 19,
         image: '/placeholder.svg?height=200&width=400',
         status: 'Upcoming',
     },
     {
         id: 4,
-        title: 'Mobile App Development',
-        description: 'Build cross-platform mobile applications using React Native.',
-        category: 'Development',
-        duration: '10 weeks',
-        startDate: 'August 5, 2025',
-        students: 20,
+        title: 'Inclusion and Equity Workshop',
+        description: 'Foster inclusive practices in communities and organizations.',
+        category: 'Social Inclusion & Equity',
+        duration: '5 weeks',
+        startDate: 'July 5, 2025',
+        students: 25,
         image: '/placeholder.svg?height=200&width=400',
         status: 'Upcoming',
     },
     {
         id: 5,
-        title: 'Digital Marketing Masterclass',
-        description: 'Learn SEO, social media marketing, and content strategy.',
-        category: 'Marketing',
-        duration: '4 weeks',
-        startDate: 'June 10, 2025',
-        students: 30,
+        title: 'Conflict Resolution Bootcamp',
+        description: 'Learn peacebuilding strategies and mediation techniques.',
+        category: 'Peace Building & Security',
+        duration: '7 weeks',
+        startDate: 'June 18, 2025',
+        students: 17,
         image: '/placeholder.svg?height=200&width=400',
         status: 'Upcoming',
     },
     {
         id: 6,
-        title: 'Cybersecurity Essentials',
-        description: 'Understand the fundamentals of network security and threat prevention.',
-        category: 'Security',
-        duration: '8 weeks',
-        startDate: 'July 15, 2025',
-        students: 16,
+        title: 'Youth in Governance Program',
+        description: 'Engage young people in civic leadership and policy advocacy.',
+        category: 'Governance',
+        duration: '9 weeks',
+        startDate: 'August 12, 2025',
+        students: 21,
         image: '/placeholder.svg?height=200&width=400',
-        status: 'Completed',
+        status: 'Upcoming',
+    },
+    {
+        id: 7,
+        title: 'Active Citizenship Campaign',
+        description: 'Promote voter education, participation, and community action.',
+        category: 'Active Citizenship',
+        duration: '6 weeks',
+        startDate: 'July 25, 2025',
+        students: 26,
+        image: '/placeholder.svg?height=200&width=400',
+        status: 'Upcoming',
+    },
+    {
+        id: 8,
+        title: 'Climate Action Project',
+        description: 'Engage communities in climate mitigation and environmental sustainability.',
+        category: 'Environment',
+        duration: '8 weeks',
+        startDate: 'June 30, 2025',
+        students: 24,
+        image: '/placeholder.svg?height=200&width=400',
+        status: 'Upcoming',
+    },
+    {
+        id: 9,
+        title: 'Youth Global Exchange',
+        description: 'Foster cultural exchange and mobility opportunities for youth.',
+        category: 'Global Mobility',
+        duration: '4 weeks',
+        startDate: 'August 15, 2025',
+        students: 18,
+        image: '/placeholder.svg?height=200&width=400',
+        status: 'Upcoming',
+    },
+    {
+        id: 10,
+        title: 'Smart Agriculture Training',
+        description: 'Equip farmers with modern agricultural techniques and technologies.',
+        category: 'Agriculture',
+        duration: '10 weeks',
+        startDate: 'July 8, 2025',
+        students: 27,
+        image: '/placeholder.svg?height=200&width=400',
+        status: 'Upcoming',
     },
 ];
 
 const Programs = () => {
+    const participationButton = [
+        'All',
+        'Health',
+        'Education',
+        'Economic Empowerment',
+        'Social Inclusion & Equity',
+        'Peace Building & Security',
+        'Governance',
+        'Active Citizenship',
+        'Environment',
+        'Global Mobility',
+        'Agriculture',
+    ];
     const [searchQuery, setSearchQuery] = useState('');
-    const [activeCategory, setActiveCategory] = useState('all');
-
-    const categories = ['all', ...new Set(programsData.map((program) => program.category))];
+    const [activeCategory, setActiveCategory] = useState('All');
 
     const filteredPrograms = programsData.filter((program) => {
         const matchesSearch =
             program.title.toLowerCase().includes(searchQuery.toLowerCase()) || program.description.toLowerCase().includes(searchQuery.toLowerCase());
-        const matchesCategory = activeCategory === 'all' || program.category === activeCategory;
-
+        const matchesCategory = activeCategory === 'All' || program.category === activeCategory;
         return matchesSearch && matchesCategory;
     });
 
     return (
         <DashboardLayout breadCrumbTitle="Programs" className="overflow-hidden">
-            <div className="container mx-auto px-4 py-8">
-                <div className="mb-8 flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
+            <div className="container mx-auto p-4 pt-0">
+                <div className="mb-4 flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
                     <div>
                         <h1 className="text-3xl font-bold tracking-tight">Programs</h1>
                         <p className="text-muted-foreground mt-1">Discover our range of educational programs and courses</p>
@@ -121,84 +174,83 @@ const Programs = () => {
                     </div>
                 </div>
 
-                <Tabs defaultValue="all" className="mb-8" onValueChange={setActiveCategory}>
-                    <TabsList className="mb-4 flex flex-wrap">
-                        {categories.map((category) => (
-                            <TabsTrigger key={category} value={category} className="capitalize">
-                                {category}
-                            </TabsTrigger>
-                        ))}
-                    </TabsList>
-
-                    {categories.map((category) => (
-                        <TabsContent key={category} value={category}>
-                            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-                                {filteredPrograms.map((program) => (
-                                    <Card key={program.id} className="overflow-hidden transition-all hover:shadow-md">
-                                        <div className="aspect-video w-full overflow-hidden">
-                                            <img
-                                                src={program.image || '/placeholder.svg'}
-                                                alt={program.title}
-                                                className="h-full w-full object-cover transition-transform hover:scale-105"
-                                            />
-                                        </div>
-                                        <CardHeader className="pb-2">
-                                            <div className="flex items-start justify-between">
-                                                <CardTitle className="text-xl">{program.title}</CardTitle>
-                                                <Badge variant="outline" className="capitalize">
-                                                    {program.category}
-                                                </Badge>
-                                            </div>
-                                            <CardDescription className="mt-2 line-clamp-2">{program.description}</CardDescription>
-                                        </CardHeader>
-                                        <CardContent className="pb-2">
-                                            <div className="grid grid-cols-2 gap-2 text-sm">
-                                                <div className="text-muted-foreground flex items-center gap-1">
-                                                    <Clock className="h-4 w-4" />
-                                                    <span>{program.duration}</span>
-                                                </div>
-                                                <div className="text-muted-foreground flex items-center gap-1">
-                                                    <Calendar className="h-4 w-4" />
-                                                    <span>{program.startDate}</span>
-                                                </div>
-                                                <div className="text-muted-foreground flex items-center gap-1">
-                                                    <Users className="h-4 w-4" />
-                                                    <span>{program.students} students</span>
-                                                </div>
-                                                <div className="text-muted-foreground flex items-center gap-1">
-                                                    {program.status === 'Completed' ? (
-                                                        <>
-                                                            <Clock4 className="h-4 w-4" />
-                                                            <span>{program.status}</span>
-                                                        </>
-                                                    ) : (
-                                                        <>
-                                                            <CircleDashed className="h-4 w-4" />
-                                                            <span>{program.status}</span>
-                                                        </>
-                                                    )}
-                                                </div>
-                                            </div>
-                                        </CardContent>
-                                        <CardFooter>
-                                            <Button variant="outline" className="group w-full">
-                                                View Program
-                                                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                                            </Button>
-                                        </CardFooter>
-                                    </Card>
-                                ))}
-                            </div>
-
-                            {filteredPrograms.length === 0 && (
-                                <div className="py-12 text-center">
-                                    <h3 className="text-lg font-medium">No programs found</h3>
-                                    <p className="text-muted-foreground mt-1">Try adjusting your search or filter criteria</p>
-                                </div>
-                            )}
-                        </TabsContent>
+                <div className="grid grid-cols-6 gap-1 rounded-md border p-1">
+                    {participationButton.map((button) => (
+                        <Button
+                            key={button}
+                            className={`${activeCategory === button ? 'bg-blue-500 text-white' : ''} hover:bg-gray-100`}
+                            onClick={() => setActiveCategory(button)}
+                            variant="empty"
+                        >
+                            {button}
+                        </Button>
                     ))}
-                </Tabs>
+                </div>
+
+                <div className="mt-4 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                    {filteredPrograms.map((program) => (
+                        <Card key={program.id} className="overflow-hidden transition-all hover:shadow-md">
+                            <div className="aspect-video w-full overflow-hidden">
+                                <img
+                                    src={program.image || '/placeholder.svg'}
+                                    alt={program.title}
+                                    className="h-full w-full object-cover transition-transform hover:scale-105"
+                                />
+                            </div>
+                            <CardHeader className="pb-2">
+                                <div className="flex items-start justify-between">
+                                    <CardTitle className="text-xl">{program.title}</CardTitle>
+                                    <Badge variant="outline" className="capitalize">
+                                        {program.category}
+                                    </Badge>
+                                </div>
+                                <CardDescription className="mt-2 line-clamp-2">{program.description}</CardDescription>
+                            </CardHeader>
+                            <CardContent className="pb-2">
+                                <div className="grid grid-cols-2 gap-2 text-sm">
+                                    <div className="text-muted-foreground flex items-center gap-1">
+                                        <Clock className="h-4 w-4" />
+                                        <span>{program.duration}</span>
+                                    </div>
+                                    <div className="text-muted-foreground flex items-center gap-1">
+                                        <Calendar className="h-4 w-4" />
+                                        <span>{program.startDate}</span>
+                                    </div>
+                                    <div className="text-muted-foreground flex items-center gap-1">
+                                        <Users className="h-4 w-4" />
+                                        <span>{program.students} students</span>
+                                    </div>
+                                    <div className="text-muted-foreground flex items-center gap-1">
+                                        {program.status === 'Completed' ? (
+                                            <>
+                                                <Clock4 className="h-4 w-4" />
+                                                <span>{program.status}</span>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <CircleDashed className="h-4 w-4" />
+                                                <span>{program.status}</span>
+                                            </>
+                                        )}
+                                    </div>
+                                </div>
+                            </CardContent>
+                            <CardFooter>
+                                <Button variant="outline" className="group w-full">
+                                    View Program
+                                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                                </Button>
+                            </CardFooter>
+                        </Card>
+                    ))}
+                </div>
+
+                {filteredPrograms.length === 0 && (
+                    <div className="py-12 text-center">
+                        <h3 className="text-lg font-medium">No programs found</h3>
+                        <p className="text-muted-foreground mt-1">Try adjusting your search or filter criteria</p>
+                    </div>
+                )}
             </div>
         </DashboardLayout>
     );

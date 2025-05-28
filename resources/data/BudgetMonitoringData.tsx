@@ -16,6 +16,7 @@ export const salaryFilter: FilterConfig[] = [
         label: "Officer's Name",
         type: 'input',
         placeholder: "Search salary by officer's name",
+        filterClassName: 'w-[300px]',
     },
 ];
 
