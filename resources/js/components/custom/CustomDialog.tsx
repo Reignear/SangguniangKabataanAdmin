@@ -11,15 +11,17 @@ interface CustomDialogProps {
     triggerElement?: React.ReactNode;
     subTitle?: string;
     trigger: React.ReactNode;
-    buttonName: React.ReactNode;
+    buttonName?: React.ReactNode;
+    customWidth?: string;
+    buttonClassName?: string;
     buttonVariant?: 'link' | 'default' | 'empty' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'add' | 'customLogoBased' | null;
 }
 
-export default function CustomDialog({ title, description, children, subTitle, trigger, buttonName, buttonVariant }: CustomDialogProps) {
+export default function CustomDialog({ title, description, children, subTitle, trigger, buttonName, buttonVariant,buttonClassName, customWidth }: CustomDialogProps) {
     return (
-        <Dialog>
+        <Dialog >
             <DialogTrigger asChild>{trigger}</DialogTrigger>
-            <DialogContent className="min-w-[800px]">
+            <DialogContent className={`max-h-[90vh] min-w-[800px] overflow-auto ${customWidth}`} >
                 <DialogHeader>
                     <DialogTitle>{title}</DialogTitle>
                     <DialogDescription>{description}</DialogDescription>
@@ -30,7 +32,7 @@ export default function CustomDialog({ title, description, children, subTitle, t
                     {children}
                 </div>
                 <DialogFooter>
-                    <Button variant={buttonVariant}>{buttonName}</Button>
+                    <Button variant={buttonVariant} className={buttonClassName}>{buttonName}</Button>
                 </DialogFooter>
             </DialogContent>
         </Dialog>

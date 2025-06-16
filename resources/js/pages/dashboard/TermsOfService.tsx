@@ -1,36 +1,14 @@
 import { Button } from '@/components/ui/button';
 import DashboardLayout from '@/layouts/shared/DashboardLayout';
-import { Info, Plus, SquarePen } from 'lucide-react';
+import { Info } from 'lucide-react';
 import CurrentOfficials from './TermsOfService/CurrentOfficials';
 import InfoBox from './TermsOfService/InfoBox';
-
-const details = [
-    {
-        infoName: 'Officials',
-        infoDescription: 'SK Officials Directory',
-        infoDetails: '2023 - 2025',
-        infoButtonDetails: {
-            infoButtonText: 'Edit',
-            infoButtonIcon: <SquarePen className="h-4 w-4" />,
-            infoButtonFunction: () => alert('Edit Officials Directory clicked'),
-        },
-    },
-    {
-        infoName: 'officials',
-        infoDescription: 'Current Term Status',
-        infoDetails: 'Ongoing',
-    },
-    {
-        infoName: 'Administration',
-        infoDescription: 'Term Management',
-        infoButtonDetails: {
-            infoButtonText: 'New Term',
-            infoButtonIcon: <Plus className="h-4 w-4" />,
-            infoButtonFunction: () => alert('Add new  Administration clicked'),
-        },
-    },
+const currentOfficials = [
+    {id: "1", name: 'Reignear Magallanes', position: 'SK Chairperson', totalVotes: 100, precinct: 'A323' },
+    {id: "2", name: 'John Doe', position: 'SK Kagawad', totalVotes: 80, precinct: 'B456' },
+    {id: "3", name: 'Jane Smith', position: 'SK Treasurer', totalVotes: 90, precinct: 'C789' },
+    {id: "4", name: 'Jaasdassne Smith', position: 'SK Treasurer', totalVotes: 90, precinct: 'C789' },
 ];
-
 const title = 'Sangguniang Kabataan Terms of Service';
 export default function TermsOfService() {
     return (
@@ -46,15 +24,8 @@ export default function TermsOfService() {
                 </div>
                 <div className="flex w-full flex-row justify-end gap-2"></div>
                 <div className="grid-rows mt-2 grid gap-3">
-                    <InfoBox infoBoxDetails={details} />
-                    <CurrentOfficials
-                        officials={[
-                            { name: 'Reignear Magallanes', position: 'SK Chairperson', totalVotes: 100 },
-                            { name: 'John Doe', position: 'SK Kagawad', totalVotes: 80 },
-                            { name: 'Jane Smith', position: 'SK Treasurer', totalVotes: 90 },
-                            { name: 'Jane Smith', position: 'SK Treasurer', totalVotes: 90 },
-                        ]}
-                    />
+                    <InfoBox officials={currentOfficials} />
+                    <CurrentOfficials officials={currentOfficials} />
                     <div className="flex flex-row items-center gap-2 rounded-lg border border-blue-600/50 p-5">
                         <Info className="h-6 w-6 text-blue-800" />
                         <h1 className="text-blue-800">
