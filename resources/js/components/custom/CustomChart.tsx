@@ -114,7 +114,7 @@ export default function CustomChart({ Data }: CustomChartProps) {
             <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
                 <h2 className="ml-2 text-xl font-semibold">{getLabel()}</h2>
 
-                <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
+                <div className="flex  gap-2 flex-row sm:items-center">
                     <Select value={selectedYear.toString()} onValueChange={(value) => setSelectedYear(Number.parseInt(value))}>
                         <SelectTrigger className="w-28">
                             <SelectValue placeholder="Year" />

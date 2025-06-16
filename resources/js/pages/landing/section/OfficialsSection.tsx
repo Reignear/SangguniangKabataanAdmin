@@ -43,17 +43,17 @@ export default function OfficialsSection({ officials, title, description }: Offi
 
     return (
         <div
-            className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8"
+            className="mx-auto max-w-7xl px-4 py-4 sm:px-6 md:py-12 lg:px-8"
             onMouseEnter={() => setIsHovering(true)}
             onMouseLeave={() => setIsHovering(false)}
         >
             <div className="text-center">
-                <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{title}</h2>
-                <p className="mx-auto mt-4 max-w-2xl text-xl text-gray-500">{description}</p>
+                <h2 className="text-base font-bold tracking-tight text-gray-900 sm:text-4xl md:text-4xl">{title}</h2>
+                <p className="mx-auto max-w-2xl text-[10px] text-gray-500 md:mt-4 md:text-xl">{description}</p>
             </div>
 
             <motion.div
-                className="mt-8 grid gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-5"
+                className="mt-8 grid grid-cols-3 gap-4 md:gap-8 lg:grid-cols-5"
                 variants={containerVariants}
                 initial="hidden"
                 animate={isHovering ? 'visible' : 'hidden'}
@@ -61,7 +61,7 @@ export default function OfficialsSection({ officials, title, description }: Offi
                 {officials.map((official, index) => (
                     <motion.div key={index} className="flex flex-col items-center text-center" variants={itemVariants}>
                         <div
-                            className="h-40 w-40 overflow-hidden rounded-full bg-gradient-to-r from-red-100 to-blue-100 p-1"
+                            className="h-24 w-24 overflow-hidden rounded-full bg-gradient-to-r from-red-100 to-blue-100 p-1 md:h-40 md:w-40"
                             style={{ backgroundColor: '#f3f4f6' }}
                         >
                             {official.img ? (
@@ -76,8 +76,8 @@ export default function OfficialsSection({ officials, title, description }: Offi
                                 </div>
                             )}
                         </div>
-                        <h3 className="mt-4 text-lg font-medium text-gray-900">{official.name}</h3>
-                        <p className="text-sm text-gray-500">{official.position}</p>
+                        <h3 className="md:mt-4 mt-2 text-sm md:text-lg font-medium text-gray-900">{official.name}</h3>
+                        <p className="text-[10px] md:text-base text-gray-500">{official.position}</p>
                     </motion.div>
                 ))}
             </motion.div>

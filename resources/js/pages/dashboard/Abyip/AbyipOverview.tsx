@@ -6,10 +6,10 @@ export default function Overview() {
     return (
         <>
             <Card>
-                <CardContent>
+                <CardContent className="p-0 md:p-6">
                     <div className="m-5 flex flex-col">
-                        <h1 className="text-2xl font-bold">Budget Distribution</h1>
-                        <p className="text-muted-foreground">
+                        <h1 className="text-sm font-bold md:text-2xl">Budget Distribution</h1>
+                        <p className="text-muted-foreground text-[8px] md:text-base">
                             Comprehensive overview of the Youth Investment Program budget allocation for the fiscal year
                             <span> 2025-2026</span>
                         </p>
@@ -50,25 +50,71 @@ export default function Overview() {
                     </div>
                 </CardContent>
             </Card>
-            <div className="mt-4 grid grid-cols-3 gap-4">
+            <div className="mt-4 grid grid-cols-2 gap-4 md:grid-cols-3">
                 <Card>
                     <CardContent className="flex flex-col gap-4">
                         <div>
-                            <h1 className="text-xl font-bold">Administrative Costs</h1>
-                            <p className="text-muted-foreground">Staff, Facilities, and operational expenses</p>
-                            <p className="text-muted-foreground">
+                            <h1 className="text-sm font-bold md:text-xl">Administrative Costs</h1>
+                            <p className="text-muted-foreground text-[8px] md:text-base">Staff, Facilities, and operational expenses</p>
+                            <p className="text-muted-foreground text-[8px] md:text-base">
                                 Type: <span>Program</span>
                             </p>
-                            <p className="text-muted-foreground">
+                            <p className="text-muted-foreground text-[8px] md:text-base">
                                 Participation: <span>Health</span>
                             </p>
                         </div>
                         <div className="flex flex-col gap-2">
-                            <h1 className="text-3xl font-bold">
+                            <h1 className="text-sm font-bold md:text-3xl">
                                 $ <span>700 000</span>
                             </h1>
                             <Progress className="h-4" value={30}></Progress>
-                            <p className="text-muted-foreground text-sm">
+                            <p className="text-muted-foreground text-[8px] md:text-sm">
+                                <span>30% </span> from the whole budget
+                            </p>
+                        </div>
+                    </CardContent>
+                </Card>
+                <Card>
+                    <CardContent className="flex flex-col gap-4">
+                        <div>
+                            <h1 className="text-sm font-bold md:text-xl">Administrative Costs</h1>
+                            <p className="text-muted-foreground text-[8px] md:text-base">Staff, Facilities, and operational expenses</p>
+                            <p className="text-muted-foreground text-[8px] md:text-base">
+                                Type: <span>Program</span>
+                            </p>
+                            <p className="text-muted-foreground text-[8px] md:text-base">
+                                Participation: <span>Health</span>
+                            </p>
+                        </div>
+                        <div className="flex flex-col gap-2">
+                            <h1 className="text-sm font-bold md:text-3xl">
+                                $ <span>700 000</span>
+                            </h1>
+                            <Progress className="h-4" value={30}></Progress>
+                            <p className="text-muted-foreground text-[8px] md:text-sm">
+                                <span>30% </span> from the whole budget
+                            </p>
+                        </div>
+                    </CardContent>
+                </Card>
+                <Card>
+                    <CardContent className="flex flex-col gap-4">
+                        <div>
+                            <h1 className="text-sm font-bold md:text-xl">Administrative Costs</h1>
+                            <p className="text-muted-foreground text-[8px] md:text-base">Staff, Facilities, and operational expenses</p>
+                            <p className="text-muted-foreground text-[8px] md:text-base">
+                                Type: <span>Program</span>
+                            </p>
+                            <p className="text-muted-foreground text-[8px] md:text-base">
+                                Participation: <span>Health</span>
+                            </p>
+                        </div>
+                        <div className="flex flex-col gap-2">
+                            <h1 className="text-sm font-bold md:text-3xl">
+                                $ <span>700 000</span>
+                            </h1>
+                            <Progress className="h-4" value={30}></Progress>
+                            <p className="text-muted-foreground text-[8px] md:text-sm">
                                 <span>30% </span> from the whole budget
                             </p>
                         </div>

@@ -149,10 +149,10 @@ const Programs = () => {
     return (
         <DashboardLayout breadCrumbTitle="Programs" className="overflow-hidden">
             <div className="container mx-auto p-4 pt-0">
-                <div className="mb-4 flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
+                <div className="mb-4 flex flex-col items-center justify-center gap-4 md:flex-row md:items-center md:justify-between">
                     <div>
-                        <h1 className="text-3xl font-bold tracking-tight">Programs</h1>
-                        <p className="text-muted-foreground mt-1">Discover our range of educational programs and courses</p>
+                        <h1 className="text-center text-3xl font-bold tracking-tight md:text-start">Programs</h1>
+                        <p className="text-muted-foreground mt-1">Discover our range of programs</p>
                     </div>
                     <div className="relative flex w-full gap-2 md:w-96">
                         <div className="w-full">
@@ -166,7 +166,7 @@ const Programs = () => {
                             />
                         </div>
                         <div>
-                            <Button variant="outline">
+                            <Button variant="add">
                                 <Plus />
                                 <span>Add Program</span>
                             </Button>
@@ -174,11 +174,11 @@ const Programs = () => {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-6 gap-1 rounded-md border p-1">
+                <div className="grid grid-cols-2 gap-1 rounded-md border p-1 md:grid-cols-3 lg:grid-cols-6">
                     {participationButton.map((button) => (
                         <Button
                             key={button}
-                            className={`${activeCategory === button ? 'bg-blue-500 text-white' : ''} hover:bg-gray-100`}
+                            className={`text-[12px] md:text-sm ${activeCategory === button ? 'bg-blue-500 text-white' : 'hover:bg-gray-100'} `}
                             onClick={() => setActiveCategory(button)}
                             variant="empty"
                         >

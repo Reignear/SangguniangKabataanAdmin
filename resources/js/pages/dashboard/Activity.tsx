@@ -233,8 +233,8 @@ export default function Activity() {
     return (
         <DashboardLayout className="overflow-hidden" breadCrumbTitle="Events">
             <div className="flex w-full flex-col gap-4 p-4 pt-0">
-                <div className="flex w-full justify-between">
-                    <div>
+                <div className="flex w-full flex-col gap-2 md:flex-row md:justify-between">
+                    <div className="text-center md:text-start">
                         <h1 className="text-3xl font-bold">Activity</h1>
                         <p className="text-muted-foreground">Manage and monitor all SK activity</p>
                     </div>
@@ -244,13 +244,13 @@ export default function Activity() {
                             <Search className="text-muted-foreground absolute top-2.5 left-2.5 h-4 w-4" />
                             <Input
                                 type="search"
-                                placeholder="Search activity by name..."
+                                placeholder="Search activity "
                                 className="pl-8"
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
                             />
                         </div>
-                        <Button variant="outline" className="hover:bg-blue-500 hover:text-white">
+                        <Button variant="add">
                             <Plus />
                             <span>Add activity</span>
                         </Button>
@@ -271,11 +271,11 @@ export default function Activity() {
 
                     {filterActivity.map((activity) => (
                         <Card className={`w-full border-2 shadow-none ${open === activity.id ? 'border-blue-500' : ''}`}>
-                            <CardContent className="w-full">
+                            <CardContent className="flex w-full flex-col">
                                 <h1 className={`pb-2 ${getStatusClass(activity.status)}`}>{activity.status}</h1>
                                 <Accordion type="single" collapsible className="w-full" value={open} onValueChange={(value) => setOpen(value)}>
                                     <AccordionItem value={activity.id} className="w-full">
-                                        <div className="grid w-full grid-cols-3 text-sm">
+                                        <div className="grid w-full md:grid-cols-3 grid-cols-1 gap-2 text-sm">
                                             <div className="flex flex-row gap-10">
                                                 <p className="text-muted-foreground">
                                                     From: <br />
@@ -303,7 +303,7 @@ export default function Activity() {
                                         </div>
 
                                         <AccordionContent className="mt-4 text-sm shadow-lg">
-                                            <div className="mt-2 grid grid-rows-3 items-center gap-2">
+                                            <div className="mt-2 grid md:grid-rows-3 items-center gap-2">
                                                 <div className="w-full">
                                                     <h1 className="text-muted-foreground">Description: </h1>
                                                     <p className="text-base">{activity.description}</p>
@@ -324,16 +324,26 @@ export default function Activity() {
                                                         </p>
                                                     </div>
                                                 </div>
-                                                <div className="grid w-full grid-cols-2">
+                                                <div className="grid w-full grid-cols-1 gap-2 md:grid-cols-2">
                                                     <div>
                                                         <h1 className="text-muted-foreground">Location:</h1>
                                                         <p className="text-base text-black">{activity.location}</p>
                                                     </div>
-                                                    <div className="flex w-full flex-row items-end justify-end gap-2">
-                                                        <Button key={activity.id} variant="destructive" className="w-30">
+                                                    <div className="flex w-full flex-row items-center md:items-end md:justify-end justify-center gap-2">
+                                                        <Button
+                                                            key={activity.id}
+                                                            variant="destructive"
+                                                            className="w-30"
+                                                            disabled={activity.status === 'Completed'}
+                                                        >
                                                             Cancel
                                                         </Button>
-                                                        <Button key={activity.id} variant="add" className="w-30 text-white">
+                                                        <Button
+                                                            key={activity.id}
+                                                            variant="add"
+                                                            className="w-30 text-white"
+                                                            disabled={activity.status === 'Completed'}
+                                                        >
                                                             Reschedule
                                                         </Button>
                                                     </div>

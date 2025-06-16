@@ -24,15 +24,14 @@ import OfficialsSection from '../../../js/pages/landing/section/OfficialsSection
 import ProgramSection from '../../../js/pages/landing/section/ProgramSection';
 import AboutUsSection from './section/AboutUsSection';
 import WelcomeSection from './section/WelcomeSection';
-
 export default function Welcome() {
     return (
         <>
             <Head title="Sangguniang Kabataan | Barangay Balagunan" />
-            <div className="min-h-screen overflow-x-hidden bg-gray-100">
+            <div className="min-h-screen bg-white">
                 <WelcomeLayout>
-                    {/* Hero Section - Enhanced version of your original section */}
-                    <section id='home' className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden px-4 py-16 sm:px-6 lg:px-8">
+                    {/* Home Section  */}
+                    <section id="home" className="relative flex w-full flex-col items-center justify-center overflow-hidden p-5 md:min-h-screen">
                         <WelcomeSection
                             barangay={WelcomeDataBarangay}
                             missionStatement={WelcomeDataMissionStatement}
@@ -45,17 +44,17 @@ export default function Welcome() {
                     </section>
 
                     {/* About Section */}
-                    <section id="about" className="max-h-full min-h-screen bg-white py-8">
+                    <section id="about" className="max-h-full py-4 md:min-h-screen md:py-8">
                         <AboutUsSection cards={AboutUsData} title={AboutUsTitle} description={AboutUsDescription} />
                     </section>
 
                     {/* Programs Section */}
-                    <section id="programs" className="max-h-full min-h-screen bg-gray-50 py-16">
+                    <section id="programs" className="h-full py-4 md:min-h-screen md:py-16">
                         <ProgramSection programs={ProgramData} title={ProgramTitle} description={ProgramDescription} />
                     </section>
 
                     {/* Call to Action */}
-                    <section id='callToAction' className="min-h-screen bg-gradient-to-r from-red-500 to-blue-500 py-16 text-white">
+                    <section id="callToAction" className="min-h-screen bg-gradient-to-r from-red-500 to-blue-500 py-4 text-white md:py-16">
                         <CallToActionSection
                             title={CallToActionTitle}
                             description={CallToActionDescription}
@@ -65,17 +64,17 @@ export default function Welcome() {
                     </section>
 
                     {/* Officials Section */}
-                    <section id="officials" className="min-h-screen bg-white py-8 pb-16">
+                    <section id="officials" className="md:min-h-screen md:py-8 md:pb-16">
                         <OfficialsSection officials={OfficialsData} title={OfficialsTitle} description={OfficialsDescription} />
                     </section>
 
                     {/* News & Updates Section */}
-                    <section id="news" className="max-h-full min-h-screen bg-gray-50 py-8">
+                    <section id="news" className="max-h-full min-h-screen md:py-8">
                         <NewsAndUpdateSection newsItem={NewsAndUpdatesData} title={NewsAndUpdatesTitle} description={NewsAndUpdatesDescription} />
                     </section>
 
                     {/* Contact Section */}
-                    <section id="contact" className="max-h-full min-h-screen bg-white py-16">
+                    <section id="contact" className="max-h-full md:min-h-screen md:py-16">
                         <ContactUsSection
                             links={SocialMediaLinks}
                             address={ContactUsAddress}

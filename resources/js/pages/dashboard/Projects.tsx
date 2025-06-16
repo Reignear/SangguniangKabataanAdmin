@@ -112,6 +112,13 @@ const projectsData = [
         completion: 90,
     },
 ];
+
+const statsCardData = [
+    { title: 'Total Projects', data: 10, describe: 'Across all participation' },
+    { title: 'Completed', data: 15, describe: '10% of total projects' },
+    { title: 'In Progress', data: 10, describe: '23% of total projects' },
+    { title: 'Planning Phase', data: 29, describe: '1% of total projects' },
+];
 const projectsDataWithProgress = projectsData.map((project) => ({
     ...project,
     completion: (
@@ -125,7 +132,7 @@ const Projects = () => {
     return (
         <DashboardLayout className="w-full overflow-hidden" breadCrumbTitle="Sangguniang Kabataan Projects">
             <div className="w-full space-y-6 p-4 pt-0">
-                <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
+                <div className="flex flex-col items-center md:justify-between gap-4 md:flex-row md:items-start">
                     <div>
                         <h1 className="text-3xl font-bold tracking-tight">Sangguniang Kabataan Projects</h1>
                         <p className="text-muted-foreground">Manage and monitor all SK projects in one place.</p>
@@ -148,43 +155,18 @@ const Projects = () => {
 
                 {/* Statistics Cards */}
                 <div className="w-full">
-                    <div className="grid gap-2 md:grid-cols-2 lg:grid-cols-4">
-                        <Card>
-                            <CardHeader className="pb-2">
-                                <CardTitle className="text-sm font-medium">Total Projects</CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <h1 className="text-2xl font-bold">10</h1>
-                                <p className="text-muted-foreground text-xs">Across all participation</p>
-                            </CardContent>
-                        </Card>
-                        <Card>
-                            <CardHeader className="pb-2">
-                                <CardTitle className="text-sm font-medium">Completed</CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <h1 className="text-2xl font-bold">15</h1>
-                                <p className="text-muted-foreground text-xs">10% of total projects</p>
-                            </CardContent>
-                        </Card>
-                        <Card>
-                            <CardHeader className="pb-2">
-                                <CardTitle className="text-sm font-medium">In Progress</CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <h1 className="text-2xl font-bold">10</h1>
-                                <p className="text-muted-foreground text-xs">23% of total projects</p>
-                            </CardContent>
-                        </Card>
-                        <Card>
-                            <CardHeader className="pb-2">
-                                <CardTitle className="text-sm font-medium">Planning Phase</CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <div className="text-2xl font-bold">29</div>
-                                <p className="text-muted-foreground text-xs">1% of total projects</p>
-                            </CardContent>
-                        </Card>
+                    <div className="grid grid-cols-2 gap-2 md:grid-cols-4">
+                        {statsCardData.map((stat, index) => (
+                            <Card key={index}>
+                                <CardHeader className="pb-2">
+                                    <CardTitle className="text-sm font-medium">{stat.title}</CardTitle>
+                                </CardHeader>
+                                <CardContent>
+                                    <h1 className="text-2xl font-bold">{stat.data}</h1>
+                                    <p className="text-muted-foreground text-xs">{stat.describe}</p>
+                                </CardContent>
+                            </Card>
+                        ))}
                     </div>
                 </div>
 

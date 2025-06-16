@@ -72,13 +72,13 @@ export default function NewsAndUpdateSection({ newsItem, title, description }: N
                 </div>
             </div>
             <div className="p-6">
-                <div className="mb-2 text-sm font-medium text-gray-500">{item.date}</div>
-                <h3 className="mb-2 text-xl font-bold text-gray-900">{item.title}</h3>
-                <p className="text-gray-600">{item.excerpt}</p>
-                <div className="mt-4 flex cursor-pointer items-center text-sm font-medium text-blue-500">
+                <div className="text-[10px] font-medium text-gray-500 md:text-sm">{item.date}</div>
+                <h3 className="text-[12px] font-bold text-gray-900 md:text-xl">{item.title}</h3>
+                <p className="text-[10px] text-gray-600 md:text-base">{item.excerpt}</p>
+                <div className="flex cursor-pointer items-center text-[10px] font-medium text-blue-500 md:text-sm">
                     <a href={item.link} target="_blank" rel="noopener noreferrer" className="flex items-center">
                         <span>Read more</span>
-                        <ExternalLink className="ml-1 h-4 w-4" />
+                        <ExternalLink className="ml-1 h-3 w-3 md:h-4 md:w-4" />
                     </a>
                 </div>
             </div>
@@ -88,12 +88,12 @@ export default function NewsAndUpdateSection({ newsItem, title, description }: N
     return (
         <div className="mx-auto h-full max-w-7xl px-4">
             <div className="text-center">
-                <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{title}</h2>
-                <p className="mx-auto mt-4 max-w-2xl text-xl text-gray-500">{description}</p>
+                <h2 className="text-gray-90 text-base font-bold tracking-tight md:text-4xl">{title}</h2>
+                <p className="mx-auto max-w-2xl text-[10px] text-gray-500 md:mt-4 md:text-xl">{description}</p>
             </div>
 
-            <div className="relative mt-12 overflow-hidden">
-                <div className="grid gap-6 p-4 md:grid-cols-2 lg:grid-cols-3">
+            <div className="relative overflow-hidden md:mt-12">
+                <div className="grid grid-cols-2 gap-3 p-2 md:gap-6 md:p-4 lg:grid-cols-3">
                     {visibleItems.map((item, index) => {
                         let animationClass = '';
 

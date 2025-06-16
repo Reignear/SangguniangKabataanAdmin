@@ -266,7 +266,7 @@ export function FilterableTable<T extends Record<string, any>>({
                 className="bg-muted/20 rounded-md border p-4"
             />
 
-            <div className="rounded-md border">
+            <div className="rounded-md border md:w-full w-xl">
                 <Table>
                     <TableHeader>
                         <TableRow>

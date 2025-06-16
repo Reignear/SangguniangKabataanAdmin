@@ -25,7 +25,12 @@ Route::inertia('/', 'landing/Welcome')-> name('landing.welcome');
     Route::inertia('/settings', 'dashboard/Settings')->name('dashboard.settings');
     Route::inertia('/skofficials', 'dashboard/SKOfficials')->name('dashboard.skofficials');
     Route::inertia('/kkprofiling', 'dashboard/KKProfiling')->name('dashboard.kkprofiling');
-    Route::inertia('/termsofservice','dashboard/TermsOfService')->name('dashboard.termsofservice');
+    Route::prefix('termsofservice')->group(function(){
+        Route::inertia('/servicesection','dashboard/TermsOfService')->name('dashboard.termsofservice');
+        Route::inertia('/termyear','dashboard/TermsOfService/TermYear' )-> name('dashboard.termsofservice.year');
+    });
+
+    Route::inertia('/reports/fullreport','dashboard/Report/FullReport')->name('dashboard.fullreport');
 // });
 
 require __DIR__.'/settings.php';

@@ -1,13 +1,9 @@
 'use client';
 
-import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetHeader, SheetTrigger } from '@/components/ui/sheet';
-import { cn } from '@/lib/utils';
 import type { NavItem } from '@/types';
-import { Menu } from 'lucide-react';
-import { useEffect, useState } from 'react';
-import { default as CustomIcon } from './CustomIcon';
-import CustomPopover from './CustomPopover';
+import { AnimatePresence, motion } from 'framer-motion';
+import { Menu, X } from 'lucide-react';
+import { useState } from 'react';
 
 interface CustomHeaderProps {
     rightNavItems?: NavItem[];
@@ -17,122 +13,71 @@ interface CustomHeaderProps {
 }
 
 export default function CustomHeader({ title, barangay, logo, rightNavItems = [] }: CustomHeaderProps) {
-    const [isScrolled, setIsScrolled] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
-    useEffect(() => {
-        const handleScroll = () => {
-            setIsScrolled(window.scrollY > 10);
-        };
-
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
-
+    const handleOpen = () => {
+        setIsOpen(true);
+    };
+    const handleClose = () => {
+        setIsOpen(false);
+    };
     return (
-        <header className="sticky top-0 z-50 w-full">
-            {/* Background elements that match the welcome section */}
-            <div className="pointer-events-none absolute inset-0 overflow-hidden opacity-5">
-                <div className="absolute -top-10 -left-10 h-32 w-32 rounded-full bg-red-500"></div>
-                <div className="absolute top-0 -right-5 h-24 w-24 rounded-full bg-blue-500"></div>
-            </div>
+        <header className="sticky top-0 z-1 w-full border-b border-red-400/20 px-3 shadow-lg shadow-red-400/20 backdrop-blur-sm transition-all duration-300">
+            <div className="">
+                <div className="flex items-center justify-between p-2">
+                    <div className="flex flex-row items-center gap-2">
+                        <img src={logo} alt="SK Logo" className="h-5 w-5 md:h-10 md:w-10" />
+                        <h1 className="text-lg font-bold text-red-400 uppercase md:text-2xl">
+                            {title}
+                            <span>{barangay ? ` ${barangay}` : 'Barangay name is not set'}</span>
+                        </h1>
+                    </div>
+                    <div className="">
+                        <div className="hidden md:block">
+                            <ul className="flex flex-row gap-5">
+                                {rightNavItems.map((item, index) => (
+                                    <li
+                                        key={index}
+                                        className="text-gray text-base transition-all duration-300 hover:text-red-400 hover:underline hover:underline-offset-8"
+                                    >
+                                        <a href={item.href}>{item.title}</a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                        <div className="flex flex-col items-center justify-center md:hidden">
+                            <Menu onClick={handleOpen} className="h-4 w-4" />
+                        </div>
+                    </div>
+                </div>
+                <AnimatePresence>
+                    {isOpen && (
+                        <motion.aside
+                            initial={{ x: '100%' }}
+                            animate={{ x: 0 }}
+                            exit={{ x: '100%' }}
+                            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                            className="fixed top-0 right-0 z-50 flex h-screen w-1/2 flex-col border-l border-violet-400/20 bg-gray-900/95 p-5 shadow-lg backdrop-blur-sm"
+                        >
+                            <div className="mb-8 flex items-center justify-between">
+                                <button onClick={handleClose} className="text-white">
+                                    <X />
+                                </button>
+                            </div>
 
-            {/* Mobile Navigation */}
-            <div className="relative md:hidden">
-                <div
-                    className={cn(
-                        'flex items-center justify-between px-4 py-3 transition-all duration-300',
-                        isScrolled ? 'bg-white/95 shadow-md backdrop-blur-sm' : 'bg-white/80',
+                            <nav className="flex-1">
+                                <ul className="flex flex-col items-center space-y-4">
+                                    {rightNavItems.map((item, index) => (
+                                        <li key={index} className="text-base text-gray-300 transition-colors hover:text-red-400">
+                                            <a href={item.href} onClick={handleClose} className="block py-2">
+                                                {item.title}
+                                            </a>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </nav>
+                        </motion.aside>
                     )}
-                >
-                    <div className="flex items-center gap-2">
-                        <CustomIcon imgSrc={logo} className="h-10 w-10" />
-                        <div>
-                            <h1 className="text-sm font-bold tracking-wide text-red-500 uppercase">{title}</h1>
-                            <p className="text-xs font-semibold tracking-wider text-blue-500">{barangay}</p>
-                        </div>
-                    </div>
-
-                    <Sheet open={isOpen} onOpenChange={setIsOpen}>
-                        <SheetTrigger asChild>
-                            <Button variant="ghost" size="icon" className="rounded-full">
-                                <Menu className="h-5 w-5" />
-                                <span className="sr-only">Toggle menu</span>
-                            </Button>
-                        </SheetTrigger>
-                        <SheetContent side="right" className="w-[280px] border-l-4 border-l-red-500 p-0">
-                            <div className="flex h-full flex-col">
-                                <SheetHeader className="border-b p-6">
-                                    <div className="flex items-center gap-3">
-                                        <CustomIcon imgSrc={logo} className="h-12 w-12" />
-                                        <div>
-                                            <h1 className="text-lg font-bold tracking-wide text-red-500 uppercase">{title}</h1>
-                                            <p className="text-sm font-semibold tracking-wider text-blue-500">{barangay}</p>
-                                        </div>
-                                    </div>
-                                </SheetHeader>
-
-                                <nav className="flex-1 p-6">
-                                    <ul className="space-y-3">
-                                        {rightNavItems.map((item, index) => (
-                                            <li key={index} className="transform transition-transform duration-200 hover:translate-x-1">
-                                                <a
-                                                    href={item.href}
-                                                    className="flex items-center rounded-lg px-3 py-2 font-medium tracking-wide text-gray-700 transition-colors hover:text-red-500"
-                                                    onClick={() => setIsOpen(false)}
-                                                >
-                                                    {item.icon && <item.icon className="mr-3 h-4 w-4" />}
-                                                    <span>{item.title}</span>
-                                                </a>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </nav>
-                            </div>
-                        </SheetContent>
-                    </Sheet>
-                </div>
-            </div>
-
-            {/* Desktop Navigation */}
-            <div
-                className={cn(
-                    'relative hidden shadow-sm transition-all duration-300 md:block',
-                    isScrolled ? 'bg-white/95 shadow-sm backdrop-blur-sm' : 'bg-white/80',
-                )}
-            >
-                <div className="container mx-auto px-4">
-                    <div className="flex h-16 items-center justify-between">
-                        <div className="flex items-center gap-3">
-                            <CustomIcon imgSrc={logo} className="h-10 w-10" />
-                            <div>
-                                <h1 className="text-lg font-bold tracking-wide text-red-500 uppercase">{title}</h1>
-                                <p className="text-xs font-semibold tracking-wider text-blue-500 uppercase">{barangay}</p>
-                            </div>
-                        </div>
-
-                        <nav>
-                            <CustomPopover
-                                trigger={
-                                    <Button variant="ghost" size="icon" className={`rounded-md hover:text-red-500`}>
-                                        <Menu className="h-5 w-5" />
-                                    </Button>
-                                }
-                                children={
-                                    <ul className="flex flex-col gap-y-3 p-4">
-                                        {rightNavItems.map((items, index) => (
-                                            <li key={index} className="transform transition-transform duration-200 hover:translate-x-1">
-                                                <a href={items.href} className="hover:text-red-500">
-                                                    {' '}
-                                                    {items.title}
-                                                </a>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                }
-                            />
-                        </nav>
-                    </div>
-                </div>
+                </AnimatePresence>
             </div>
         </header>
     );

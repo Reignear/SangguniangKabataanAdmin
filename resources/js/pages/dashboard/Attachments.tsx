@@ -3,8 +3,8 @@ import { Input } from '@/components/ui/input';
 import DashboardLayout from '@/layouts/shared/DashboardLayout';
 import { Search } from 'lucide-react';
 import { useState } from 'react';
-import AttachmentField, { SelectedCard } from './Attachments/AttachmentField';
-import PPACard from './Attachments/PPACard';
+import AttachmentField, { SelectedCard } from './Attachment/AttachmentField';
+import PPACard from './Attachment/PPACard';
 
 const Attachments = () => {
     const [activeCategory, setActiveCategory] = useState('Project');
@@ -19,10 +19,10 @@ const Attachments = () => {
     return (
         <DashboardLayout className="overflow-hidden" breadCrumbTitle="Attachments">
             <div className="w-full p-4 pt-0">
-                <div className="mb-4 flex flex-row items-center justify-between">
+                <div className="mb-4 flex flex-col items-center justify-center md:flex-row md:justify-between gap-2">
                     <div className="w-full">
-                        <h1 className="text-3xl font-bold">Attachments</h1>
-                        <p className="text-muted-foreground">Manage attachments for programs, activities, and projects</p>
+                        <h1 className="text-center text-3xl font-bold md:text-start">Attachments</h1>
+                        <p className="text-muted-foreground text-center md:text-start">Manage attachments for programs, activities, and projects</p>
                     </div>
                     <div className="relative w-xl">
                         <Search className="text-muted-foreground absolute top-2.5 left-2.5 h-4 w-4" />
@@ -36,7 +36,7 @@ const Attachments = () => {
                     </div>
                 </div>
                 <div className="rounded-md border p-4 shadow-md">
-                    <div className="grid grid-cols-3 gap-1 rounded-md border-2 p-2">
+                    <div className="grid grid-cols-3 gap-1 rounded-md border-2 p-1">
                         {categoryButtons.map((category) => (
                             <Button
                                 key={category}

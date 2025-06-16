@@ -92,34 +92,34 @@ export default function SKOfficials() {
     return (
         <DashboardLayout breadCrumbTitle="Sangguniang Kabaatan Officials" className="overflow-hidden">
             <div className="h-screen">
-                <div className="grid w-full grid-cols-1 gap-4 p-2 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
+                <div className="grid w-full grid-cols-2 gap-4 p-2 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
                     {OfficialData.map((official) => (
                         <CustomDrawer
                             key={official.id}
                             trigger={
                                 <div className="bg-muted/50 flex aspect-video flex-col gap-2 rounded-xl border-1 shadow-lg transition-transform duration-300 hover:scale-102 hover:cursor-pointer sm:min-w-100">
-                                    <div className="flex flex-row justify-start gap-3 rounded-t-xl bg-red-300 p-4">
-                                        <Avatar className="h-15 w-15">
+                                    <div className="flex flex-row items-center justify-start gap-3 rounded-t-xl bg-red-300 p-4">
+                                        <Avatar className="h-10 w-10 md:h-15 md:w-15">
                                             <img src={official.OfficialAvatar} alt="image" />
                                         </Avatar>
                                         <div>
-                                            <h1 className="flex justify-start text-lg">{official.OfficialName}</h1>
-                                            <p className="flex justify-start">{official.OfficialPosition}</p>
+                                            <h1 className="flex justify-start text-start text-sm md:text-lg">{official.OfficialName}</h1>
+                                            <p className="flex justify-start text-[10px] md:text-base">{official.OfficialPosition}</p>
                                         </div>
                                     </div>
                                     <Separator />
                                     <div className="flex flex-col justify-between gap-2 p-4">
-                                        <div className="flex flex-row items-center gap-5">
-                                            <Mail className="h-5 w-5 text-gray-600" />
-                                            <h2>{official.OfficialEmail}</h2>
+                                        <div className="flex flex-row items-center gap-1 md:gap-5">
+                                            <Mail className="h-3 w-3 text-gray-600 md:h-5 md:w-5" />
+                                            <h2 className="text-[10px] md:text-base">{official.OfficialEmail}</h2>
                                         </div>
-                                        <div className="flex flex-row items-center gap-5">
-                                            <Phone className="h-5 w-5 text-gray-600" />
-                                            <h2>{official.OfficialPhoneNumber}</h2>
+                                        <div className="flex flex-row items-center gap-1 md:gap-5">
+                                            <Phone className="h-3 w-3 text-gray-600 md:h-5 md:w-5" />
+                                            <h2 className="text-[10px] md:text-base">{official.OfficialPhoneNumber}</h2>
                                         </div>
-                                        <div className="flex flex-row items-center gap-5">
-                                            <User className="h-5 w-5 text-gray-500" />
-                                            <h2>{official.OfficialNickname}</h2>
+                                        <div className="items-center gap-1 flex flex-row md:gap-5">
+                                            <User className="h-3 w-3 text-gray-600 md:h-5 md:w-5" />
+                                            <h2 className="text-[10px] md:text-base">{official.OfficialNickname}</h2>
                                         </div>
                                     </div>
                                 </div>

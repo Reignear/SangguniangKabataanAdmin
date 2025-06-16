@@ -128,9 +128,9 @@ export default function KKOfficers() {
                                     key={officer.id}
                                     className="flex aspect-video max-w-[350px] min-w-[160px] flex-col gap-y-5 rounded-xl bg-green-200"
                                 >
-                                    <div className="flex flex-row items-start justify-start gap-3 pt-4 pr-4 pl-4">
+                                    <div className="flex flex-col items-center justify-center gap-3 pt-4 pr-4 pl-4 md:flex-row md:items-start md:justify-start">
                                         <div>
-                                            <img src={officer.image} alt="" className="h-15 w-15 rounded-md" />
+                                            <img src={officer.image} alt="" className="h-15 w-24 rounded-md md:w-15" />
                                         </div>
                                         <div className="flex flex-col">
                                             <h1 className="text-lg font-semibold">{officer.name}</h1>
@@ -141,7 +141,7 @@ export default function KKOfficers() {
                                         <Separator className="bg-black" />
                                     </div>
 
-                                    <div className="pl-4 text-lg">
+                                    <div className="pb-2 text-center text-lg md:pl-4 md:text-start">
                                         <h1 className="font-bold">{officer.role}</h1>
                                     </div>
                                 </div>

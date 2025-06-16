@@ -3,7 +3,7 @@ import { ChartColumnIncreasing, PhilippinePeso, PiggyBank, TrendingUp } from 'lu
 
 export default function StatCards() {
     return (
-        <div className="grid gap-2 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-2 md:grid-cols-4">
             <Card className="from-primary/20 to-primary/5 bg-gradient-to-br shadow-md transition-all hover:shadow-lg">
                 <CardContent>
                     <div className="flex flex-col items-start gap-4">

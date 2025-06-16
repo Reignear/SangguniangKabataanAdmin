@@ -222,7 +222,7 @@ type PPACardProps = {
 };
 
 export default function PPACard({ activeCategory, searchQuery, onCardClick }: PPACardProps) {
-    const [activeCard, setActiveCard] = useState<string>('');
+  
     // Filter and sort data based on active category and search query
     const filterCategory = data
         .sort((a, b) => a.category.localeCompare(b.category))

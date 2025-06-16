@@ -23,41 +23,40 @@ export default function Dashboard() {
         <DashboardLayout className="overflow-hidden" breadCrumbTitle="Dashboard">
             <div className="h-full w-full">
                 <div className="flex flex-1 flex-col gap-4 p-2 pt-0">
-                    <div className="grid auto-rows-min gap-4 md:grid-cols-4">
-                       
-                        <div className="flex aspect-video flex-col gap-y-5 rounded-xl bg-gradient-to-br from-cyan-500/50 to-cyan-500/5 shadow-sm hover:shadow-md transition-all">
+                    <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+                        <div className="flex aspect-video flex-col rounded-xl bg-gradient-to-br from-cyan-500/50 to-cyan-500/5 shadow-sm transition-all hover:shadow-md md:gap-y-5">
                             <div className="flex flex-row items-center justify-start gap-3 p-4">
-                                <HandCoins className="h-7 w-7" />
-                                <h1>Annual Budget</h1>
+                                <HandCoins className="h-4 w-4 md:h-7 md:w-7" />
+                                <h1 className="text-sm md:text-base">Annual Budget</h1>
                             </div>
-                            <div className="pl-7 text-3xl">
+                            <div className="pl-7 text-xl md:text-3xl">
                                 <h1 className="font-bold">₱ 922,214</h1>
                             </div>
                         </div>
-                        <div className="flex aspect-video flex-col gap-y-5 rounded-xl bg-gradient-to-br from-amber-500/50 to-amber-500/5 shadow-sm hover:shadow-md transition-all">
+                        <div className="flex aspect-video flex-col rounded-xl bg-gradient-to-br from-amber-500/50 to-amber-500/5 shadow-sm transition-all hover:shadow-md md:gap-y-5">
                             <div className="flex flex-row items-center justify-start gap-3 p-4">
-                                <ListChecks className="h-7 w-7" />
-                                <h1> Completed Annual Programs</h1>
+                                <ListChecks className="h-4 w-4 md:h-7 md:w-7" />
+                                <h1 className="text-sm md:text-base"> Completed Annual Programs</h1>
                             </div>
-                            <div className="pl-7 text-3xl">
+                            <div className="pl-7 text-xl md:text-3xl">
                                 <h1 className="font-bold">85%</h1>
                             </div>
                         </div>
-                        <div className="flex aspect-video flex-col gap-y-5 rounded-xl bg-gradient-to-br from-red-500/50 to-red-500/5 shadow-sm hover:shadow-md transition-all">
+                        <div className="flex aspect-video flex-col rounded-xl bg-gradient-to-br from-red-500/50 to-red-500/5 shadow-sm transition-all hover:shadow-md md:gap-y-5">
                             <div className="flex flex-row items-center justify-start gap-3 p-4">
-                                <Users className="h-7 w-7" />
-                                <h1> KK Officers</h1>
+                                <Users className="h-4 w-4 md:h-7 md:w-7" />
+                                <h1 className="text-sm md:text-base"> KK Officers</h1>
                             </div>
-                            <div className="pl-7 text-3xl">
+                            <div className="pl-7 text-xl md:text-3xl">
                                 <h1 className="font-bold">15</h1>
                             </div>
                         </div>
-                        <div className="flex aspect-video flex-col gap-y-5 rounded-xl bg-gradient-to-br from-green-500/50 to-green-500/5 shadow-sm hover:shadow-md transition-all">
+                        <div className="flex aspect-video flex-col rounded-xl bg-gradient-to-br from-green-500/50 to-green-500/5 shadow-sm transition-all hover:shadow-md md:gap-y-5">
                             <div className="flex flex-row items-center justify-start gap-3 p-4">
-                                <User className="h-7 w-7" />
-                                <h1> Youth</h1>
+                                <User className="md:h-7 md:w-7 h-4 w-4"/>
+                                <h1 className="text-sm md:text-base"> Youth</h1>
                             </div>
-                            <div className="pl-7 text-3xl">
+                            <div className="pl-7 text-xl md:text-3xl">
                                 <h1 className="font-bold">346</h1>
                             </div>
                         </div>
