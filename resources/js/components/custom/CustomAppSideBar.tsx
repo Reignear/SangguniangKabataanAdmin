@@ -10,6 +10,7 @@ import {
 } from '@/components/ui/sidebar';
 import { NavItem } from '@/types';
 import { Link } from '@inertiajs/react';
+import { Button } from '../ui/button';
 
 interface CustomAppSideBarProps {
     breadCrumbTitle?: string;
@@ -43,7 +44,7 @@ export default function AppSidebar({ breadCrumbTitle, breadCrumbBarangay, sideBa
                             const currentPath = window.location.pathname;
 
                             // Determine if the current path starts with the route path
-                            
+
                             const isActive = currentPath.startsWith(itemPath);
 
                             return (
@@ -63,6 +64,10 @@ export default function AppSidebar({ breadCrumbTitle, breadCrumbBarangay, sideBa
                                 </SidebarMenuItem>
                             );
                         })}
+
+                        <Button className="w-full border border-black/50" variant={'outline'}>
+                            Logout
+                        </Button>
                     </SidebarMenu>
                 </SidebarGroup>
             </SidebarContent>

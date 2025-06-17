@@ -15,7 +15,7 @@ const Settings = () => {
     const [activeCategory, setActiveCategory] = useState('Profile Information');
     return (
         <DashboardLayout className="overflow-hidden" breadCrumbTitle="Settings">
-            <div className="w-full">
+            <div className="h-full w-full">
                 <div className="flex w-full flex-col gap-5">
                     <div className="flex flex-col">
                         <h1 className="text-3xl font-bold">Settings</h1>

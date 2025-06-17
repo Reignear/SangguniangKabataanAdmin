@@ -1,19 +1,10 @@
 import Sidebar from '@/components/custom/CustomAppSideBar';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList } from '@/components/ui/breadcrumb';
-import { Button } from '@/components/ui/button';
-import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuSeparator,
-    DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
 
 import { Separator } from '@/components/ui/separator';
 import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
 import { Avatar } from '@radix-ui/react-avatar';
-import { Bell, ChevronDown } from 'lucide-react';
+import { Bell } from 'lucide-react';
 import { SideBarItem } from '../../../data/SideBarData';
 
 interface DashboardLayoutProps {
@@ -51,30 +42,6 @@ export default function DashboardLayout({ children, className, breadCrumbTitle }
                                     <h1 className="">{Username}</h1>
                                     <p className="text-[13px]">{position}</p>
                                 </div>
-                                <DropdownMenu>
-                                    <DropdownMenuTrigger>
-                                        <ChevronDown className="h-5 w-5" />
-                                    </DropdownMenuTrigger>
-                                    <DropdownMenuContent className="w-full p-4">
-                                        <DropdownMenuLabel className="flex justify-center">My Account</DropdownMenuLabel>
-                                        <DropdownMenuSeparator />
-                                        <DropdownMenuItem>
-                                            <Button variant="link" className="w-24">
-                                                Profile
-                                            </Button>
-                                        </DropdownMenuItem>
-                                        <DropdownMenuItem>
-                                            <Button variant="link" className="w-24" onClick={() => route('dashboard.settings')}>
-                                                Settings
-                                            </Button>
-                                        </DropdownMenuItem>
-                                        <DropdownMenuItem>
-                                            <Button variant="link" className="w-24">
-                                                Logout
-                                            </Button>
-                                        </DropdownMenuItem>
-                                    </DropdownMenuContent>
-                                </DropdownMenu>
                             </div>
                         </div>
                     </div>

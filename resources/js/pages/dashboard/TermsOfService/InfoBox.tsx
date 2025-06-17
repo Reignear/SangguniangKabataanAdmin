@@ -66,34 +66,34 @@ export default function InfoBox({ officials }: InfoBoxProps) {
                     {temporaryOfficials.map((official, index) => (
                         <Card className="p-2" key={official.id || index}>
                             <CardTitle className="flex flex-row items-center justify-between">
-                                <h1>Official #{index + 1} </h1>
+                                <h1 className='md:text-base text-[14px]'>Official #{index + 1} </h1>
 
-                                <Button variant="destructive" onClick={(e) => handleRemoveOfficial(index, e)}>
+                                <Button className='md:text-sm text-[12px] ' variant="destructive" onClick={(e) => handleRemoveOfficial(index, e)}>
                                     Remove
                                 </Button>
                             </CardTitle>
                             <CardContent className="grid grid-cols-1 gap-2">
                                 <div className="grid grid-cols-2 gap-4">
                                     <div className="flex flex-col gap-1">
-                                        <Label>Name:</Label>
-                                        <Input defaultValue={official.name} />
+                                        <Label className="text-[12px] md:text-base">Name:</Label>
+                                        <Input className="text-[10px] md:text-base" defaultValue={official.name} />
                                     </div>
 
                                     <div className="flex flex-col gap-1">
-                                        <Label>Position:</Label>
-                                        <Input defaultValue={official.position} />
+                                        <Label className="text-[12px] md:text-base">Position:</Label>
+                                        <Input className="text-[10px] md:text-base" defaultValue={official.position} />
                                     </div>
                                 </div>
 
                                 <div className="grid grid-cols-2 gap-4">
                                     <div className="flex flex-col gap-1">
-                                        <Label>Total Votes:</Label>
-                                        <Input defaultValue={official.totalVotes} />
+                                        <Label className="text-[12px] md:text-base">Total Votes:</Label>
+                                        <Input className="text-[10px] md:text-base" defaultValue={official.totalVotes} />
                                     </div>
 
                                     <div className="flex flex-col gap-1">
-                                        <Label>Precint ID:</Label>
-                                        <Input defaultValue={official.precinct} />
+                                        <Label className="text-[12px] md:text-base">Precinct ID:</Label>
+                                        <Input className="text-[10px] md:text-base" defaultValue={official.precinct} />
                                     </div>
                                 </div>
                             </CardContent>
@@ -109,7 +109,7 @@ export default function InfoBox({ officials }: InfoBoxProps) {
     };
     const renderNewTermDialog = () => {
         return (
-            <form action="" className="grid grid-cols-2 gap-2">
+            <form action="" className="grid grid-cols-1 gap-2 md:grid-cols-2">
                 <div>
                     <Label>Start Year</Label>
                     <Select>
@@ -150,7 +150,7 @@ export default function InfoBox({ officials }: InfoBoxProps) {
     return (
         <div className="grid grid-cols-1 gap-2">
             <div className="rounded-lg border bg-red-500 shadow-lg transition-all hover:cursor-pointer">
-                <div className="flex flex-row items-center justify-between p-5">
+                <div className="flex flex-col items-center justify-between p-5 md:flex-row">
                     <div className="flex flex-row items-center gap-2">
                         <Info className="h-6 w-6 text-white" />
                         <div>
@@ -160,6 +160,7 @@ export default function InfoBox({ officials }: InfoBoxProps) {
                     </div>
                     <div>
                         <CustomDialog
+                            customWidth="md:min-w-[600px] min-w-[300px]"
                             trigger={
                                 <Button className="w-36 transition-all hover:cursor-pointer" variant="outline">
                                     <SquarePen className="h-4 w-4" />
@@ -187,7 +188,7 @@ export default function InfoBox({ officials }: InfoBoxProps) {
                 </div>
             </div>
             <div className="rounded-lg border bg-red-500 shadow-lg transition-all hover:cursor-pointer">
-                <div className="flex flex-row items-center justify-between p-5">
+                <div className="flex flex-col items-center justify-between p-5 md:flex-row">
                     <div className="flex flex-row items-center gap-2">
                         <Info className="h-6 w-6 text-white" />
                         <div>
@@ -197,7 +198,7 @@ export default function InfoBox({ officials }: InfoBoxProps) {
                     </div>
 
                     <CustomDialog
-                        customWidth=" min-w-[600px] "
+                        customWidth="min-w-[300px] "
                         trigger={
                             <Button className="w-36 transition-all hover:cursor-pointer" variant="outline">
                                 <Plus className="h-4 w-4" />
