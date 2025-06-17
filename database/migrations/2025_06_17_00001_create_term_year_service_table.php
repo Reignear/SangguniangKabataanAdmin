@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-     Schema::create('address_table', function(Blueprint $table){
-        $table -> id('address_id');
-        $table -> string('province');
-        $table -> string('city');
-        $table -> string('barangay');
-        $table -> string('zipcode');
-     });
+        Schema::create('term_year_service_table', function (Blueprint $table) {
+            $table->id('term_service_id');
+            $table->date('term_year_start');
+            $table->date('term_year_end');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('address_table');
+        Schema::dropIfExists('term_year_service_table');
     }
 };
