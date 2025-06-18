@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\TermYearController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -7,12 +8,6 @@ Route::inertia('/', 'landing/Welcome')-> name('landing.welcome');
 
 // Route::middleware(['auth', 'verified'])->group(function () {
     Route::inertia('/dashboard', 'dashboard/Dashboard')->name('dashboard.dashboard');
-    // Route::prefix('abyip')->group(function(){
-    //     Route::inertia('/overview', 'dashboard/Abyip/Overview')->name('dashboard.abyip.overview');
-    //     Route::inertia('/participation', 'dashboard/Abyip/Participation')->name('dashboard.abyip.participation');
-    //     Route::inertia('/comparison', 'dashboard/Abyip/YearComparison') ->name('dashboard.abyip.comparison');
-    //     Route::inertia('/details-breakdown', 'dashboard/Abyip/DetailsBreakdown') ->name('dashboard.abyip.breakdown');
-    // });
     Route::inertia('/abyip', 'dashboard/Abyip')->name('dashboard.abyip');
     Route::inertia('/budget', 'dashboard/BudgetMonitoring')->name('dashboard.budget');
     Route::inertia('/attachments','dashboard/Attachments')-> name('dashboard.attachments');
@@ -25,9 +20,12 @@ Route::inertia('/', 'landing/Welcome')-> name('landing.welcome');
     Route::inertia('/settings', 'dashboard/Settings')->name('dashboard.settings');
     Route::inertia('/skofficials', 'dashboard/SKOfficials')->name('dashboard.skofficials');
     Route::inertia('/kkprofiling', 'dashboard/KKProfiling')->name('dashboard.kkprofiling');
+
     Route::prefix('termsofservice')->group(function(){
-        Route::inertia('/servicesection','dashboard/TermsOfService')->name('dashboard.termsofservice');
-        Route::inertia('/termyear','dashboard/TermsOfService/TermYear' )-> name('dashboard.termsofservice.year');
+        Route::get('/',[TermYearController::class, 'index'] )-> name('dashboard.termsofservice');
+        Route::get('/allterms', [TermYearController::class, 'listTermYears'])->name('dashboard.termsofservice.years');
+        Route::get('/{term_service_id?}', [TermYearController::class, 'setActiveTermYear'])->name('dashboard.termsofservice.active.year');
+        Route::post('/create/year', [TermYearController::class, 'createTerm'])->name('dashboard.termsofservice.create.year');
     });
 
     Route::inertia('/reports/fullreport','dashboard/Report/FullReport')->name('dashboard.fullreport');

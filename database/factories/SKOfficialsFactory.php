@@ -26,7 +26,7 @@ class SKOfficialsFactory extends Factory
             'official_middlename' => fake()->lastName(),
             'official_birthdate' => fake()->date(),
             'official_gender' => fake()->randomElement(['male', 'female']),
-            'official_position' => fake()->word(),
+            'official_position' => fake()->randomElement(['Chairperson', 'Councilor', 'Secretary', 'Treasurer']),
             'official_committee' => fake()->word(),
             'official_vote' => fake()->numberBetween(200, 500),
             'official_precinct' => fake()->shuffleString('ACB123'),

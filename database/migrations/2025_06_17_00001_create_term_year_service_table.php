@@ -15,6 +15,7 @@ return new class extends Migration
             $table->string('term_service_id', 20)->primary();
             $table->string('term_year_start', 5);
             $table->string('term_year_end', 5);
+            $table->boolean('active')->default(false);
             $table->timestamps();
         });
     }

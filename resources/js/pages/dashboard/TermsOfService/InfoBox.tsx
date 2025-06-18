@@ -4,36 +4,95 @@ import { Card, CardContent, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Info, Plus, SquarePen } from 'lucide-react';
-import React from 'react';
-interface InfoBoxProps {
-    officials: {
-        id: string;
-        name: string;
-        position: string;
-        totalVotes: number;
-        precinct: string;
-    }[];
+import { useForm } from '@inertiajs/react';
+import { Info, LoaderCircle, Plus, SquarePen } from 'lucide-react';
+import React, { FormEventHandler } from 'react';
+
+interface Officials {
+    official_id: string;
+    official_firstname: string;
+    official_lastname: string;
+    official_middlename: string;
+    official_position: string;
+    official_vote: number;
+    official_precinct: string;
 }
+interface ActiveTerm {
+    term_year_start: string;
+    term_year_end: string;
+}
+interface PageProps {
+    Officials: Officials[];
+    activeTerm: ActiveTerm;
+}
+type AddOfficialFormData = {
+    official_id: string;
+    official_firstname: string;
+    official_lastname: string;
+    official_middlename: string;
+    official_position: string;
+    official_vote: number;
+    official_precinct: string;
+};
 
-export default function InfoBox({ officials }: InfoBoxProps) {
-    const [temporaryOfficials, setTemporaryOfficials] = React.useState<InfoBoxProps['officials']>([]);
+type NewTermFormData = {
+    term_year_start: string;
+    term_year_end: string;
+};
+
+export default function InfoBox({ Officials, activeTerm }: PageProps) {
+    const [temporaryOfficials, setTemporaryOfficials] = React.useState<PageProps['Officials']>([]);
     const years = Array.from({ length: 2050 - 2020 + 1 }, (_, i) => 2020 + i);
+    const {
+        data: termData,
+        setData: setTermData,
+        post: termPost,
+        processing: termProcessing,
+        reset: termReset,
+    } = useForm<NewTermFormData>({
+        term_year_start: '',
+        term_year_end: '',
+    });
 
+    const {
+        data: officialData,
+        setData: setOfficialData,
+        post: officialPost,
+        processing: officialProcessing,
+        reset: resetOfficialData,
+    } = useForm<AddOfficialFormData>({
+        official_id: '',
+        official_firstname: '',
+        official_lastname: '',
+        official_middlename: '',
+        official_position: '',
+        official_vote: 0,
+        official_precinct: '',
+    });
+    //new term
+    const submitTerm: FormEventHandler = (e) => {
+        e.preventDefault();
+        termPost(route('dashboard.termsofservice.create.year'), {
+            onFinish: () => termReset('term_year_start', 'term_year_end'),
+        });
+    };
+    //add official form
     React.useEffect(() => {
-        setTemporaryOfficials(officials);
-    }, [officials]);
+        setTemporaryOfficials(Officials);
+    }, [Officials]);
 
     const handleAddOfficial = (e: React.MouseEvent) => {
         e.preventDefault();
         setTemporaryOfficials([
             ...temporaryOfficials,
             {
-                id: '',
-                name: '',
-                position: '',
-                totalVotes: 0,
-                precinct: '',
+                official_id: '',
+                official_firstname: '',
+                official_lastname: '',
+                official_middlename: '',
+                official_position: '',
+                official_vote: 0,
+                official_precinct: '',
             },
         ]);
     };
@@ -51,7 +110,17 @@ export default function InfoBox({ officials }: InfoBoxProps) {
                         variant="outline"
                         className="mt-2 w-full"
                         onClick={() => {
-                            setTemporaryOfficials([{ id: Math.random().toString(), name: '', position: '', totalVotes: 0, precinct: '' }]);
+                            setTemporaryOfficials([
+                                {
+                                    official_id: '',
+                                    official_firstname: '',
+                                    official_lastname: '',
+                                    official_middlename: '',
+                                    official_position: '',
+                                    official_vote: 0,
+                                    official_precinct: '',
+                                },
+                            ]);
                         }}
                     >
                         <Plus className="h-4 w-4" />
@@ -61,14 +130,14 @@ export default function InfoBox({ officials }: InfoBoxProps) {
             );
         }
         return (
-            <form action="">
+            <form>
                 <div className="grid grid-cols-1 gap-5">
                     {temporaryOfficials.map((official, index) => (
-                        <Card className="p-2" key={official.id || index}>
+                        <Card className="p-2" key={official.official_id || index}>
                             <CardTitle className="flex flex-row items-center justify-between">
-                                <h1 className='md:text-base text-[14px]'>Official #{index + 1} </h1>
+                                <h1 className="text-[14px] md:text-base">Official #{index + 1} </h1>
 
-                                <Button className='md:text-sm text-[12px] ' variant="destructive" onClick={(e) => handleRemoveOfficial(index, e)}>
+                                <Button className="text-[12px] md:text-sm" variant="destructive" onClick={(e) => handleRemoveOfficial(index, e)}>
                                     Remove
                                 </Button>
                             </CardTitle>
@@ -76,24 +145,25 @@ export default function InfoBox({ officials }: InfoBoxProps) {
                                 <div className="grid grid-cols-2 gap-4">
                                     <div className="flex flex-col gap-1">
                                         <Label className="text-[12px] md:text-base">Name:</Label>
-                                        <Input className="text-[10px] md:text-base" defaultValue={official.name} />
+                                        <Input
+                                            className="text-[10px] md:text-sm"
+                                            defaultValue={`${official.official_firstname}  ${official.official_middlename} ${official.official_lastname}`}
+                                        />
                                     </div>
-
                                     <div className="flex flex-col gap-1">
                                         <Label className="text-[12px] md:text-base">Position:</Label>
-                                        <Input className="text-[10px] md:text-base" defaultValue={official.position} />
+                                        <Input className="text-[10px] md:text-sm" defaultValue={official.official_position} />
                                     </div>
                                 </div>
-
                                 <div className="grid grid-cols-2 gap-4">
                                     <div className="flex flex-col gap-1">
                                         <Label className="text-[12px] md:text-base">Total Votes:</Label>
-                                        <Input className="text-[10px] md:text-base" defaultValue={official.totalVotes} />
+                                        <Input className="text-[10px] md:text-sm" defaultValue={official.official_vote} />
                                     </div>
 
                                     <div className="flex flex-col gap-1">
                                         <Label className="text-[12px] md:text-base">Precinct ID:</Label>
-                                        <Input className="text-[10px] md:text-base" defaultValue={official.precinct} />
+                                        <Input className="text-[10px] md:text-sm" defaultValue={official.official_precinct} />
                                     </div>
                                 </div>
                             </CardContent>
@@ -109,40 +179,56 @@ export default function InfoBox({ officials }: InfoBoxProps) {
     };
     const renderNewTermDialog = () => {
         return (
-            <form action="" className="grid grid-cols-1 gap-2 md:grid-cols-2">
-                <div>
-                    <Label>Start Year</Label>
-                    <Select>
-                        <SelectTrigger className="w-full">
-                            <SelectValue placeholder="Select Start Year" />
-                        </SelectTrigger>
-                        <SelectContent>
-                            <SelectGroup>
-                                {years.map((year) => (
-                                    <SelectItem key={year} value={year.toString()}>
-                                        {year}
-                                    </SelectItem>
-                                ))}
-                            </SelectGroup>
-                        </SelectContent>
-                    </Select>
+            <form onSubmit={submitTerm} className="grid grid-cols-1 gap-2">
+                <div className="grid grid-cols-2 gap-2">
+                    <div>
+                        <Label>Start Year</Label>
+                        <Select
+                            onValueChange={(value) => setTermData('term_year_start', value)}
+                            value={termData.term_year_start}
+                            disabled={termProcessing}
+                        >
+                            <SelectTrigger className="w-full">
+                                <SelectValue placeholder="Select Start Year" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                <SelectGroup>
+                                    {years.map((year) => (
+                                        <SelectItem key={year} value={year.toString()}>
+                                            {year}
+                                        </SelectItem>
+                                    ))}
+                                </SelectGroup>
+                            </SelectContent>
+                        </Select>
+                    </div>
+                    <div>
+                        <Label>End Year</Label>
+                        <Select
+                            onValueChange={(value) => setTermData('term_year_end', value)}
+                            value={termData.term_year_end}
+                            disabled={termProcessing}
+                        >
+                            <SelectTrigger className="w-full">
+                                <SelectValue placeholder="Select End Year" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                <SelectGroup>
+                                    {years.map((year) => (
+                                        <SelectItem key={year} value={year.toString()}>
+                                            {year}
+                                        </SelectItem>
+                                    ))}
+                                </SelectGroup>
+                            </SelectContent>
+                        </Select>
+                    </div>
                 </div>
                 <div>
-                    <Label>End Year</Label>
-                    <Select>
-                        <SelectTrigger className="w-full">
-                            <SelectValue placeholder="Select Start Year" />
-                        </SelectTrigger>
-                        <SelectContent>
-                            <SelectGroup>
-                                {years.map((year) => (
-                                    <SelectItem key={year} value={year.toString()}>
-                                        {year}
-                                    </SelectItem>
-                                ))}
-                            </SelectGroup>
-                        </SelectContent>
-                    </Select>
+                    <Button type="submit" variant={'add'} className="w-full" disabled={termProcessing}>
+                        {termProcessing && <LoaderCircle className="h-4 w-4 animate-spin" />}
+                        Create New Term
+                    </Button>
                 </div>
             </form>
         );
@@ -182,7 +268,9 @@ export default function InfoBox({ officials }: InfoBoxProps) {
                         <Info className="h-6 w-6 text-white" />
                         <div>
                             <h1 className="text-lg text-white">Officials </h1>
-                            <h1 className="text-2xl font-bold text-white">Current Term Status {'2023-2025'}</h1>
+                            <h1 className="text-2xl font-bold text-white">
+                                Current Term Status {activeTerm.term_year_end} - {activeTerm.term_year_start}
+                            </h1>
                         </div>
                     </div>
                 </div>
@@ -207,9 +295,6 @@ export default function InfoBox({ officials }: InfoBoxProps) {
                         }
                         title="New Term"
                         description="Create a new term for the newly elected Sangguniang Kabataan officials."
-                        buttonVariant={'add'}
-                        buttonClassName="w-full"
-                        buttonName={'Create Term'}
                         children={renderNewTermDialog()}
                     />
                 </div>
