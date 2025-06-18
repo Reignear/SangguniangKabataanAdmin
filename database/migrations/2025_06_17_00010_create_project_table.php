@@ -20,10 +20,11 @@ return new class extends Migration
             $table->date('project_finish_date');
             $table->string('project_status');
             $table->integer('project_completion_rate');
-            
             $table->timestamps();
 
-            $table->foreignId('abyip_id')->constrained('abyip_table', 'abyip_id')->noActionOnUpdate()->noActionOnDelete();
+      
+            $table->string('abyip_id');
+            $table->foreign('abyip_id')->references('abyip_id')->on('abyip_table')->noActionOnDelete()->noActionOnUpdate();
         });
     }
 

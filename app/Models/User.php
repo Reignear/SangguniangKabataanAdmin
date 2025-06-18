@@ -6,7 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-
+use App\Models\SKOfficials;
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
@@ -17,10 +17,26 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
+    protected $table = 'users_table';
+
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'user_name',
+        'user_avatar',
+        'user_email',
+        'user_password',
+        'user_role',
+    ];
+    public function official()
+    {
+        return $this->belongsTo(SKOfficials::class, 'official_id', 'official_id');
+    }
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts =[
+        'user_password'=> 'hashed',
     ];
 
     /**
@@ -29,7 +45,7 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $hidden = [
-        'password',
+        'user_password',
         'remember_token',
     ];
 

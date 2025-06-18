@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('officer_status');
             $table->timestamps();
 
-            $table->foreignId('member_id')->constrained('kk_member_table', 'member_id')->cascadeOnUpdate();
+            $table->foreignId('member_id')->constrained('kk_member_table', 'member_id')->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 

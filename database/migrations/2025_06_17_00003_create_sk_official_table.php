@@ -27,7 +27,9 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreignId('address_id')->constrained('address_table', 'address_id')->cascadeOnUpdate();
-            $table->foreignId('term_service_id')->constrained('term_year_service_table', 'term_service_id')->cascadeOnUpdate();
+            $table->string('term_service_id');
+            $table->foreign('term_service_id')->references('term_service_id')->on('term_year_service_table')->cascadeOnUpdate()->cascadeOnDelete();
+            
         });
     }
 

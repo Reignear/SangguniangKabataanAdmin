@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('kk_member_table', function(Blueprint $table){
-            $table-> id('member_id');
+            $table->id('member_id');
             $table->string('member_firstname');
             $table->string('member_lastname');
             $table->string('member_middlename')->nullable();
@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('member_gender');
             $table->string('member_civil_status');
             $table->timestamps();
-            
+        
             $table->foreignId('address_id')->constrained('address_table', 'address_id')->cascadeOnUpdate();
  
         });

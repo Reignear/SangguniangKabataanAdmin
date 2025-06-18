@@ -15,11 +15,11 @@ return new class extends Migration
         $table->id('address_id');
         $table->string('address_region');
         $table->string('address_province');
-        $table->string('address_city_munipality');
+        $table->string('address_city_municipality');
         $table->string('address_barangay');
         $table->string('address_purok');
         $table->string('address_street');
-        $table->integer('address_zipcode',false, false);
+        $table->string('address_zipcode');
         $table->timestamps();
       });
     }

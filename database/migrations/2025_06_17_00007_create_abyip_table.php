@@ -12,16 +12,18 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('abyip_table',function(Blueprint $table){
-            $table->id('abyip_id');
+            $table->string('abyip_id')->primary();
             $table->unsignedInteger('abyip_year');
             $table->unsignedBigInteger('abyip_total_budget');
-            $table->unsignedBigInteger('abyip_personal_expense');
+            $table->unsignedBigInteger('abyip_personal_expenses');
             $table->unsignedBigInteger('abyip_mooe');
             $table->unsignedBigInteger('abyip_financial_expenses');
             $table->unsignedBigInteger('abyip_capital_outlay');
             $table->timestamps();
 
-            $table->foreignId('term_service_id')->constrained('term_year_service_table', 'term_service_id')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->string('term_service_id');
+            $table->foreign('term_service_id')->references('term_service_id')->on('term_year_service_table')->cascadeOnUpdate()->cascadeOnDelete();
+ 
         });
     }
 

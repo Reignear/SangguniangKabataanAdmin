@@ -10,19 +10,22 @@ return new class extends Migration
     public function up(): void
     {
       Schema::create('activity_table', function(Blueprint $table){
-        $table->id('activity_id');
+        $table->id('activity_id') ;
         $table->string('activity_title');
         $table->text('activity_description');
         $table->string('activity_participation');
         $table->integer('activity_participants');
         $table->unsignedBigInteger('activity_budget');
-        $table->date('activity_from_time'); 
-        $table->date('activity_to_time'); 
+        $table->time('activity_from_time'); 
+        $table->time('activity_to_time'); 
+        $table->date('activity_date');
         $table->string('activity_location'); 
         $table->string('activity_status'); 
         $table->timestamps();
 
-        $table->foreignId('abyip_id')->constrained('abyip_table', 'abyip_id')->noActionOnUpdate()->noActionOnDelete();
+        $table->string('abyip_id');
+        $table->foreign('abyip_id')->references('abyip_id')->on('abyip_table')->noActionOnDelete()->noActionOnUpdate();
+        
         
         });  
     }

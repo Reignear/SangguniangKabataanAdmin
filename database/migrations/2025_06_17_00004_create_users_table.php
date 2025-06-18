@@ -12,16 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users_table', function (Blueprint $table) {
-            $table->id('user_id');
+            $table->string('user_id')->primary();
             $table->string('user_name');
             $table->string('user_avatar')->nullable();
             $table->string('user_email')->unique();
             $table->string('user_password');
             $table->string('user_role');
-            $table->string('country');
             $table->timestamps();
 
-            $table->foreignId('official_id')->constrained('sk_official_table', 'official_id')->cascadeOnUpdate();
+            $table->foreignId('official_id')->constrained('sk_official_table', 'official_id')->noActionOnUpdate()->noActionOnDelete();
         });
          
     }
