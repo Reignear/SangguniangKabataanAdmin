@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
 use Inertia\Inertia;
 use Inertia\Response;
+use App\Models\SKOfficials;
+use Illuminate\Http\Request;
+use Illuminate\Validation\Rules;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Validation\ValidationException;
 
 class RegisteredUserController extends Controller
 {
@@ -20,7 +22,7 @@ class RegisteredUserController extends Controller
      */
     public function create(): Response
     {
-        return Inertia::render('auth/Register');
+        return Inertia::render('auth/register');
     }
 
     /**
@@ -28,24 +30,44 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ]);
+            'official_firstname' =>     'required|string|max:50',
+            'official_middlename' =>    'required|string|max:50',
+            'official_lastname' =>      'required|string|max:50',
+            'official_position' =>      'required|string|max:50',
+            'official_vote' =>          'required|numeric',
+            'official_precinct' =>      'required|string|max:50',
+            'user_name'=>               'required|string|max:50',
+            'user_email' =>             'required|email|max:50',
+            'user_password' =>          ['required', 'confirmed', Rules\Password::defaults()],
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
         ]);
+     
+        $skOfficial = SKOfficials::where([
+            'official_firstname' =>     $request->official_firstname,
+            'official_middlename' =>        $request->official_middlename,
+            'official_lastname' =>      $request->official_lastname,
+            'official_position' =>      $request->official_position,
+            'official_vote' =>          $request->official_vote,
+            'official_precinct' =>      $request->official_precinct,
+        ])->first();
 
+        if(!$skOfficial){
+          throw ValidationException::withMessages([
+            'official' => 'The official does not exist. Please register the official first.'
+          ]);
+        }
+
+           $user = User::create([
+              'user_name' =>            $request->user_name,
+              'user_email' =>           $request->user_email,
+              'user_password' =>        Hash::make($request->user_password),
+              'official_id' =>          $skOfficial->official_id
+           ]);
+ 
         event(new Registered($user));
-
-        Auth::login($user);
-
-        return to_route('dashboard');
+        return redirect()->route('login')->with('success', 'Registration successful! You can now log in.');
     }
 }

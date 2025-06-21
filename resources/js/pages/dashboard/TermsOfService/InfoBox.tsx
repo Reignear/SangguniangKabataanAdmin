@@ -28,7 +28,7 @@ interface ActiveTerm {
     term_year_end: string;
 }
 
-interface PageProps {
+type PageProps= {
     Officials: Official[];
     activeTerm: ActiveTerm;
 }

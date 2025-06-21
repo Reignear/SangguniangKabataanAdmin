@@ -1,44 +1,57 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { CustomCalendar } from '@/components/custom/CustomCalendar';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { useForm } from '@inertiajs/react';
+import { LoaderCircle } from 'lucide-react';
+import { FormEventHandler } from 'react';
 
 interface RegistrationForm {
-    firstname: string;
-    middlename: string;
-    lastname: string;
-    suffix: string;
-    gender: string;
-    birthdate: string;
-    sk_position: string;
-    email: string;
-    contact_number: string;
-    username: string;
-    password: string;
-    confirm_password: string;
+    [key: string]: string | number;
+    official_firstname: string;
+    official_middlename: string;
+    official_lastname: string;
+    official_position: string;
+    official_vote: number;
+    official_precinct: string;
+    user_email: string;
+    user_name: string;
+    user_password: string;
+    user_password_confirmation: string;
 }
 
 export default function register() {
-    const {
-        register,
-        handleSubmit,
-        watch,
-        setValue,
-        formState: { errors },
-    } = useForm<RegistrationForm>();
+    const { data, setData, post, processing, errors, reset } = useForm<RegistrationForm>({
+        official_firstname: '',
+        official_middlename: '',
+        official_lastname: '',
+        official_position: '',
+        official_vote: 0,
+        official_precinct: '',
+        user_email: '',
+        user_name: '',
+        user_password: '',
+        user_password_confirmation: '',
+    });
 
-    const onSubmit: SubmitHandler<RegistrationForm> = (data) => console.log(data);
-    register('birthdate', { required: 'Birthdate is required' });
-    const birthdate = watch('birthdate');
-
+    const onSubmit: FormEventHandler = (e) => {
+        e.preventDefault();
+        post(route('register.store'), {
+            onSuccess: () => {
+                console.log('Registration successful');
+                reset();
+            },
+            onError: (error) => {
+                console.error('Registration failed:', error);
+            },
+        });
+    };
     return (
         <div className="h-screen w-full p-2">
             <div className="flex h-full w-full items-center justify-center">
                 <Card className="w-xl">
-                    <form onSubmit={handleSubmit(onSubmit)}>
+                    <form onSubmit={onSubmit}>
                         <CardContent className="flex w-full flex-col gap-y-2">
                             <div className="flex w-full justify-center">
                                 <Label className="text-2xl font-semibold">Register</Label>
@@ -47,88 +60,127 @@ export default function register() {
                             <div className="flex w-full flex-col items-center justify-center gap-4 md:flex-row">
                                 <div className="flex w-64 flex-col gap-2">
                                     <Label>Firstname</Label>
-                                    <Input type="text" {...register('firstname', { required: 'Firstname is required' })} />
-                                    <p className="text-[11px] text-red-500">{errors.firstname?.message}</p>
+                                    <Input
+                                        type="text"
+                                        value={data.official_firstname}
+                                        onChange={(e) => setData('official_firstname', e.target.value)}
+                                        required
+                                        tabIndex={1}
+                                    />
+                                    <p className="text-[11px] text-red-500">{errors.official_firstname}</p>
                                 </div>
                                 <div className="flex w-64 flex-col gap-2">
                                     <Label>Middlename</Label>
-                                    <Input type="text" {...register('middlename', { required: 'Middlename is required' })} />
-                                    <p className="text-[11px] text-red-500">{errors.middlename?.message}</p>
+                                    <Input
+                                        type="text"
+                                        value={data.official_middlename}
+                                        onChange={(e) => setData('official_middlename', e.target.value)}
+                                        required
+                                        tabIndex={2}
+                                    />
+                                    <p className="text-[11px] text-red-500">{errors.official_middlename}</p>
                                 </div>
                             </div>
                             <div className="flex w-full flex-col items-center justify-center gap-4 md:flex-row">
                                 <div className="flex w-64 flex-col gap-2">
                                     <Label>Lastname</Label>
-                                    <Input type="text" {...register('lastname', { required: 'Lastname is required' })} />
-                                    <p className="text-[11px] text-red-500">{errors.lastname?.message}</p>
-                                </div>
-                                <div className="flex w-64 flex-col gap-2">
-                                    <Label>Suffix</Label>
-                                    <Input type="text" {...register('suffix', { required: 'Suffix is required' })} />
-                                    <p className="text-[11px] text-red-500">{errors.suffix?.message}</p>
-                                </div>
-                            </div>
-                            <div className="flex w-full flex-col items-center justify-center gap-4 md:flex-row">
-                                <div className="flex w-64 flex-col gap-2">
-                                    <Label>Gender</Label>
-                                    <Input className="w-full" type="text" {...register('gender', { required: 'Gender is required' })} />
-                                    <p className="text-[11px] text-red-500">{errors.gender?.message}</p>
-                                </div>
-                                <div>
-                                    <CustomCalendar
-                                        Label="Birthdate"
-                                        value={birthdate ? new Date(birthdate) : undefined}
-                                        onChange={(date) => {
-                                            setValue('birthdate', date ? date.toISOString() : '');
-                                        }}
+                                    <Input
+                                        type="text"
+                                        value={data.official_lastname}
+                                        onChange={(e) => setData('official_lastname', e.target.value)}
+                                        required
+                                        tabIndex={3}
                                     />
-                                    <p className="text-[11px] text-red-500">{errors.birthdate?.message}</p>
+                                    <p className="text-[11px] text-red-500">{errors.official_lastname}</p>
+                                </div>
+                                <div className="flex w-64 flex-col gap-2">
+                                    <Label>Position</Label>
+                                    <Input
+                                        type="text"
+                                        value={data.official_position}
+                                        onChange={(e) => setData('official_position', e.target.value)}
+                                        required
+                                        tabIndex={4}
+                                    />
+                                    <p className="text-[11px] text-red-500">{errors.official_position}</p>
+                                </div>
+                            </div>
+
+                            <div className="flex w-full flex-col items-center justify-center gap-4 md:flex-row">
+                                <div className="flex w-64 flex-col gap-2">
+                                    <Label>Official Vote</Label>
+                                    <Input
+                                        type="number"
+                                        value={data.official_vote}
+                                        onChange={(e) => setData('official_vote', Number(e.target.value))}
+                                        required
+                                        tabIndex={5}
+                                    />
+                                    <p className="text-[11px] text-red-500">{errors.official_vote}</p>
+                                </div>
+                                <div className="flex w-64 flex-col gap-2">
+                                    <Label>Precint ID</Label>
+                                    <Input
+                                        type="string"
+                                        value={data.official_precinct}
+                                        onChange={(e) => setData('official_precinct', e.target.value)}
+                                        required
+                                        tabIndex={6}
+                                    />
+                                    <p className="text-[11px] text-red-500">{errors.official_precinct}</p>
                                 </div>
                             </div>
                             <div className="flex w-full flex-col items-center justify-center gap-4 md:flex-row">
                                 <div className="flex w-64 flex-col gap-2">
-                                    <Label>SK Position</Label>
-                                    <Input type="text" {...register('sk_position', { required: 'Sk position is required' })} />
-                                    <p className="text-[11px] text-red-500">{errors.sk_position?.message}</p>
+                                    <Label>User name</Label>
+                                    <Input
+                                        type="text"
+                                        value={data.user_name}
+                                        onChange={(e) => setData('user_name', e.target.value)}
+                                        required
+                                        tabIndex={7}
+                                    />
+                                    <p className="text-[11px] text-red-500">{errors.user_name}</p>
                                 </div>
                                 <div className="flex w-64 flex-col gap-2">
                                     <Label>Email</Label>
-                                    <Input type="email" {...register('email', { required: 'Email is required' })} />
-                                    <p className="text-[11px] text-red-500">{errors.email?.message}</p>
-                                </div>
-                            </div>
-                            <div className="flex w-full flex-col items-center justify-center gap-4 md:flex-row">
-                                <div className="flex w-64 flex-col gap-2">
-                                    <Label>Contact Number</Label>
-                                    <Input type="text" {...register('contact_number', { required: 'Contact number is required' })} />
-                                    <p className="text-[11px] text-red-500">{errors.contact_number?.message}</p>
-                                </div>
-                                <div className="flex w-64 flex-col gap-2">
-                                    <Label>Username</Label>
-                                    <Input type="text" {...register('username', { required: 'Username is required' })} />
-                                    <p className="text-[11px] text-red-500">{errors.username?.message}</p>
+                                    <Input
+                                        type="email"
+                                        value={data.user_email}
+                                        onChange={(e) => setData('user_email', e.target.value)}
+                                        required
+                                        tabIndex={8}
+                                    />
+                                    <p className="text-[11px] text-red-500">{errors.user_email}</p>
                                 </div>
                             </div>
                             <div className="flex w-full flex-col items-center justify-center gap-4 md:flex-row">
                                 <div className="flex w-64 flex-col gap-2">
                                     <Label>Password</Label>
-                                    <Input type="password" {...register('password', { required: 'Passowrd is required' })} />
-                                    <p className="text-[11px] text-red-500">{errors.password?.message}</p>
+                                    <Input
+                                        type="password"
+                                        value={data.user_password}
+                                        onChange={(e) => setData('user_password', e.target.value)}
+                                        required
+                                        tabIndex={9}
+                                    />
+                                    <p className="text-[11px] text-red-500">{errors.user_password}</p>
                                 </div>
                                 <div className="flex w-64 flex-col gap-2">
                                     <Label>Confirm Password</Label>
                                     <Input
                                         type="password"
-                                        {...register('confirm_password', {
-                                            required: 'Password confirmation is required',
-                                            validate: (value) => value === watch('password') || 'The passwords do not match',
-                                        })}
+                                        value={data.user_password_confirmation}
+                                        onChange={(e) => setData('user_password_confirmation', e.target.value)}
+                                        required
+                                        tabIndex={10}
                                     />
-                                    <p className="text-[11px] text-red-500">{errors.confirm_password?.message}</p>
+                                    <p className="text-[11px] text-red-500">{errors.user_password_confirmation}</p>
                                 </div>
                             </div>
                             <div className="flex w-full flex-row items-center justify-center gap-4">
-                                <Button variant="customLogoBased" className="w-3xs md:w-xl" type="submit">
+                                <Button variant="customLogoBased" className="w-3xs md:w-xl" type="submit" disabled={processing}>
+                                    {processing && <LoaderCircle className="h-4 w-4 animate-spin" />}
                                     Submit
                                 </Button>
                             </div>

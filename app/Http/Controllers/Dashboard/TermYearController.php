@@ -56,7 +56,6 @@ class TermYearController extends Controller
         $defaultUser = User::updateOrCreate([
             'user_name' => 'admin',
             'user_email' => 'admin@example.com',
-            'user_role' => 'admin',
             'user_password' => Hash::make('admin'),
             'official_id' =>$defaultOfficial->official_id,
         ]);

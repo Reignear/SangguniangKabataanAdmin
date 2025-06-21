@@ -4,7 +4,8 @@ import { Info } from 'lucide-react';
 import CurrentOfficials from './TermsOfService/CurrentOfficials';
 import InfoBox from './TermsOfService/InfoBox';
 
-interface Officials {
+interface Official {
+    [key: string]: string | number;
     official_id: string;
     official_firstname: string;
     official_lastname: string;
@@ -17,11 +18,11 @@ interface ActiveTerm {
     term_year_start: string;
     term_year_end: string;
 }
-interface PageProps {
+type PageProps = {
     activeTermId: string;
-    Officials: Officials[];
+    Officials: Official[];
     activeTerm: ActiveTerm;
-}
+};
 
 export default function TermsOfService({ activeTermId, Officials, activeTerm }: PageProps) {
     const title = 'Sangguniang Kabataan Terms of Service';
@@ -32,7 +33,9 @@ export default function TermsOfService({ activeTermId, Officials, activeTerm }: 
                     <h1 className="text-center text-xl font-semibold text-red-600">{activeTermId}</h1>
                     <h1 className="text-center font-bold text-gray-800 md:text-3xl">{title}</h1>
                     <Button variant="empty" className="text-xl font-semibold text-red-600 hover:cursor-pointer hover:text-red-700 hover:underline">
-                        <a href={route('dashboard.termsofservice.years')}>Year {activeTerm.term_year_end} - {activeTerm.term_year_start}</a>
+                        <a href={route('dashboard.termsofservice.years')}>
+                            Year {activeTerm.term_year_end} - {activeTerm.term_year_start}
+                        </a>
                     </Button>
                     <p className="text-center text-base text-gray-800">Barangay Youth Council - Terms of Service</p>
                 </div>

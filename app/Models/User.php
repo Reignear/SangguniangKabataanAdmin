@@ -24,7 +24,6 @@ class User extends Authenticatable
         'user_avatar',
         'user_email',
         'user_password',
-        'user_role',
         'official_id',
     ];
     public function official()

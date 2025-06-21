@@ -23,7 +23,7 @@ Route::inertia('/', 'landing/Welcome')-> name('landing.welcome');
     
     Route::prefix('/settings')->group(function(){
         Route::get('/profile',[SettingsController::class, 'getProfile'])->name('dashboard.settings.profile');
-       
+        
     });
     Route::inertia('/skofficials', 'dashboard/SKOfficials')->name('dashboard.skofficials');
     Route::inertia('/kkprofiling', 'dashboard/KKProfiling')->name('dashboard.kkprofiling');

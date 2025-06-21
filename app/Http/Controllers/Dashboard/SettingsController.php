@@ -11,9 +11,8 @@ use Inertia\Inertia;
 class SettingsController extends Controller
 {
     
-    public function getProfile(Request $request)
+    public function getProfile()
     {
-        // Load address data
         $regions = json_decode(file_get_contents(storage_path(). "/app/addresses/refregion.json"), true)['RECORDS'];
         $provinces = json_decode(file_get_contents(storage_path(). "/app/addresses/refprovince.json"), true)['RECORDS'];
         $cityMunicipality = json_decode(file_get_contents(storage_path(). "/app/addresses/refcitymun.json"), true)['RECORDS'];  

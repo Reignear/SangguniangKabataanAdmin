@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('user_avatar')->nullable();
             $table->string('user_email');
             $table->string('user_password');
-            $table->string('user_role');
             $table->timestamps();
 
             $table->foreignId('official_id')->nullable('sk_official_table', 'official_id');

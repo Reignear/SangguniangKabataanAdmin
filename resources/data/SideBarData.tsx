@@ -28,6 +28,6 @@ export const SideBarItem = [
     { title: 'Programs', href: 'dashboard.programs', icon: ScrollText },
     { title: 'Attachments', href: 'dashboard.attachments', icon: Paperclip },
     { title: 'Reports', href: 'dashboard.reports', icon: ClipboardPlus },
-    { title: 'Settings', href: 'dashboard.settings', icon: Settings },
+    { title: 'Settings', href: 'dashboard.settings.profile', icon: Settings },
     { title: 'Terms of Service', href: 'dashboard.termsofservice', icon: Handshake },
 ];

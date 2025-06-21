@@ -56,7 +56,7 @@ export default function AddressSettings() {
         const filteredProvinces = addressData.provinces.filter((province) => province.regCode === selectedRegion);
         setProvinces(filteredProvinces);
         setSelectedProvince('');
-    }, [selectedRegion, addressData.provinces]);
+    }, [selectedRegion, addressData?.provinces]);
 
     useEffect(() => {
         if (!selectedProvince) {
@@ -66,7 +66,7 @@ export default function AddressSettings() {
         const filteredCities = addressData.cityMunicipality.filter((city) => city.provCode === selectedProvince);
         setCityMunicipality(filteredCities);
         setSelectedCity('');
-    }, [selectedProvince, addressData.cityMunicipality]);
+    }, [selectedProvince, addressData?.cityMunicipality]);
     const handleRegionChange = (value: string) => {
         setSelectedRegion(value);
     };
