@@ -16,17 +16,17 @@ return new class extends Migration
             $table->string('official_firstname');
             $table->string('official_lastname');
             $table->string('official_middlename')->nullable();
-            $table->date('official_birthdate');
-            $table->string('official_gender');
+            $table->date('official_birthdate')->nullable();
+            $table->string('official_gender')->nullable();
             $table->string('official_position');
             $table->string('official_committee')->nullable();
             $table->unsignedInteger('official_vote');
             $table->char('official_precinct', 10);
-            $table->date('official_term_elected');
-            $table->date('official_term_ended');
+            $table->date('official_term_elected')->nullable();
+            $table->date('official_term_ended')->nullable();
             $table->timestamps();
 
-            $table->foreignId('address_id')->constrained('address_table', 'address_id')->cascadeOnUpdate();
+            $table->foreignId('address_id')->nullable('address_table', 'address_id')->cascadeOnUpdate();
             $table->string('term_service_id');
             $table->foreign('term_service_id')->references('term_service_id')->on('term_year_service_table')->cascadeOnUpdate()->cascadeOnDelete();
             

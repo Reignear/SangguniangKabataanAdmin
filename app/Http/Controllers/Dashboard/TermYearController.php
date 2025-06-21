@@ -33,12 +33,13 @@ class TermYearController extends Controller
             'term_year_end' => 'required|string|after:term_year_start',
         ]);
         TermYear::query()->update(['active' => false]);
+        // Deactivate all existing terms before creating a new one
         $createTerm = TermYear::create([
             'term_year_start' => $validated['term_year_start'],
             'term_year_end' => $validated['term_year_end'],
             'active' => true,  
         ]);
-
+        
        $defaultOfficial = SKOfficials::create([
             'official_firstname' =>     'admin',
             'official_middlename' =>    'admin',
@@ -46,18 +47,21 @@ class TermYearController extends Controller
             'official_position' =>      'admin',
             'official_vote' =>           1,
             'official_precinct' =>      'admin',
+            'official_term_elected' =>  '2020-01-01',
+            'official_term_ended' =>    '2021-01-01',
             'term_service_id' => $createTerm->term_service_id,
+            
             ]);
 
-        $defaultUser = User::create([
+        $defaultUser = User::updateOrCreate([
             'user_name' => 'admin',
             'user_email' => 'admin@example.com',
             'user_role' => 'admin',
-            'password' => Hash::make('admin'),
-            'official_id' => $defaultOfficial->official_id,
+            'user_password' => Hash::make('admin'),
+            'official_id' =>$defaultOfficial->official_id,
         ]);
         event(new Registered($defaultUser));
-        return redirect()->route('dashboard.termsofservice.list.year');
+        return redirect()->route('dashboard.termsofservice.years');
     }
 
     
@@ -73,7 +77,7 @@ class TermYearController extends Controller
                 'officials.*.official_position' => 'required|string|max:50',
                 'officials.*.official_vote'=> 'required|numeric|min:0',
                 'officials.*.official_precinct' => 'required|string|max:10',
-            ]);
+        ]);
 
             $activeTermId = TermYear::where('active', true)->value('term_service_id');
             
@@ -97,7 +101,8 @@ class TermYearController extends Controller
                         'official_vote' => $official['official_vote'],
                         'official_precinct' => $official['official_precinct'],
                         'term_service_id' => $activeTermId,
-                    ]
+
+                ]   
                 );
             }
            redirect()->route('dashboard.termsofservice');
