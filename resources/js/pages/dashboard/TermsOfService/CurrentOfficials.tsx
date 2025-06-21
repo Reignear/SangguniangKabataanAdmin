@@ -24,12 +24,12 @@ const CurrentOfficials = ({ Officials }: PageProps) => {
                     {Officials.map((official) => (
                         <Card key={official.official_id}>
                             <CardContent className="flex flex-col justify-start">
-                                <h1 className="text-lg font-semibold text-gray-800 flex flex-row gap-1">
+                                <h1 className="flex flex-row gap-1 text-[12px] font-semibold text-gray-800 sm:text-base md:text-lg">
                                     <span>{official.official_firstname}</span> <span>{official.official_middlename}</span>
                                     <span>{official.official_lastname}</span>
                                 </h1>
                                 <div className="rounded-lg border border-red-500 py-1 text-center md:min-w-36">
-                                    <p className="text-[13px] text-red-700">{official.official_position}</p>
+                                    <p className="text-[10px] text-red-700 md:text-[13px]">{official.official_position}</p>
                                 </div>
                                 <p className="text-muted-foreground mt-4 text-sm">Total votes: {official.official_vote}</p>
                                 <p className="text-muted-foreground text-sm">Precint ID: {official.official_precinct}</p>

@@ -24,7 +24,7 @@ const TermYear = ({ TermYears }: PageProps) => {
                                 variant="empty"
                                 className="text-base text-red-500/80 transition-all hover:cursor-pointer hover:text-red-600 md:text-lg"
                             >
-                                Sangguniang Kabataan Term {term.term_year_end} - {term.term_year_start}
+                                Sangguniang Kabataan Term {term.term_year_start} - {term.term_year_end}
                             </Button>
                             <Separator />
                         </>
